@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fimet>
+    <extensions>
+        <extension name="com.fimet.usecase.IUseCaseStore" class="com.fimet.usecase.UseCaseStore"/>
+    </extensions>
+    <managers>
+        <manager name="com.fimet.IClassLoaderManager" class="com.fimet.ClassLoaderManager" autostart="false"/>
+        <manager name="com.fimet.IThreadManager" class="com.fimet.ThreadManager" autostart="false"/>
+    </managers>
+    <properties>
+        <property name="name" value="value"/>
+    </properties>
+</fimet>

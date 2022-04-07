@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="MasterCard">
+	<field id="2" length="2" maxLength="19" mask=".+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
+	<field id="3" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code">
+		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
+		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
+		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
+	</field>
+	<field id="4" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction" />
+	<field id="5" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement" />
+	<field id="6" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, cardholder billing" />
+	<field id="7" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Transmission date and time" />
+	<field id="8" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, cardholder billing fee" />
+	<field id="9" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Conversion rate, settlement" />
+	<field id="10" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Conversion rate, cardholder billing" />
+	<field id="11" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="System trace audit number (STAN)" />
+	<field id="12" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Local transaction time (hhmmss)" />
+	<field id="13" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Local transaction date (MMDD)" />
+	<field id="14" length="4" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Expiration date" />
+	<field id="15" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement date" />
+	<field id="16" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Currency conversion date" />
+	<field id="17" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Capture date" />
+	<field id="18" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Merchant type, or merchant category code" />
+	<field id="19" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Acquiring institution (country code)" />
+	<field id="20" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="PAN extended (country code)" />
+	<field id="21" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Forwarding institution (country code)" />
+	<field id="22" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service entry mode">
+		<field id="22.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PAN/date entry mode" />
+		<field id="22.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PIN entry capability" />
+	</field>
+	<field id="23" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Application PAN sequence number" />
+	<field id="24" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Function code (ISO 8583:1993), or network international identifier (NII)" />
+	<field id="25" length="2" mask="[A-Z0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service condition code" />
+	<field id="26" length="2" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service capture code" />
+	<field id="27" length="1" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Authorizing identification response length" />
+	<field id="28" length="9" mask=".+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
+	<field id="29" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement fee" />
+	<field id="30" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction processing fee" />
+	<field id="31" length="8" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement processing fee" />
+	<field id="32" length="2" maxLength="11" mask="[0-9]*" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Acquiring institution identification code" />
+	<field id="33" length="2" maxLength="11" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Forwarding institution identification code" />
+	<field id="34" length="2" maxLength="28" mask="[^a-zA-Z ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number, extended" />
+	<field id="35" length="2" maxLength="37" mask="[0-9]{8,19}(=|D).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Track 2 data" />
+	<field id="36" length="3" maxLength="104" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Track 3 data" />
+	<field id="37" length="12" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Retrieval reference number" />
+	<field id="38" length="6" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Authorization identification response" />
+	<field id="39" length="2" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Response code" />
+	<field id="40" length="3" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Service restriction code" />
+	<field id="41" length="8" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor terminal identification" />
+	<field id="42" length="15" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor identification code" />
+	<field id="43" length="40" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location">
+		<field id="43.1" length="22" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor Name" />
+		<field id="43.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Space" />
+		<field id="43.3" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor City" />
+		<field id="43.4" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Space" />
+		<field id="43.5" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor State or Country Code" />
+	</field>
+	<field id="44" length="2" maxLength="25" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional response data" />
+	<field id="45" length="2" maxLength="76" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Track 1 data" />
+	<field id="46" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (ISO)" />
+	<field id="47" length="3" maxLength="999" mask="[a-zA-Z0-9 ]*" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (national)" />
+	<field id="48" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.mc.MC48VarFieldParser" name="Additional data (private)">
+		<field id="48.tcc" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Category Code" />
+		<field id="48.10" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Encrypted PIN Block Key" />
+		<field id="48.11" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Key Exchange Block Data (Single-length Keys)|(Double-length Keys)|(Triple-length Keys)" />
+		<field id="48.12" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Routing Indicator" />
+		<field id="48.13" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Hosted Mobile Phone Top-up IssuerRequest Data" />
+		<field id="48.14" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.15" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Authorization Platform Advice Date" />
+		<field id="48.16" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Processor Pseudo ICA" />
+		<field id="48.17" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Authentication Indicator" />
+		<field id="48.18" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Service Parameters" />
+		<field id="48.19" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.20" length="2" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Cardholder Verification Method" />
+		<field id="48.21" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.22" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.23" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Payment Initiation Channel" />
+		<field id="48.25" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Cash Program Data" />
+		<field id="48.26" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Wallet Program Data" />
+		<field id="48.27" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.28" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.29" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.30" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Token Transaction Identifier" />
+		<field id="48.31" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.32" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Assigned ID" />
+		<field id="48.33" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="PAN Mapping File Information" />
+		<field id="48.34" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Dynamic CVC 3 ATC Information" />
+		<field id="48.35" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Contactless Non-Card Form Factor IssuerRequest/IssuerResponse" />
+		<field id="48.36" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Visa MVV (Visa Only)" />
+		<field id="48.37" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Additional Merchant Data" />
+		<field id="48.38" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Account Category" />
+		<field id="48.39" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Account Data Compromise Information" />
+		<field id="48.40" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Electronic Commerce Merchant/Cardholder Certificate Serial Number (Visa and American Express)" />
+		<field id="48.41" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Electronic Commerce Certificate Qualifying Information" />
+		<field id="48.42" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Electronic Commerce Indicators" />
+		<field id="48.43" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Universal Cardholder Authentication Field (UCAF)" />
+		<field id="48.44" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Visa 3-D Secure Electronic Commerce Transaction Identifier (XID) (Visa and American Express)" />
+		<field id="48.45" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Visa 3-D Secure Electronic Commerce Transaction IssuerResponse Code (Visa Only)" />
+		<field id="48.46" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Product ID (Visa Only)" />
+		<field id="48.47" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Payment Gateway Indicator" />
+		<field id="48.48" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mobile Program Indicators" />
+		<field id="48.49" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Time Validation Information" />
+		<field id="48.50" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.51" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Merchant On-behalf Services" />
+		<field id="48.52" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Integrity Class" />
+		<field id="48.53" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.54" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.55" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Merchant Fraud Scoring Data" />
+		<field id="48.56" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Security Services Additional Data for Issuers" />
+		<field id="48.57" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Security Services Additional Data for Acquirers" />
+		<field id="48.58" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="ATM Additional Data" />
+		<field id="48.59" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.60" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.61" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="POS Data, Extended Condition Codes" />
+		<field id="48.62" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.63" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Trace ID" />
+		<field id="48.64" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transit Program" />
+		<field id="48.65" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.66" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.67" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.68" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.69" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.70" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.71" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="On-behalf Services" />
+		<field id="48.72" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Chip Authentication" />
+		<field id="48.73" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Internal Use Only" />
+		<field id="48.74" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Additional Processing Information" />
+		<field id="48.75" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Fraud Scoring Data" />
+		<field id="48.76" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Electronic Acceptance Indicator" />
+		<field id="48.77" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Funding/Payment Transaction Type Indicator" />
+		<field id="48.78" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Payment Service Indicators (Visa Only)" />
+		<field id="48.79" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Chip CVR/TVR Bit Error Result" />
+		<field id="48.80" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="PIN Service Code" />
+		<field id="48.81" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Reserved for Future Use N/A" />
+		<field id="48.82" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Address Verification Service IssuerRequest" />
+		<field id="48.83" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Address Verification Service IssuerResponse" />
+		<field id="48.84" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Merchant Advice Code|Visa IssuerResponse Codes (Visa Only)" />
+		<field id="48.85" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Account Status (Visa Only)" />
+		<field id="48.86" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Relationship Participant Indicator (Visa Only)" />
+		<field id="48.87" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Card Validation Code Result|CVV2 IssuerResponse (Visa Only)" />
+		<field id="48.88" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Magnetic Stripe Compliance Status Indicator" />
+		<field id="48.89" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Magnetic Stripe Compliance Error Indicator" />
+		<field id="48.90" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Lodging|Custom Payment Service IssuerRequest (Visa Only)" />
+		<field id="48.91" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Custom Payment Service IssuerRequest Transaction ID (Visa Only)" />
+		<field id="48.92" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="CVC 2|CVV2 Data (Visa Only)" />
+		<field id="48.93" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Fleet Card ID IssuerRequest Data (Visa Only)" />
+		<field id="48.94" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Commercial Card Inquiry IssuerRequest|IssuerResponse (Visa Only)" />
+		<field id="48.95" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Promotion Code|American Express Customer ID Number (American Express Only)" />
+		<field id="48.96" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Visa Market-specific Data Identifier (Visa Only)" />
+		<field id="48.97" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Prestigious Properties Indicator (Visa Only)" />
+		<field id="48.98" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Corporate Fleet Card� ID/Driver Number" />
+		<field id="48.99" length="2" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Mastercard Corporate Fleet Card� Vehicle Number" />
+	</field>
+	<field id="49" length="3" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Currency code, transaction" />
+	<field id="50" length="3" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Currency code, settlement" />
+	<field id="51" length="3" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Currency code, cardholder billing" />
+	<field id="52" length="8" mask="[a-fA-F0-9]+" converterValue="AsciiToHex" parser="com.fimet.parser.field.FixedFieldParser" name="Personal identification number data" />
+	<field id="53" length="16" mask="[0-9 ]+" converterValue="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Security related control information" />
+	<field id="54" length="3" maxLength="120" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional amounts" />
+	<field id="55" length="3" maxLength="999" mask="(?s).+" converterValue="AsciiToHex" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.mc.MCTagsVarFieldParser" name="ICC data EMV having multiple tags">
+		<field id="55.5F2A" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Currency Code" />
+		<field id="55.71" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Script Template 1 and 2" />
+		<field id="55.72" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Script Template 2" />
+		<field id="55.82" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Application Interchange Profile" />
+		<field id="55.84" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Dedicated File Name" />
+		<field id="55.91" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Authentication Data (Provides data to be transmitted to the card for issuer authentication.)" />
+		<field id="55.95" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Terminal Verification Result (TVR)" />
+		<field id="55.9A" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Date" />
+		<field id="55.9C" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Type" />
+		<field id="55.9F02" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Amount Authorized" />
+		<field id="55.9F03" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Amount Other" />
+		<field id="55.9F09" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Application Version Number" />
+		<field id="55.9F10" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Application Data (IAD)" />
+		<field id="55.9F1A" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Terminal Country Code" />
+		<field id="55.9F1E" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Interface Device (IFD) Serial Number" />
+		<field id="55.9F26" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Application Cryptogram (AC)" />
+		<field id="55.9F27" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Cryptogram Information Data" />
+		<field id="55.9F33" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Terminal Capabilities" />
+		<field id="55.9F34" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Cardholder Verification Method (CVM) Results" />
+		<field id="55.9F35" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Terminal Type" />
+		<field id="55.9F36" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Application Transaction Counter" />
+		<field id="55.9F37" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Unpredictable Number" />
+		<field id="55.9F41" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Sequence Counter" />
+		<field id="55.9F53" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Transaction Category Code" />
+		<field id="55.9F5B" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Issuer Script Results" />
+		<field id="55.9F6E" length="2" maxLength="999" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.mc.MCTagVarFieldParser" name="Form Factor Indicator" />
+	</field>
+	<field id="56" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (ISO)" />
+	<field id="57" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="58" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="59" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="60" length="3" maxLength="999" mask="(?s).*" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
+	<field id="61" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. CVV2/service code   transactions)" />
+	<field id="62" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. transactions: invoice number, key exchange transactions: TPK key, etc.)" />
+	<field id="63" length="3" maxLength="999" mask="(?s).*" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private)" />
+	<field id="64" length="16" mask="[a-fA-F0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message authentication code (MAC)" />
+	<field id="65" length="1" mask="[a-fA-F0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Extended bitmap indicator" />
+	<field id="66" length="1" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement code" />
+	<field id="67" length="2" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Extended payment code" />
+	<field id="68" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Receiving institution country code" />
+	<field id="69" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement institution country code" />
+	<field id="70" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Network management information code" />
+	<field id="71" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message number" />
+	<field id="72" length="4" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Last message's number" />
+	<field id="73" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Action date (YYMMDD)" />
+	<field id="74" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of credits" />
+	<field id="75" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal number" />
+	<field id="76" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of debits" />
+	<field id="77" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal number" />
+	<field id="78" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Transfer number" />
+	<field id="79" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Transfer, reversal number" />
+	<field id="80" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of inquiries" />
+	<field id="81" length="10" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of authorizations" />
+	<field id="82" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, processing fee amount" />
+	<field id="83" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, transaction fee amount" />
+	<field id="84" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, processing fee amount" />
+	<field id="85" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, transaction fee amount" />
+	<field id="86" length="16" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of credits" />
+	<field id="87" length="16" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal amount" />
+	<field id="88" length="16" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of debits" />
+	<field id="89" length="16" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal amount" />
+	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Original data elements" />
+	<field id="91" length="1" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File update code" />
+	<field id="92" length="2" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File security code" />
+	<field id="93" length="5" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="IssuerResponse indicator" />
+	<field id="94" length="7" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Service indicator" />
+	<field id="95" length="42" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Replacement amounts" />
+	<field id="96" length="64" mask="[a-fA-F0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message security code" />
+	<field id="97" length="16" mask="(C|D)[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Net settlement amount" />
+	<field id="98" length="25" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Payee" />
+	<field id="99" length="2" maxLength="11" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Settlement institution identification code" />
+	<field id="100" length="2" maxLength="11" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Receiving institution identification code" />
+	<field id="101" length="2" maxLength="17" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="File name" />
+	<field id="102" length="2" maxLength="28" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Account identification 1" />
+	<field id="103" length="2" maxLength="28" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Account identification 2" />
+	<field id="104" length="3" maxLength="100" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Transaction description" />
+	<field id="105" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="106" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="107" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="108" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="109" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="110" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="111" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="112" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="113" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="114" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="115" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="116" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="117" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="118" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="119" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="120" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="121" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="122" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="123" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="124" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="125" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="126" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="127" length="3" maxLength="999" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="128" length="64" mask="[a-fA-F0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message authentication code" />
+</group>

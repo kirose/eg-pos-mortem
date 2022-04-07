@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="Desc06"><!-- AmexDiscoverMCVisa -->
+	<field id="date" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FECHA DE CONCILIACION" />
+	<field id="type" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="TIPO DESC" />
+	<field id="site" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SITE ORIGEN" />
+	<field id="period" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PERIODO" />
+	<field id="seq" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SEQ" />
+	<field id="id" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ID-REGISTRO" />
+	<field id="length" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="LONGITUD-REGISTRO" />
+	<field id="mti" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Message Type Identifier" />
+	<field id="procCode" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Processing Code" />
+	<field id="dateTimeTransmission" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Date And Time Transmission" />
+	<field id="stan" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="System Trace Audit Number" />
+	<field id="dateTimeTransaction" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Date and Time Local Transaction" />
+	<field id="posDataCode" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Point Of Service Data Code" />
+	<field id="cabc" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor Bussiness Code" />
+	<field id="appCodeLen" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Approval Code Length" />
+	<field id="acqRefData" length="15" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Acquirer Reference Data" />
+	<field id="acqInstId" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Acquiring Institution Identification Code" />
+	<field id="rrn" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Retrieval Reference Number" />
+	<field id="actionCode" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Action Code" />
+	<field id="caic" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor Identification Code" />
+	<field id="addData" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Additional Data " />
+	<field id="oriDataElems" length="25" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Data Elements" />
+	<field id="sellerId" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Seller ID" />
+	<field id="filler" length="94" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Filler" />
+</group>

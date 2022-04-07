@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="Desc05"><!-- MultipagosdeServCorres -->
+	<field id="date" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FECHA DE CONCILIACION" />
+	<field id="type" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="TIPO DESC" />
+	<field id="site" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SITE ORIGEN" />
+	<field id="period" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PERIODO" />
+	<field id="seq" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SEQ" />
+	<field id="id" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ID-REGISTRO" />
+	<field id="length" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="LONGITUD-REGISTRO" />
+	<field id="8" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DATASET ID" />
+	<field id="9" length="9" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CONVENIO CIE" />
+	<field id="10" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="REFERENCIA" />
+	<field id="11" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="GUIA CIE" />
+	<field id="12" length="40" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="RAZON SOCIAL" />
+	<field id="13" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FILLER" />
+	<field id="14" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PAN TARJETA CORRESPONSAL" />
+</group>

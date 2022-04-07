@@ -1,0 +1,139 @@
+2022-04-07 08:11:02,190 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-04-07 08:13:39,467 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet.eglobal:eg-pos-mortem:1.0.0 @ D:\eclipse\eg-pos-mortem\eg-pos-mortem\pom.xml.
+2022-04-07 08:13:46,744 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:13:51,765 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:13:51,786 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-04-07 08:13:51,808 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-04-07 08:13:51,833 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:13:51,834 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:13:51,834 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2022-04-07 08:13:54,292 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-core:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-core\pom.xml.
+2022-04-07 08:13:54,858 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet.eglobal:eg-pos-mortem:1.0.0 @ D:\eclipse\eg-pos-mortem\eg-pos-mortem\pom.xml.
+2022-04-07 08:13:55,107 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:13:56,065 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:13:56,066 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:13:56,068 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:13:56,068 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:13:58,152 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-parser:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-parser\pom.xml.
+2022-04-07 08:13:58,217 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:13:58,570 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet.eglobal:eg-pos-mortem:1.0.0 @ D:\eclipse\eg-pos-mortem\eg-pos-mortem\pom.xml.
+2022-04-07 08:13:58,750 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:13:58,752 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier  to /fimet-parser/target/classes
+2022-04-07 08:14:06,157 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:06,157 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:06,158 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:06,158 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:14:08,012 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:08,013 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier  to /fimet-parser/target/classes
+2022-04-07 08:14:08,020 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:08,020 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:14:08,022 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-04-07 08:14:08,023 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2022-04-07 08:14:08,027 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:08,027 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:14:08,027 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2022-04-07 08:14:08,432 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:08,433 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:08,435 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:08,435 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:14:09,250 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:09,257 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:09,257 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:09,258 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:09,259 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:14:09,321 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-utils:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-utils\pom.xml.
+2022-04-07 08:14:09,375 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-core:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-core\pom.xml.
+2022-04-07 08:14:09,390 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:09,416 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-parser:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-parser\pom.xml.
+2022-04-07 08:14:09,419 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:09,422 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:09,663 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet.eglobal:eg-pos-mortem:1.0.0 @ D:\eclipse\eg-pos-mortem\eg-pos-mortem\pom.xml.
+2022-04-07 08:14:09,851 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:09,852 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier  to /fimet-parser/target/classes
+2022-04-07 08:14:09,853 [Worker-0: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:10,647 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:10,672 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-04-07 08:14:10,754 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:10,755 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-utils\src\test\resources
+2022-04-07 08:14:14,159 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:14,161 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier  to /fimet-parser/target/classes
+2022-04-07 08:14:14,163 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:14,172 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,172 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:14:14,172 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:14,172 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:14,175 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,175 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-04-07 08:14:14,175 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:14,261 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:14,271 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,271 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:14,272 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,272 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:14:14,327 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier  to /fimet-utils/target/classes
+2022-04-07 08:14:14,329 [Worker-10: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier  to /fimet-core/target/classes
+2022-04-07 08:14:14,338 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,339 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:14:14,339 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:14:14,339 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:16:15,168 [Worker-11: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fimet:fimet-utils:1.0.0 @ D:\eclipse\eg-pos-mortem\fimet-utils\pom.xml.
+2022-04-07 08:16:15,241 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:16:15,241 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:16:15,244 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:16:15,244 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-utils\src\test\resources
+2022-04-07 08:17:41,385 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:41,385 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:17:41,386 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:41,386 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:17:41,393 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:41,393 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:17:41,394 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:41,394 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:17:58,091 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,092 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:17:58,092 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,092 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:17:58,657 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,658 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:17:58,659 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,659 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:17:58,748 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,748 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-04-07 08:17:58,749 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:17:58,749 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-utils\src\test\resources
+2022-04-07 08:18:24,514 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,515 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:18:24,515 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,516 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-core\src\test\resources
+2022-04-07 08:18:24,523 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,523 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:18:24,524 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,524 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-parser\src\test\resources
+2022-04-07 08:18:24,530 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,530 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-04-07 08:18:24,531 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-04-07 08:18:24,532 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\eclipse\eg-pos-mortem\fimet-utils\src\test\resources
+2022-04-07 08:19:06,782 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:19:06,782 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:19:06,783 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:19:06,799 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:19:06,799 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:19:06,799 [Worker-17: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:21:04,489 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:21:04,489 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:21:04,489 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:21:04,505 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:21:04,505 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:21:04,505 [Worker-11: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:23:16,265 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:23:16,265 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:23:16,265 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:23:16,282 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:23:16,282 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:23:16,282 [Worker-19: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:25:13,024 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:25:13,024 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:25:13,024 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes
+2022-04-07 08:25:13,041 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-core: com.fimet:fimet-core:1.0.0 with classifier null to /fimet-core/target/classes
+2022-04-07 08:25:13,041 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-parser: com.fimet:fimet-parser:1.0.0 with classifier null to /fimet-parser/target/classes
+2022-04-07 08:25:13,041 [Worker-20: Launching FimetPosMortemApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/fimet-utils: com.fimet:fimet-utils:1.0.0 with classifier null to /fimet-utils/target/classes

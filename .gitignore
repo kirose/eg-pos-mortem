@@ -1,2 +1,13 @@
+eg-pos-mortem/Analyzed/*
 eg-pos-mortem/Rawcom/*
 eg-pos-mortem/Desc/*
+eg-pos-mortem/target/*
+eg-pos-mortem/logs/*
+eg-pos-mortem/bin/*
+eg-pos-mortem/task/*
+eg-pos-mortem/tmp/*
+eg-pos-mortem/usecases/*
+eg-pos-mortem/stress/*
+fimet-core/target/*
+fimet-utils/target/*
+fimet-parser/target/*

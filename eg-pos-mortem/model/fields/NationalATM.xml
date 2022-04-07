@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="NationalATM" parent="National">
+	<field id="2" length="2" maxLength="19" mask="[0-9]+" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
+	<field id="35" length="2" maxLength="37" mask="[0-9]{8,19}(=|D).+" parser="com.fimet.parser.field.VarFieldParser" name="Track 2 data" />
+	<field id="126" length="3" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokensVarFieldParser" name="Reserved for private use">
+		<field id="126.01" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 01" />
+		<field id="126.Q1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q1" />
+		<field id="126.Q2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q2" />
+		<field id="126.Q3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q3" />
+		<field id="126.Q4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q4" />
+		<field id="126.Q6" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q6" />
+		<field id="126.04" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 04" />
+		<field id="126.C0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token C0" />
+		<field id="126.C4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token C4" />
+		<field id="126.C5" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token C5" />
+		<field id="126.ER" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token ER" />
+		<field id="126.ES" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token ES" />
+		<field id="126.ET" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token ET" />
+		<field id="126.EW" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token EW" />
+		<field id="126.EX" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token EX" />
+		<field id="126.EY" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token EY" />
+		<field id="126.EZ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token EZ" />
+		<field id="126.R1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R1" />
+		<field id="126.R2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R2" />
+		<field id="126.R3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R3" />
+		<field id="126.R7" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R7" />
+		<field id="126.R8" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R8" />
+		<field id="126.C6" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token C6" />
+		<field id="126.CE" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token CE" />
+		<field id="126.S3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token S3" />
+		<field id="126.17" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 17" />
+		<field id="126.20" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 20" />
+		<field id="126.QS" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QS" />
+		<field id="126.B0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B0" />
+		<field id="126.B1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B1" />
+		<field id="126.B2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B2" />
+		<field id="126.B3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B3" />
+		<field id="126.B4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B4" />
+		<field id="126.R0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R0" />
+		<field id="126.QF" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QF" />
+		<field id="126.R4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R4" />
+		<field id="126.QR" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QR" />
+		<field id="126.QO" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QO" />
+		<field id="126.QP" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QP" />
+		<field id="126.CZ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token CZ" />
+		<field id="126.TV" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token TV" />
+		<field id="126.TM" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token TM" />
+		<field id="126.25" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 25" />
+		<field id="126.30" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 30" />
+		<field id="126.QM" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QM" />
+		<field id="126.QN" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QN" />
+		<field id="126.QC" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QC" />
+		<field id="126.RC" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token RiskCenter" />
+		<field id="126.RD" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token RD" />
+	</field>
+</group>

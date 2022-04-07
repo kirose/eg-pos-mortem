@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="VisaPOS" parent="Visa">
+	<field id="2" length="2" maxLength="19" mask=".+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number (PAN)" />
+	<field id="28" length="18" mask="[0-9]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
+	<field id="32" length="2" maxLength="24" mask=".*" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Acquiring institution identification code" />
+	<field id="35" length="2" maxLength="37" mask=".*" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Track 2 data" />
+	<field id="60" length="2" maxLength="12" mask="(?s).*" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
+	<field id="121" length="6" maxLength="510" mask="(?s).+" parserLength="HexHalf" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Reserved for private use" />
+</group>

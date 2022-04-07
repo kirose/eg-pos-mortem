@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fimet>
+    <extensions>
+        <extension name="com.fimet.usecase.IUseCaseStore" class="com.fimet.usecase.UseCaseStore"/>
+    </extensions>
+    <managers>
+        <manager name="com.fimet.IClassLoaderManager" class="com.fimet.ClassLoaderManager" autostart="false"/>
+        <manager name="com.fimet.IThreadManager" class="com.fimet.ThreadManager" autostart="false"/>
+    </managers>
+    <parsers>
+        <parser name="PNational" class="com.fimet.parser.National" converter="None" fieldGroup="FNational"/>
+    </parsers>
+    <properties>
+        <property name="name" value="value"/>
+    </properties>
+    <simulatorModels>
+        <model name="MTest" class="com.fimet.test.STest"/>
+    </simulatorModels>
+    <simulators>
+        <simulator name="STest" parser="PNational" model="MTest" address="127.0.0.1" port="8582" server="true" adapter="Exclusive"/>
+    </simulators>
+</fimet>

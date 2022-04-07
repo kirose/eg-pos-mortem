@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fieldGroups>
+	<group name="National" path="model/fields/National.xml"/>
+	<group name="NationalPOS" path="model/fields/NationalPOS.xml" parent="National"/>
+	<group name="TPV" path="model/fields/TPV.xml"/>
+	<group name="Visa" path="model/fields/Visa.xml"/>
+	<group name="VisaPOS" path="model/fields/VisaPOS.xml" parent="Visa"/>
+	<group name="MasterCard" path="model/fields/MasterCard.xml"/>
+	<group name="MasterCardPOS" path="model/fields/MasterCardPOS.xml" parent="MasterCard"/>
+	<group name="RawcomMasterCard" path="model/fields/RawcomMasterCard.xml"/>
+	<group name="Desc00" path="model/fields/Desc00.xml"/>
+	<!-- group name="Desc01" path="model/fields/Desc01.xml"/-->
+	<!-- group name="Desc02" path="model/fields/Desc02.xml"/-->
+	<group name="Desc03" path="model/fields/Desc03.xml"/>
+	<!-- group name="Desc04" path="model/fields/Desc04.xml"/-->
+	<!-- group name="Desc05" path="model/fields/Desc05.xml"/-->
+	<group name="Desc06" path="model/fields/Desc06.xml"/>
+	<!-- group name="Desc07" path="model/fields/Desc07.xml"/-->
+	<group name="Desc08V" path="model/fields/Desc08V.xml"/>
+	<group name="Desc08M" path="model/fields/Desc08M.xml"/>
+	<!-- group name="Desc09" path="model/fields/Desc09.xml"/-->
+	<!-- group name="Desc10" path="model/fields/Desc10.xml"/-->
+	<!-- group name="Desc11" path="model/fields/Desc11.xml"/-->
+	<!-- group name="Desc12" path="model/fields/Desc12.xml"/-->
+	<!-- group name="Desc13" path="model/fields/Desc13.xml"/-->
+	<group name="Desc14" path="model/fields/Desc14.xml"/>
+	<!-- group name="Desc15" path="model/fields/Desc15.xml"/-->
+	<!-- group name="Desc16" path="model/fields/Desc16.xml"/-->
+	<!-- group name="Desc17" path="model/fields/Desc17.xml"/-->
+	<!-- group name="Desc18" path="model/fields/Desc18.xml"/-->
+	<!-- group name="Desc19" path="model/fields/Desc19.xml"/-->
+	<!-- group name="Desc20" path="model/fields/Desc20.xml"/-->
+	<!-- group name="Desc21" path="model/fields/Desc21.xml"/-->
+	<!-- group name="Desc22" path="model/fields/Desc22.xml"/-->
+	<!-- group name="Desc23" path="model/fields/Desc23.xml"/-->
+	<!-- group name="Desc24" path="model/fields/Desc24.xml"/-->
+	<!-- group name="Desc25" path="model/fields/Desc25.xml"/-->
+	<group name="Desc26" path="model/fields/Desc26.xml"/>
+	<!-- group name="Desc27" path="model/fields/Desc27.xml"/-->
+	<group name="Desc28" path="model/fields/Desc28.xml"/>
+	<!-- group name="Desc29" path="model/fields/Desc29.xml"/-->
+	<!-- group name="Desc30" path="model/fields/Desc30.xml"/-->
+	<group name="Desc31" path="model/fields/Desc31.xml"/>
+	<group name="Desc32MPE" path="model/fields/Desc32MPE.xml"/>
+	<group name="Desc32VPE" path="model/fields/Desc32VPE.xml"/>
+	<!-- group name="Desc33" path="model/fields/Desc33.xml"/-->
+	<group name="Desc34" path="model/fields/Desc34.xml"/>
+</fieldGroups>

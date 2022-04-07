@@ -1,0 +1,31 @@
+debug=true
+server.port=8083
+
+
+version=3.0.0
+fimet.java.home=C:/Program Files/Java/jdk1.8.0_251/jre
+simulator.number-of-threads=5
+simulator.model.recompile=true
+simulator.remove-extensions=true
+usecase.max-execution-time=9000
+field.group.mode=EAGER
+# logger.properties=log4j.properties
+parsers.path=model/parsers.xml
+field.groups.path=model/fieldGroups.xml
+simulators.path=model/simulators.xml
+simulator.models.path=model/simulatorModels.xml
+codestore.maxsize=20
+session.primarykey=37
+usecase.store.fields=38,39
+
+
+eglobal.path.desc.input=Desc
+eglobal.path.desc.output=Analyzed
+eglobal.desc.cache.size=100
+eglobal.desc.parsers=Desc00,Desc03,Desc06,Desc08V,Desc08M,Desc14,Desc26,Desc28,Desc31,Desc32VPE,Desc32MPE,Desc34
+
+eglobal.path.rawcom.input=D:/eclipse/wsfimetboot/eg-pos-mortem/Rawcom
+eglobal.path.rawcom.output=D:/eclipse/wsfimetboot/eg-pos-mortem/Analyzed
+eglobal.rawcom.cache.size=100
+eglobal.rawcom.request.timeout=9000
+eglobal.rawcom.files=BBVA-ACQ-INT-B1-01,BBVA-ACQ-TPV-B1-01,BBVA-ISS-RISKCENTER-B1-01,BBVA-ISS-VISA-MC-B1-01

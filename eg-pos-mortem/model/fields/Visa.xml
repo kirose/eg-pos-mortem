@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="Visa">
+	<field id="2" length="2" maxLength="19" mask=".+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number (PAN)" />
+	<field id="3" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Processing code" >
+		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
+		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
+		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
+	</field>
+	<field id="4" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, transaction" />
+	<field id="5" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, settlement" />
+	<field id="6" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, cardholder billing" />
+	<field id="7" length="10" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Transmission date and time" />
+	<field id="8" length="8" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, cardholder billing fee" />
+	<field id="9" length="8" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Conversion rate, settlement" />
+	<field id="10" length="8" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Conversion rate, cardholder billing" />
+	<field id="11" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="System trace audit number (STAN)" />
+	<field id="12" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Local transaction time (hhmmss)" />
+	<field id="13" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Local transaction date (MMDD)" />
+	<field id="14" length="4" mask="(?s).+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Expiration date" />
+	<field id="15" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Settlement date" />
+	<field id="16" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Currency conversion date" />
+	<field id="17" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Capture date" />
+	<field id="18" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Merchant type, or merchant category code" />
+	<field id="19" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Acquiring institution (country code)" />
+	<field id="20" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="PAN extended (country code)" />
+	<field id="21" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Forwarding institution (country code)" />
+	<field id="22" length="3" mask="[0-9]+" parser="com.fimet.parser.field.RTrimFixedFieldParser" name="Point of service entry mode" >
+		<field id="22.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PAN/date entry mode" />
+		<field id="22.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PIN entry capability" />
+	</field>
+	<field id="23" length="4" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Application PAN sequence number" />
+	<field id="24" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Function code (ISO 8583:1993), or network international identifier (NII)" />
+	<field id="25" length="2" mask="[A-Z0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Point of service condition code" />
+	<field id="26" length="2" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Point of service capture code" />
+	<field id="27" length="1" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Authorizing identification response length" />
+	<field id="28" length="18" mask="(C|D)[0-9]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
+	<field id="29" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement fee" />
+	<field id="30" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction processing fee" />
+	<field id="31" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement processing fee" />
+	<field id="32" length="2" maxLength="24" mask=".*"  parser="com.fimet.parser.field.LTrimVarFieldParser" name="Acquiring institution identification code" />
+	<field id="33" length="2" maxLength="12" mask="[0-9]+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Forwarding institution identification code" />
+	<field id="34" length="2" maxLength="28" mask="[^a-zA-Z ]+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number, extended" />
+	<field id="35" length="2" maxLength="37" mask=".*" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Track 2 data" />
+	<field id="36" length="3" maxLength="104" mask="[0-9]+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Track 3 data" />
+	<field id="37" length="24" mask=".+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Retrieval reference number" />
+	<field id="38" length="12" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Authorization identification response" />
+	<field id="39" length="4" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Response code" />
+	<field id="40" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Service restriction code" />
+	<field id="41" length="16" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor terminal identification" />
+	<field id="42" length="30" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor identification code" />
+	<field id="43" length="80" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" >
+		<field id="43.1" length="25" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name or ATM location" />
+		<field id="43.2" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="City name" />
+		<field id="43.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Country code" />
+	</field>
+	<field id="44" length="2" maxLength="24" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional response data" />
+	<field id="45" length="2" maxLength="76" mask="(?s).*" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Track 1 data" />
+	<field id="46" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (ISO)" />
+	<field id="47" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (national)" />
+	<field id="48" length="2" maxLength="510" mask="(?s).*" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (private)" />
+	<field id="49" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Currency code, transaction" />
+	<field id="50" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Currency code, settlement" />
+	<field id="51" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Currency code, cardholder billing" />
+	<field id="52" length="16" mask="[a-fA-F0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Personal identification number data" />
+	<field id="53" length="16" mask="[a-fA-F0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Security related control information" />
+	<field id="54" length="2" maxLength="120" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional amounts" />
+	<field id="55" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetsVarFieldParser" name="Integrated Circuit Card (ICC)-Related Data" >
+		<field id="55.01" length="4" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Account Data" >
+			<field id="55.01.01" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Payment account reference" />
+			<field id="55.01.02" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Payment account reference creation date" />
+			<field id="55.01.71" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Script Template 1" />
+			<field id="55.01.72" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Script Template 2" />
+			<field id="55.01.82" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Application Interchange Profile" />
+			<field id="55.01.84" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Dedicated File Name" />
+			<field id="55.01.91" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Authentication Data" />
+			<field id="55.01.95" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Terminal Verification Results" />
+			<field id="55.01.9A" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Transaction Data" />
+			<field id="55.01.9C" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Transaction Type" />
+			<field id="55.01.C0" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Secondary PIN Block" />
+			<field id="55.01.5F2A" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Transaction Currency Code" />
+			<field id="55.01.9F02" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Amount, Authorized" />
+			<field id="55.01.9F03" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Amount, Other" />
+			<field id="55.01.9F10" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Application Data" />
+			<field id="55.01.9F1A" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Terminal Country Code" />
+			<field id="55.01.9F26" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Application Cryptogram" />
+			<field id="55.01.9F33" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Terminal Capability Profile" />
+			<field id="55.01.9F36" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Application Transaction Counter" />
+			<field id="55.01.9F37" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Unpredictable Number" />
+			<field id="55.01.9F41" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Transaction Sequence Counter" />
+			<field id="55.01.9F5B" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Script Results" />
+			<field id="55.01.9F6E" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Form Factor Indicator" />
+			<field id="55.01.9F7C" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Customer Exclusive Data (U.S. only)" />
+			<field id="55.01.9F53" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Transaction Category Code" />
+			<field id="55.01.9F09" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Application Version Number" />
+			<field id="55.01.9F1E" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Interface Device (IFD) Serial Number" />
+			<field id="55.01.9F27" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Cryptogram information data" />
+			<field id="55.01.9F34" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Cardholder Verification Method (CVM) results" />
+			<field id="55.01.9F35" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Terminal type" />
+		</field>
+		<field id="55.02" length="4" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Merchant Payment Transactions" >
+			<field id="55.02.83" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Other phone number" />
+			<field id="55.02.86" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Other email address" />
+		</field>
+		<field id="55.03" length="4" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Customer Identification Data" >
+			<field id="55.03.99" length="2" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Customer Identification" />
+		</field>
+	</field>
+	<field id="56" length="2" maxLength="510" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (ISO)" />
+	<field id="57" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="58" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="59" length="2" maxLength="24" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
+	<field id="60" length="2" maxLength="12" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
+	<field id="61" length="2" maxLength="36" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. CVV2/service code   transactions)" />
+	<field id="62" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.Visa62VarFieldParser" name="Reserved (private) (e.g. transactions: invoice number, key exchange transactions: TPK key, etc.)" >
+		<field id="62.1" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Authorization Characteristics Indicator" />
+		<field id="62.2" length="15" mask="(?s).+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Transaction Identifier" />
+		<field id="62.3" length="8" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Validation Code" />
+		<field id="62.4" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Market-Specific Data Identifier" />
+		<field id="62.5" length="2" mask="(?s).+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Duration" />
+		<field id="62.6" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Prestigious Property Indicator" />
+		<field id="62.17" length="30" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Gateway Transaction Identifier" />
+		<field id="62.20" length="10" mask="(?s).+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Merchant Verification Value" />
+		<field id="62.21" length="8" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Online Risk Assessment Risk Score and Reason Codes" />
+		<field id="62.22" length="12" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Online Risk Assessment Condition Codes" />
+		<field id="62.23" length="4" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Product ID" />
+		<field id="62.24" length="12" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Program Identifier" />
+		<field id="62.25" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Spend Qualified Indicator" />
+		<field id="62.26" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Account Status" />
+	</field>
+	<field id="63" length="2" maxLength="510" mask="(?s).*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.Visa63VarFieldParser" name="V.I.P. Private-Use Field" >
+		<field id="63.1" length="4" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="Network ID" />
+		<field id="63.2" length="4" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="Time (Preauth Time Limit)" />
+		<field id="63.3" length="4" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="Message Reason Code" />
+		<field id="63.4" length="4" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="STIP/Switch Reason Code" />
+		<field id="63.5" length="6" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.6" length="14" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.7" length="16" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.8" length="8" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.9" length="28" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.10" length="26" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.11" length="2" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.12" length="60" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.13" length="6" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.14" length="72" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.15" length="18" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.16" length="6" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.18" length="2" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.19" length="6" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="Fee Program indicator" />
+		<field id="63.20" length="2" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+		<field id="63.21" length="2" mask="[a-fA-F0-9]*" parser="com.fimet.parser.field.FixedFieldParser" name="n/a" />
+	</field>
+	<field id="64" length="32" mask="[a-fA-F0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message authentication code (MAC)" />
+	<field id="65" length="2" mask="[a-fA-F0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Extended bitmap indicator" />
+	<field id="66" length="2" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement code" />
+	<field id="67" length="4" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Extended payment code" />
+	<field id="68" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Receiving institution country code" />
+	<field id="69" length="6" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement institution country code" />
+	<field id="70" length="3" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Network management information code" />
+	<field id="71" length="8" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message number" />
+	<field id="72" length="8" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Last message's number" />
+	<field id="73" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Action date (YYMMDD)" />
+	<field id="74" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of credits" />
+	<field id="75" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal number" />
+	<field id="76" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of debits" />
+	<field id="77" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal number" />
+	<field id="78" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Transfer number" />
+	<field id="79" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Transfer, reversal number" />
+	<field id="80" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of inquiries" />
+	<field id="81" length="20" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Number of authorizations" />
+	<field id="82" length="24" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, processing fee amount" />
+	<field id="83" length="24" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, transaction fee amount" />
+	<field id="84" length="24" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, processing fee amount" />
+	<field id="85" length="24" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, transaction fee amount" />
+	<field id="86" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of credits" />
+	<field id="87" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal amount" />
+	<field id="88" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of debits" />
+	<field id="89" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal amount" />
+	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Original data elements" >
+		<field id="90.1" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original message type" />
+		<field id="90.2" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original trace number (Field 11)" />
+		<field id="90.3" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction Data and Time" />
+		<field id="90.4" length="11" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original acquirer ID" />
+		<field id="90.5" length="11" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original forwarding institution ID" />
+	</field>
+	<field id="91" length="4" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File update code" />
+	<field id="92" length="4" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File security code" />
+	<field id="93" length="10" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="IssuerResponse indicator" />
+	<field id="94" length="14" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Service indicator" />
+	<field id="95" length="84" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Replacement amounts" />
+	<field id="96" length="128" mask="[a-fA-F0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message security code" />
+	<field id="97" length="32" mask="(C|D)[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Net settlement amount" />
+	<field id="98" length="50" mask="(?s).+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Payee" />
+	<field id="99" length="2" maxLength="11" mask="[0-9]+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Settlement institution identification code" />
+	<field id="100" length="2" maxLength="11" mask="[0-9]+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Receiving institution identification code" />
+	<field id="101" length="2" maxLength="17" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="File name" />
+	<field id="102" length="2" maxLength="28" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Account identification 1" />
+	<field id="103" length="2" maxLength="28" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Account identification 2" />
+	<field id="104" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetsVarFieldParser" name="Transaction description" >
+		<field id="104.02" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Purchase Line-Item Data" />
+		<field id="104.56" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Payment Facilitator Data" >
+			<field id="104.56.01" length="2" maxLength="22" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Marketplace ID or Payment Facilitator ID" />
+			<field id="104.56.02" length="2" maxLength="30" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sub-Merchant ID" />
+			<field id="104.56.03" length="2" maxLength="22" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sub-Merchant ID" />
+		</field>
+		<field id="104.57" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Business Application Identifier|Related Transaction Data (Payment Transactions and Plus Shared" >
+			<field id="104.57.01" length="2" maxLength="4" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Business Application Identifier" />
+			<field id="104.57.02" length="2" maxLength="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Source of Funds" />
+		</field>
+		<field id="104.58" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Healthcare Eligibility Inquiry" />
+		<field id="104.59" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Promotion Data" />
+		<field id="104.5B" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Visa Risk Assessment Data" />
+		<field id="104.5C" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Commercial Card Data (Fuel Transactions)" />
+		<field id="104.5D" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Installment Payment Data" />
+		<field id="104.5E" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="TC 50 Destination BIN (Issuer Clearing BIN)" />
+		<field id="104.5F" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Sender Data" >
+			<field id="104.5F.01" length="2" maxLength="32" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender Reference Number" />
+			<field id="104.5F.02" length="2" maxLength="68" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender Account Number" />
+			<field id="104.5F.03" length="2" maxLength="60" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender Name" />
+			<field id="104.5F.04" length="2" maxLength="70" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender Address" />
+			<field id="104.5F.05" length="2" maxLength="50" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender City" />
+			<field id="104.5F.06" length="2" maxLength="4" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender State" />
+			<field id="104.5F.07" length="2" maxLength="6" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Sender Country" />
+			<field id="104.5F.08" length="2" maxLength="4" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Source of Funds" />
+			<field id="104.5F.09" length="2" maxLength="40" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Claim Code" />
+			<field id="104.5F.10" length="2" maxLength="60" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Recipient Name" />
+		</field>
+		<field id="104.60" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Airline Industry-Specific Data" />
+		<field id="104.61" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Car Rental Industry-Specific Data" />
+		<field id="104.62" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Lodging Industry-Specific Data" />
+		<field id="104.63" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Non-Industry-Specific Data" />
+		<field id="104.64" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Visa Advanced Authorization Data, VAA data" />
+		<field id="104.65" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Mastercard Client-Defined Data" >
+			<field id="104.65.01" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="N/A" />
+			<field id="104.65.02" length="2" maxLength="196" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Client-defined data" />
+			<field id="104.65.03" length="2" maxLength="12" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element, 121-Authorizing Agent ID Code" />
+			<field id="104.65.04" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 23- Payment Initiation Channel" />
+			<field id="104.65.05" length="2" maxLength="12" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 95- Promotion Code" />
+			<field id="104.65.06" length="2" maxLength="340" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE112- Additional Data, National Use" />
+			<field id="104.65.07" length="2" maxLength="12" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 32- Mastercard Assigned ID" />
+			<field id="104.65.09" length="2" maxLength="8" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 64- Transit Program" />
+			<field id="104.65.11" length="2" maxLength="40" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE54" />
+			<field id="104.65.12" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 61, Subfield 5" />
+			<field id="104.65.13" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE61, Subelement 11" />
+			<field id="104.65.14" length="2" maxLength="6" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 74, Subfield 1,Subfield 2" />
+			<field id="104.65.15" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 42- Electronic Commerce Indicators, Subfield 1 (Electronic Commerce Security Level Indicator and UCAF Collection Indicator)" />
+			<field id="104.65.16" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE61, Subfield 3" />
+			<field id="104.65.18" length="2" maxLength="192" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 57- Security Services Additional Data for Acquirers, Subfield 1 (Security Services Indicator), Subfield 2 (Security Services Data)" />
+			<field id="104.65.19" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Data Element DE48, Subelement 65-Terminal Compliant Indicator, Subfield 1 (Terminal Line Encryption), Subfield 2 (UKPT/DUKPT Compliant)" />
+			<field id="104.65.21" length="2" maxLength="98" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Mastercard Mobile Remote Payment Transaction Types" />
+			<field id="104.65.22" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 22" />
+			<field id="104.65.23" length="2" maxLength="6" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 23" />
+			<field id="104.65.24" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 24" />
+			<field id="104.65.25" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 25" />
+			<field id="104.65.26" length="2" maxLength="22" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 26" />
+			<field id="104.65.28" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 28" />
+			<field id="104.65.29" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 29" />
+			<field id="104.65.30" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 30" />
+			<field id="104.65.31" length="2" maxLength="64" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 31" />
+			<field id="104.65.32" length="2" maxLength="6" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 32" />
+			<field id="104.65.33" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 33" />
+			<field id="104.65.34" length="2" maxLength="20" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 34" />
+			<field id="104.65.35" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 35" />
+			<field id="104.65.36" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 36" />
+			<field id="104.65.37" length="2" maxLength="74" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 37" />
+			<field id="104.65.0A" length="2" maxLength="4" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0A" />
+			<field id="104.65.0B" length="2" maxLength="2" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0B" />
+			<field id="104.65.0C" length="2" maxLength="6" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0C" />
+			<field id="104.65.0D" length="2" maxLength="500" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0D" />
+			<field id="104.65.0E" length="2" maxLength="20" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0E" />
+			<field id="104.65.0F" length="2" maxLength="56" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Tag 0F" />
+		</field>
+		<field id="104.66" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="American Express Data" />
+		<field id="104.67" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Argentina Payment Data" />
+		<field id="104.69" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Multiple Payment Forms" />
+		<field id="104.6B" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Passenger Transport Ancillary Data" />
+		<field id="104.6C" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Travel Tag Data" />
+		<field id="104.6D" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Issuer-Supplied Data" />
+		<field id="104.6E" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Loan Details" />
+		<field id="104.71" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Free-Form Description Data (Client-to-Client Data)|Additional Sender Data|Free Form Text (Original Credit Transactions)" >
+			<field id="104.71.01" length="2" maxLength="510" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Free-form data" />
+			<field id="104.71.02" length="2" maxLength="510" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Original Credit Application Data" />
+		</field>
+	</field>
+	<field id="105" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="106" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="107" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="108" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="109" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="110" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="111" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for ISO use" />
+	<field id="112" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="113" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="114" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="115" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="116" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="117" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="118" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="119" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for national use" />
+	<field id="120" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="121" length="6" maxLength="510" mask="(?s).+" parserLength="HexHalf" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Reserved for private use" />
+	<field id="122" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="123" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetsVarFieldParser" name="Reserved for private use" >
+		<field id="123.66" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Verification Data" >
+			<field id="123.66.C0" length="2" maxLength="18" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Postal Code" />
+			<field id="123.66.CF" length="2" maxLength="80" mask="(?s).+"  converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Street Address" />
+			<field id="123.66.D0" length="2" maxLength="28" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Compressed AVS Data" />
+			<field id="123.66.D4" length="2" maxLength="52" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Cardholder Name" />
+		</field>
+		<field id="123.67" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Activation Verification Data" >
+			<field id="123.67.03" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Activation Verification Result" />
+			<field id="123.67.04" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Active Account Management Velocity Checking Result" />
+			<field id="123.67.05" length="2" maxLength="8" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Cardholder Verification Methods Identified by Cardholder Device" />
+			<field id="123.67.07" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Special Condition Code" />
+			<field id="123.67.08" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Verification Result Code" />
+		</field>
+		<field id="123.68" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Token Data" >
+			<field id="123.68.1F31" length="2" maxLength="8" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Elapsed Time To Live" />
+			<field id="123.68.1F32" length="2" maxLength="6" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Count of Number of Transactions" />
+			<field id="123.68.1F33" length="2" maxLength="14" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Cumulative Transaction Amount" />
+			<field id="123.68.1F35" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Total Number of Tokens for Token Inquiry Criteria" />
+			<field id="123.68.1F37" length="2" maxLength="252" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Custom Data for File Control Information (FCI) Template" />
+			<field id="123.68.1F38" length="2" maxLength="30" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuer Custom Data for Issuer Application Data (IAD)" />
+			<field id="123.68.01" length="2" maxLength="38" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token" />
+			<field id="123.68.02" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Assurance Level" />
+			<field id="123.68.03" length="2" maxLength="22" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Requestor ID" />
+			<field id="123.68.04" length="2" maxLength="38" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Primary Account Number, Account Range" />
+			<field id="123.68.05" length="2" maxLength="64" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Reference ID" />
+			<field id="123.68.06" length="2" maxLength="8" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Expiration Date" />
+			<field id="123.68.07" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Type" />
+			<field id="123.68.08" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Token Status" />
+			<field id="123.68.0A" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Last Updated By" />
+			<field id="123.68.0B" length="2" maxLength="64" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="PAN Reference ID" />
+			<field id="123.68.1A" length="2" maxLength="16" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Activation Code" />
+			<field id="123.68.1B" length="2" maxLength="24" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Activation Code Expiry Date/Time" />
+			<field id="123.68.1C" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Activation Code Verification Attempts" />
+			<field id="123.68.1D" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Number of Activation Codes Issued" />
+			<field id="123.68.10" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Visa Token Score" />
+			<field id="123.68.11" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Visa Token Decisioning" />
+			<field id="123.68.12" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Number of Active Tokens" />
+			<field id="123.68.13" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Number of Inactive Tokens" />
+			<field id="123.68.14" length="2" maxLength="4" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Number of Suspended Tokens" />
+		</field>
+		<field id="123.69" length="4" maxLength="510" mask="[a-fA-F0-9]*" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaDatasetVarFieldParser" name="Account Lookup Results" >
+			<field id="123.69.05" length="2" maxLength="6" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Card Issuer Country Code" />
+			<field id="123.69.06" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Fast Funds Indicator" />
+			<field id="123.69.07" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Blocked for all OCTs" />
+			<field id="123.69.08" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Online Gambling Block Indicator" />
+			<field id="123.69.09" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Geographic Restriction Indicator" />
+			<field id="123.69.0A" length="2" maxLength="6" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Destination Currency Code" />
+			<field id="123.69.0B" length="2" maxLength="2" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Destination Currency Code Minor Units" />
+			<field id="123.69.0C" length="2" maxLength="6" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.VisaTagVarFieldParser" name="Issuing Institution Country Code" />
+		</field>
+	</field>
+	<field id="124" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="125" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="126" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.Visa126VarFieldParser" name="Reserved for private use" >
+		<field id="126.5" length="16" mask="(?s).+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Visa Merchant Identifier" />
+		<field id="126.6" length="34" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Cardholder Certificate Serial Number" />
+		<field id="126.7" length="34" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Merchant Certificate Serial Number" />
+		<field id="126.8" length="40" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction ID (XID)" />
+		<field id="126.9" length="40" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CAVV Data" />
+		<field id="126.10" length="12" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="CVV2 Authorization IssuerRequest Data and American Express CID Data" />
+		<field id="126.12" length="6" mask="(?s).+" converterValue="HexToBinary" parser="com.fimet.parser.field.FixedFieldParser" name="Service Indicators" />
+		<field id="126.13" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="POS Environment" />
+		<field id="126.15" length="2" mask="(?s).+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="MasterCard UCAF Collection Indicator" />
+		<field id="126.16" length="66" mask="(?s).+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="MasterCard UCAF Field" />
+		<field id="126.18" length="24" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Agent Unique Account Result" />
+		<field id="126.19" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dynamic Currency Conversion Indicator" />
+		<field id="126.20" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="3-D Secure Indicator" />
+		<field id="126.21" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Reserved" />
+	</field>
+	<field id="127" length="3" maxLength="999" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved for private use" />
+	<field id="128" length="64" mask="[a-fA-F0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Message authentication code" />
+</group>

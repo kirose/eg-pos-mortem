@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="VisaATM" parent="Visa">
+	<field id="28" length="18" mask=".*" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
+</group>
