@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fimet.utils.ByteUtils;
+import com.fimet.utils.FileUtils;
 
 
 public class Store {
@@ -26,13 +27,13 @@ public class Store {
 			throw new StoreException("Unable to instantiate Store",e);
 		}
 	}
-	public void store(long key, String data) throws StoreException {
+	public void save(long key, String data) throws StoreException {
 		int length = data.length() + 1;
 		byte[] bytes = new byte[Index.INDEX_SIZE];
 		ByteUtils.toBytes(key, bytes, 0);
 		ByteUtils.toBytes(index, bytes, 8);
 		ByteUtils.toBytes(length, bytes, 16);
-		logger.info("Index:{},{},{}", key, index, length);
+		logger.debug("Index:{},{},{}", key, index, length);
 		try {
 			outputData.write(data);
 			outputData.write((byte)10);//(int)'\n');
@@ -49,11 +50,7 @@ public class Store {
 		this.index += length;
 	}
 	public void close() {
-		try {
-			outputIndex.close();
-			outputData.close();
-		} catch (IOException e) {
-			logger.error("Error closing files:{},{}",fileIndex, fileData, e);
-		}
+		FileUtils.close(outputIndex);
+		FileUtils.close(outputData);
 	}
 }

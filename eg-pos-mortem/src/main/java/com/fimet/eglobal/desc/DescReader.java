@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fimet.eglobal.utils.FileReader;
+import com.fimet.utils.FileUtils;
 
 import java.io.Closeable;
 import java.io.File;
@@ -27,9 +28,7 @@ public class DescReader implements Closeable {
 		this.reader = new FileReader(file);
 	}
 	public void close() {
-		try {
-			reader.close();
-		} catch (Exception e) {}
+		FileUtils.close(reader);
 	}
 	public boolean hasNext() {
 		if (next!=null) {

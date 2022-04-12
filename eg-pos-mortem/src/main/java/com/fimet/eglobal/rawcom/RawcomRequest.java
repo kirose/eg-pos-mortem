@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fimet.eglobal.model.Connection;
+import com.fimet.eglobal.service.ConfigService;
 import com.fimet.eglobal.store.Store;
 import com.fimet.parser.IMessage;
 import com.fimet.parser.IParser;
@@ -35,13 +36,13 @@ public class RawcomRequest {
 	private int cacheSize;
 	Map<String, Connection> mapConnections;
 	private int requestTimeout;
-	public RawcomRequest(Date start, Date end, List<File> files, Map<String, Connection> mapConnections, int cacheSize, int requestTimeout) {
+	public RawcomRequest(Date start, Date end, List<File> files, ConfigService cfg) { 
 		this.start = start;
 		this.end = end;
 		this.files = files;
-		this.cacheSize = cacheSize;
-		this.requestTimeout = requestTimeout;
-		this.mapConnections = mapConnections;
+		this.cacheSize = cfg.getRawcomCacheSize();
+		this.requestTimeout = cfg.getRawcomRequestTimeout();
+		this.mapConnections = cfg.getConnections();
 		readers = new HashMap<String, RawcomReader>();
 		cache = new RawcomCache();
 	}
@@ -131,7 +132,7 @@ public class RawcomRequest {
 		public RawcomCache() {
 			time1 = start;
 			time2 = new Date(Math.min(time1.getTime() + requestTimeout, end.getTime()));
-			sortedList = new SortedList<Rawcom>(Rawcom.class, COMPARATOR);
+			sortedList = new SortedList<Rawcom>(COMPARATOR);
 			toRemove = new ArrayList<String>();
 		}
 		public SortedList<Rawcom> getSortedList() {
@@ -189,7 +190,7 @@ public class RawcomRequest {
 			}
 			if (!toRemove.isEmpty()) {
 				for (String key : toRemove) {
-					readers.remove(key);
+					readers.remove(key).close();
 					logger.info("Reader removed {}, no more records to read.", key);
 				}
 				toRemove.clear();

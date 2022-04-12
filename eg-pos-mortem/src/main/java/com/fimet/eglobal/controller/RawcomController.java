@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fimet.eglobal.model.Response;
 import com.fimet.eglobal.rawcom.RawcomResponse;
-import com.fimet.eglobal.service.RawcomAnalyzer;
+import com.fimet.eglobal.service.RawcomService;
+import com.fimet.utils.DateUtils;
 
 
 	
@@ -26,7 +27,7 @@ public class RawcomController {
 	
 	private static Logger logger = LoggerFactory.getLogger(RawcomController.class);
 	
-	@Autowired private RawcomAnalyzer rawcomService;
+	@Autowired private RawcomService rawcomService;
 	
 	@GetMapping("/get/{pan}")
 	public ResponseEntity<?> get(@PathVariable("pan") String pan) {
@@ -43,8 +44,13 @@ public class RawcomController {
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date start,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date end) {
 		try {
-			logger.info("analyze start:{}, end:{}", start, end);
+			logger.info("analyze for range start:{}, end:{}", start, end);
+			long t1 = System.currentTimeMillis();
 			RawcomResponse response = rawcomService.analyze(start, end);
+			long t2 = System.currentTimeMillis();
+			response.setStartExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t1)));
+			response.setEndExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t2)));
+			logger.info("analyze completed at time:{}ms", (t2-t1));
 			return new ResponseEntity<RawcomResponse>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Internal Error",e);

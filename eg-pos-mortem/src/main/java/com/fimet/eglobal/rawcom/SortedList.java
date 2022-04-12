@@ -13,7 +13,7 @@ public class SortedList<T> implements List<T>{
 	private int size;
 	private Node<T> head = new Node<T>();
 	private Node<T> tail = new Node<T>();
-	public SortedList(Class<T> clazz, Comparator<T> comparator) {
+	public SortedList(Comparator<T> comparator) {
 		this.comparator = comparator;
 		head.next(tail);
 		tail.prev(head);
@@ -26,21 +26,19 @@ public class SortedList<T> implements List<T>{
 	public boolean add(T e) {
 		if (isEmpty()) {
 			new Node<T>(e).prev(head).next(tail);
+		} else if (comparator.compare(head.next.value, e) >= 0) {
+			head.next(new Node<T>(e).next(head.next));
+		} else if (comparator.compare(e, tail.prev.value) >= 0) {
+			new Node<T>(e).prev(tail.prev).next(tail);
 		} else {
-			if (comparator.compare(head.next.value, e) >= 0) {
-				head.next(new Node<T>(e).next(head.next));
-			} else if (comparator.compare(e, tail.prev.value) >= 0) {
-				new Node<T>(e).prev(tail.prev).next(tail);
-			} else {
-				Node<T> n = tail;
-				while ((n = n.prev)!=null && comparator.compare(n.value, e) > 0) {}
-				Node<T> node = new Node<T>(e); 
-				n.next.prev(node);
-				node.prev(n);
-			}
+			Node<T> n = tail;
+			while ((n = n.prev)!=null && comparator.compare(n.value, e) > 0) {}
+			Node<T> node = new Node<T>(e); 
+			n.next.prev(node);
+			node.prev(n);
 		}
 		size++;
-		return false;
+		return true;
 	}
 
 	@Override
@@ -157,7 +155,6 @@ public class SortedList<T> implements List<T>{
 		while ((node = node.next) != null) {
 			if (node.value == o) {
 				node.next.prev(node.prev);
-				node.prev.next(node.next);
 				node.prev = null;
 				node.next = null;
 				size--;
@@ -176,7 +173,6 @@ public class SortedList<T> implements List<T>{
 		}
 		T value = node.value;
 		node.next.prev(node.prev);
-		node.prev.next(node.next);
 		node.prev = null;
 		node.next = null;
 		size--;
@@ -282,6 +278,17 @@ public class SortedList<T> implements List<T>{
 			return this;
 		}
 	}
+	public T removeFirst() {
+		if (isEmpty()) {
+			return null;
+		}
+		Node<T> removed = head.next;
+		head.next.next.prev(head);
+		removed.next = null;
+		removed.prev = null;
+		size--;
+		return removed.value;
+	}
 	public String toString() {
 		if (isEmpty()) {
 			return "";
@@ -302,7 +309,7 @@ public class SortedList<T> implements List<T>{
 		Rawcom r = new Rawcom();
 		Rawcom s = new Rawcom();
 		Rawcom t = new Rawcom();
-		SortedList<Rawcom> list = new SortedList<Rawcom>(Rawcom.class, c);
+		SortedList<Rawcom> list = new SortedList<Rawcom>(c);
 		r = new Rawcom();
 		r.setTime(format.parse("20220329 12:42:40.011"));
 		list.add(r);

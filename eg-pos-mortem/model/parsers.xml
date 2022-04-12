@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parsers>
-	<parser name="National" class="com.fimet.parser.mx.NationalParser" converter="None" fieldGroup="NationalPOS" />
+	<parser name="National" class="com.fimet.parser.mx.NationalParser" converter="None" fieldGroup="National" />
 	<parser name="TPV" class="com.fimet.parser.mx.TpvParser" converter="AsciiToHex" fieldGroup="TPV" />
-	<parser name="Visa" class="com.fimet.parser.mx.VisaParser" converter="AsciiToHex" fieldGroup="VisaPOS" />
-	<parser name="MasterCard" class="com.fimet.parser.mx.MasterCardParser" converter="None" fieldGroup="MasterCardPOS" />
+	<parser name="Visa" class="com.fimet.parser.mx.VisaParser" converter="AsciiToHex" fieldGroup="Visa" />
+	<parser name="MasterCard" class="com.fimet.parser.mx.MasterCardParser" converter="None" fieldGroup="MasterCard" />
 	<parser name="RawcomTPV" class="com.fimet.parser.mx.TpvParser" converter="None" fieldGroup="TPV" />
-	<parser name="RawcomVisa" class="com.fimet.parser.mx.VisaParser" converter="None" fieldGroup="VisaPOS" />
+	<parser name="RawcomVisa" class="com.fimet.parser.mx.VisaParser" converter="None" fieldGroup="Visa" />
 	<parser name="RawcomMasterCard" class="com.fimet.parser.mx.MasterCardParser" converter="HexToAscii" fieldGroup="RawcomMasterCard" />
-	<parser name="Bancomer" class="com.fimet.parser.mx.NationalParser" converter="EbcdicToAscii" fieldGroup="NationalPOS" />
+	<!-- parser name="Bancomer" class="com.fimet.parser.mx.NationalParser" converter="EbcdicToAscii" fieldGroup="National" /-->
 	<parser name="Desc00" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc00" />
 	<!-- parser name="Desc01" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc01" /-->
 	<!-- parser name="Desc02" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc02" /-->

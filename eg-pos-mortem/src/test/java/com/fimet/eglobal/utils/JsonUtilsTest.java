@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fimet.eglobal.model.Connection;
-import com.fimet.eglobal.model.OperativeGroup;
+import com.fimet.eglobal.model.Classifier;
 import com.google.gson.reflect.TypeToken;
 
 @SpringBootTest
@@ -17,7 +17,7 @@ public class JsonUtilsTest {
 	@Test
 	public void operativesTest() {
 		try {
-			Map<String,OperativeGroup> operatives = JsonUtils.fromResource("operatives.json", new TypeToken<Map<String,OperativeGroup>>() {}.getType());
+			Map<String,Classifier> operatives = JsonUtils.fromResource("operatives.json", new TypeToken<Map<String,Classifier>>() {}.getType());
 			assertNotNull(operatives);
 		} catch (Exception e) {
 			fail(e);

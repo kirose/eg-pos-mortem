@@ -4,101 +4,97 @@
 	<field id="site" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-SITE" />
 	<field id="period" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-PERIODO-DESC" />
 	<field id="seq" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-SEQ-DESC." />
-	<field id="dispatcherAcq" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRML-NBR" />
+	<field id="trmlAcq" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRML-NBR" />
 	<field id="fi" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-OPERATING-FI-NBR" />
 	<field id="tranCode" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRAN-CODE" />
-	<field id="resultCode" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-RESULT-CODE" />
-	<field id="tranDate" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRAN-DATE" />
-	<field id="tranTime" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRAN-TIME" />
-	<field id="forcePostInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-FORCE-POST-IND" />
-	<field id="reversalInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-REVERSAL-IND" />
-	<field id="cardFiNumber" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-CARD-FI-NBR" />
-	<field id="authMethod" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AUTH-METHOD" />
-	<field id="amountSign" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AMT-DEBIT-SIGN" />
-	<field id="amount" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AMT-DEBIT" />
-	<field id="switchNumber" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-SWITCH-SEQ-NBR" />
+	<field id="resltCode" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-RESULT-CODE" />
+	<field id="date" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRAN-DATE" />
+	<field id="time" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-TRAN-TIME" />
+	<field id="forcPostInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-FORCE-POST-IND" />
+	<field id="rvrslInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-REVERSAL-IND" />
+	<field id="cardFiNum" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-CARD-FI-NBR" />
+	<field id="authMthd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AUTH-METHOD" />
+	<field id="amntSign" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AMT-DEBIT-SIGN" />
+	<field id="amnt" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-AMT-DEBIT" />
+	<field id="switchNum" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS-SWITCH-SEQ-NBR" />
 	<field id="mti" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TYPE" />
 	<field id="rrn" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-RRN" />
-	<field id="tranDate2" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-DATE" />
-	<field id="tranType2" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TIME" />
+	<field id="tranDate" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-DATE" />
+	<field id="tranType" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TIME" />
 	<field id="procCode" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-PROCESSING-CODE" />
-	<field id="merchantType" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-MERCHANT-TYPE" />
-	<field id="pem" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-POS-ENTRY-MODE" />
-	<field id="responseCode" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-RESPONSE-CODE" />
+	<field id="merchType" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-MERCHANT-TYPE" />
+	<field id="pem" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-POS-ENTRY-MODE" >
+		<field id="pem.mthd" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-POS-DATE-ENTRY-MODE" />
+		<field id="pem.cap" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-POS-ENTRY-CAPABILITY" />
+	</field>
+	<field id="resCode" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-RESPONSE-CODE" />
 	<field id="authCode" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-AUTH-CODE" />
 	<field id="stan" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-STAN" />
-	<field id="settlementDate" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-SETTLEMENT-DATE" />
-	<field id="cardAccepId" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-CARD-ACCEPTR-ID" />
-	<field id="ccyCode" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-CCY-CODE" />
+	<field id="settlmntDate" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-SETTLEMENT-DATE" />
+	<field id="cardAccpId" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-CARD-ACCEPTR-ID" />
+	<field id="ccyCod" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-CCY-CODE" />
 	<field id="outSwap" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-OUT-SWAP" />
 	<field id="track2" length="19" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2" >
-		<field id="track2.pan" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2-PAN" >
-			<field id="track2.pan.bin" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2-BIN" />
-			<field id="track2.pan.tail" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2-PLASTICO" />
-		</field>
+		<field id="track2.pan" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2-PAN" />
 		<field id="track2.ext" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRACK2-EXT-PLASTICO" />
 	</field>
 	<field id="acqInstId" length="11" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ACQ-INST-ID" />
-	<field id="additionalData" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ADDL-POS-DATA" />
-	<field id="formAccount" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-FROM-ACCT" />
+	<field id="addData" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ADDL-POS-DATA" />
+	<field id="formAccnt" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-FROM-ACCT" />
 	<field id="adviceNum" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ADVISE_LINEA_BMER" />
 	<field id="bank" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_REC_C60-BANK" />
 	<field id="net" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_REC_C60-NET" />
-	<field id="deltaTime" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_DIF_DATECAPTURE_TIMESTAMP" />
+	<field id="dTime" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_DIF_DATECAPTURE_TIMESTAMP" />
 	<field id="filler" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FILLER" />
 	<field id="ecomInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ECOMERCE-IND" />
 	<field id="ucafInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-CAVV-UCAF-IND" />
 	<field id="jiffyPop" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-JIFFY-POP" />
 	<field id="pan" length="19" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name=" POS-SEG_PAN" />
 	<field id="cc" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG_POS_CC" />
-	<field id="additionalAmount" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ADD-AMOUNT" />
-	<field id="platform" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-PLATFORM" />
-	<field id="dispatcherIss" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_DISPATCHER_ID" />
+	<field id="addAmnt" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ADD-AMOUNT" />
+	<field id="pltfrm" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-PLATFORM" />
+	<field id="dpchrAcq" length="5" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_DISPATCHER_ID" />
 	<field id="cvv2Ind" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CVV2_PRESENT" />
-	<field id="cvv2Verify" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CVV2_VERIFY" />
+	<field id="cvv2Vrfy" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CVV2_VERIFY" />
 	<field id="cardServCode" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CARD_SERVICE_CODE" />
-	<field id="termCapa" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_TERMINAL_CAPABILITY" />
+	<field id="terCapa" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_TERMINAL_CAPABILITY" />
 	<field id="emvFullInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_FLAG_EMV_FULL" />
-	<field id="q6" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_PROMO_Q6" >
-		<field id="q6.offset" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_PROMO_Q6_DIFERIMIENTO" />
-		<field id="q6.payments" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_PROMO_Q6_NUM_PAGOS" />
-		<field id="q6.plan" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_PROMO_Q6_TIPO_PLAN" />
-	</field>
-	<field id="reponderInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_FLAG_RESPONDER" />
+	<field id="q6" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_PROMO_Q6" />
+	<field id="respdrInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_FLAG_RESPONDER" />
 	<field id="meansOfAccess" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_MEDIO_ACCESO" />
 	<field id="serie" length="18" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_SERIE_DISPOSITIVO" />
-	<field id="application" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_APLICACION_DISPOSITIVO" />
+	<field id="appDevic" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_APLICACION_DISPOSITIVO" />
 	<field id="trackFullInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_TRACK_COMPLETO" />
 	<field id="authCollInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_AUTHENTICATION_COLLECTOR_INDICATOR" />
-	<field id="temData" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_POS_TERMINAL_DATA" />
+	<field id="terData" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_POS_TERMINAL_DATA" />
 	<field id="arqcFiller" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_FILLER_ARQC" />
-	<field id="carrierTpv" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CARRIER_TPV" />
+	<field id="carriTpv" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_CARRIER_TPV" />
 	<field id="serieTpv" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_SERIE_SIM_TPV" />
 	<field id="sendTblBinInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_FLAG_ENVIO_TABLA_BINES" />
 	<field id="ksn" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_KSN" />
 	<field id="cutoffBx" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_VENTANA_CORTE_BX" />
-	<field id="67" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ID_BONUS_MERCHANT_BR" />
-	<field id="68" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ID_REFERENCIA_CMP_BR" />
-	<field id="69" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_NUM_CONTRATO_CR" />
-	<field id="70" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BANDERA_VALIDACION_ARQC" />
-	<field id="71" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_MONTO_LOCAL_ADQ_EXTRANJERO (EMISOR 360)" />
-	<field id="72" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_MONEDA_LOCAL_ADQ_EXTRANJERO (EMISOR 360)" />
-	<field id="73" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC-FLAG-TOKEN" />
-	<field id="74" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_RESP_VALIDACION_EMV" />
-	<field id="75" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_TIPO-RUTEO" />
-	<field id="76" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_ORIGEN" />
-	<field id="77" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_VISA_MSG_REASON_CODE" />
-	<field id="78" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_VISA_POS_ENVIRONMENT" />
-	<field id="79" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_UCAF_CI_ORIGINAL" />
-	<field id="80" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_RAZON_DEGRAD_UCAF_CI" />
-	<field id="81" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_PAIS_ADQUIRIENTE" />
-	<field id="82" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BAND_DCC_ORIGEN" />
-	<field id="83" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BAND_SELECCION_DCC" />
-	<field id="84" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_AAV" />
-	<field id="85" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_DICTAMEN_DECLINACION" />
-	<field id="86" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ERROR_ISS" />
-	<field id="87" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ECOMM-IND-FINAL" />
-	<field id="88" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-FLAG-RV-CAVV-VISA" />
-	<field id="89" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_NBR_VAR_FIELDS" />
-	<field id="90" length="50" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FILLER" />
+	<field id="bonMerchBr" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ID_BONUS_MERCHANT_BR" />
+	<field id="refCmpBr" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ID_REFERENCIA_CMP_BR" />
+	<field id="numContCr" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_NUM_CONTRATO_CR" />
+	<field id="valArqcInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BANDERA_VALIDACION_ARQC" />
+	<field id="amntlocExt" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_MONTO_LOCAL_ADQ_EXTRANJERO (EMISOR 360)" />
+	<field id="currlocExt" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_MONEDA_LOCAL_ADQ_EXTRANJERO (EMISOR 360)" />
+	<field id="tknInd" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC-FLAG-TOKEN" />
+	<field id="valEmvResInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_RESP_VALIDACION_EMV" />
+	<field id="typRutInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_TIPO-RUTEO" />
+	<field id="srcInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_ORIGEN" />
+	<field id="visaMsRsCod" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_VISA_MSG_REASON_CODE" />
+	<field id="visaPosEnv" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_VISA_POS_ENVIRONMENT" />
+	<field id="ucafCiCrc" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_UCAF_CI_ORIGINAL" />
+	<field id="ucafRsDeg" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_RAZON_DEGRAD_UCAF_CI" />
+	<field id="cntyAcq" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_PAIS_ADQUIRIENTE" />
+	<field id="dccSrcInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BAND_DCC_ORIGEN" />
+	<field id="selDccInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_BAND_SELECCION_DCC" />
+	<field id="aavInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_AAV" />
+	<field id="delcInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_FLAG_DICTAMEN_DECLINACION" />
+	<field id="errIss" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_ERROR_ISS" />
+	<field id="ecEndInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-ECOMM-IND-FINAL" />
+	<field id="visaRvCavInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-FLAG-RV-CAVV-VISA" />
+	<field id="numVarFlds" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="DESC_POS_NBR_VAR_FIELDS" />
+	<field id="filler2" length="50" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FILLER" />
 </group>

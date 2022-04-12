@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group name="Amex">
 	<field id="2" length="2" maxLength="19" mask="[0-9*]+" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
-	<field id="3" length="6" mask=".+" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code">
-		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
-		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
-	</field>
+	<field id="3" length="6" mask=".+" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code" />
 	<field id="4" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction" />
 	<field id="5" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement" />
 	<field id="6" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, cardholder billing" />
@@ -95,13 +91,7 @@
 	<field id="87" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal amount" />
 	<field id="88" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of debits" />
 	<field id="89" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal amount" />
-	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="Original data elements">
-		<field id="90.1" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Message Type" />
-		<field id="90.2" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original RRN" />
-		<field id="90.3" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction Data and Time" />
-		<field id="90.4" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction C" />
-		<field id="90.5" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Filler C90" />
-	</field>
+	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="Original data elements" />
 	<field id="91" length="1" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="File update code" />
 	<field id="92" length="2" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="File security code" />
 	<field id="93" length="5" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="IssuerResponse indicator" />

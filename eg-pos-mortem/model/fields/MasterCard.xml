@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group name="MasterCard">
 	<field id="2" length="2" maxLength="19" mask=".+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
-	<field id="3" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code">
-		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
-		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
-	</field>
+	<field id="3" length="6" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code" />
 	<field id="4" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction" />
 	<field id="5" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement" />
 	<field id="6" length="12" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, cardholder billing" />
@@ -48,13 +44,7 @@
 	<field id="40" length="3" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Service restriction code" />
 	<field id="41" length="8" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor terminal identification" />
 	<field id="42" length="15" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor identification code" />
-	<field id="43" length="40" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location">
-		<field id="43.1" length="22" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor Name" />
-		<field id="43.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Space" />
-		<field id="43.3" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor City" />
-		<field id="43.4" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Space" />
-		<field id="43.5" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Acceptor State or Country Code" />
-	</field>
+	<field id="43" length="40" mask="(?s).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" />
 	<field id="44" length="2" maxLength="25" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional response data" />
 	<field id="45" length="2" maxLength="76" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Track 1 data" />
 	<field id="46" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (ISO)" />

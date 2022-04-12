@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.LoggerFactory;import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -17,7 +18,6 @@ import java.util.Set;
 import com.fimet.AbstractManager;
 import com.fimet.FimetException;
 import com.fimet.IFieldGroupManager;
-import com.fimet.Manager;
 import com.fimet.dao.IFieldGroupDAO;
 import com.fimet.event.ParserEvent;
 import com.fimet.parser.FieldGroup;
@@ -34,23 +34,24 @@ public class FieldGroupManager extends AbstractManager implements IFieldGroupMan
 	private static Logger logger = LoggerFactory.getLogger(FieldGroupManager.class);
 	@Autowired private IEventManager eventManager;
 	@Autowired private IFieldGroupDAO<? extends IEFieldGroup> dao;
-	private String mode;
+	@Value("${field.group.autoload}")
+	private boolean autoload;
 	private Map<String, FieldGroup> mapNameGroup;
 	public FieldGroupManager() {
 		mapNameGroup = new HashMap<String, FieldGroup>();
 	}
 	@PostConstruct
 	public void start() {
+		logger.info("field.group.autoload:{}", autoload);
 		reload();
 	}
 	public void reload() {
-		mode = Manager.getProperty("field.group.mode", "lazy");
 		mapNameGroup.clear();
 		loadGroups();
 		loadFields();
 	}
 	private void loadFields() {
-		if ("eager".equalsIgnoreCase(mode)) {
+		if (autoload) {
 			FieldGroup curr = null;
 			try {
 				Set<FieldGroup> roots = getRootGroups();

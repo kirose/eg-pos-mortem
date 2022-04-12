@@ -11,13 +11,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 import com.fimet.Manager;
 
 
 @Configuration
-@PropertySource(value = "classpath:application.properties")
 @ComponentScan(basePackages= {"com.fimet"})
 @SpringBootApplication
 public class FimetPosMortemApplication {

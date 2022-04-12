@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fimet.eglobal.desc.DescResponse;
 import com.fimet.eglobal.model.Response;
-import com.fimet.eglobal.service.DescAnalyzer;
+import com.fimet.eglobal.service.DescService;
+import com.fimet.utils.DateUtils;
 
 
 	
@@ -25,15 +26,20 @@ public class DescController {
 	
 	private static Logger logger = LoggerFactory.getLogger(DescController.class);
 	
-	@Autowired private DescAnalyzer descService;
+	@Autowired private DescService descService;
 	
 	@GetMapping("/analyze")
 	public ResponseEntity<?> analyze(
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date start,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date end) {
 		try {
-			logger.info("analyze start:{}, end:{}", start, end);
+			logger.info("analyze for range start:{}, end:{}", start, end);
+			long t1 = System.currentTimeMillis();
 			DescResponse response = descService.analyze(start, end);
+			long t2 = System.currentTimeMillis();
+			response.setStartExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t1)));
+			response.setEndExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t2)));
+			logger.info("analyze completed at time:{}ms", (t2-t1));
 			return new ResponseEntity<DescResponse>(response, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Internal Error",e);

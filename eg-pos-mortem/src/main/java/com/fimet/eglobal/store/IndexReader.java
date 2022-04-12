@@ -18,7 +18,7 @@ public class IndexReader {
 		checkBuffer();
 	}
 	public boolean hasNext() throws IOException {
-		if (next != null) {
+		if (next == null) {
 			next = parseNext();
 		}
 		return next!=null;
@@ -75,7 +75,7 @@ public class IndexReader {
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		IndexReader reader = new IndexReader(new File("Analyzed/Rawcom-index-20220401-235735.txt"));
+		IndexReader reader = new IndexReader(new File("Analyzed/Rawcom-index-20220409-194048.txt"));
 		Index n;
 		while ((n = reader.next())!=null) {
 			System.out.println(n);

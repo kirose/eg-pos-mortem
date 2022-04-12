@@ -1,147 +1,51 @@
 {
 	"iap_BBVA_PE_ADQ_INT_REDSYS_B1_01":{
+		"classifier":"Interred",
 		"type":"acquirer",
 		"alias":"acq",
-		"parser":"National",
-		"operatives":[
-			"Nacional.Echo",
-			"Nacional.Signon",
-			"Nacional.Compra",
-			"Nacional.Reverso",
-			"Nacional.Cancelacion",
-			"Nacional.Devolucion",
-			"Nacional.Checkin",
-			"Nacional.Checkout",
-			"Nacional.VerificacionCuenta",
-			"Nacional.TarjetaPresente",
-			"Nacional.CardOnFile",
-			"Nacional.Promocion",
-			"Nacional.Recurrente",
-			"Nacional.Moto",
-			"Nacional.ECommNoSeguro",
-			"Nacional.ECommSeguro"
-		]
+		"parser":"National"
 	},
 	"iap_BBVA_PE_ADQ_INT_OPP_B1_01":{
+		"classifier":"Interred",
 		"type":"acquirer",
 		"alias":"acq",
-		"parser":"National",
-		"operatives":[
-			"Nacional.Echo",
-			"Nacional.Signon",
-			"Nacional.Compra",
-			"Nacional.Reverso",
-			"Nacional.Cancelacion",
-			"Nacional.Devolucion",
-			"Nacional.Checkin",
-			"Nacional.Checkout",
-			"Nacional.VerificacionCuenta",
-			"Nacional.TarjetaPresente",
-			"Nacional.CardOnFile",
-			"Nacional.Promocion",
-			"Nacional.Recurrente",
-			"Nacional.Moto",
-			"Nacional.ECommNoSeguro",
-			"Nacional.ECommSeguro"
-		]
+		"parser":"National"
 	},
 	"iap_BBVA_PE_ADQ_INT_OTC_B1_01":{
+		"classifier":"Interred",
 		"type":"acquirer",
 		"alias":"acq",
-		"parser":"National",
-		"operatives":[
-			"Nacional.Echo",
-			"Nacional.Signon",
-			"Nacional.Compra",
-			"Nacional.Reverso",
-			"Nacional.Cancelacion",
-			"Nacional.Devolucion",
-			"Nacional.Checkin",
-			"Nacional.Checkout",
-			"Nacional.VerificacionCuenta",
-			"Nacional.TarjetaPresente",
-			"Nacional.CardOnFile",
-			"Nacional.Promocion",
-			"Nacional.Recurrente",
-			"Nacional.Moto",
-			"Nacional.ECommNoSeguro",
-			"Nacional.ECommSeguro"
-		]
+		"parser":"National"
 	},
 	"iap_BBVA_PE_ISMAN_B1_02":{
+		"classifier":"Interred",
 		"type":"acquirer",
 		"alias":"acq",
-		"parser":"National",
-		"operatives":[
-			"Nacional.Echo",
-			"Nacional.Signon",
-			"Nacional.Compra",
-			"Nacional.Reverso",
-			"Nacional.Cancelacion",
-			"Nacional.Devolucion",
-			"Nacional.Checkin",
-			"Nacional.Checkout"
-		]
+		"parser":"National"
 	},
 	"iap_BBVA_PE_ADQ_TPV_B1_01":{
 		"sanitizeHex":true,
+		"classifier":"TPV",
 		"type":"acquirer",
 		"alias":"acq",
-		"parser":"RawcomTPV",
-		"operatives":[
-			"TPV.Echo",
-			"TPV.Signon",
-			"TPV.Compra",
-			"TPV.Reverso",
-			"TPV.Cancelacion",
-			"TPV.Devolucion",
-			"TPV.Checkin",
-			"TPV.Checkout"
-		]
+		"parser":"RawcomTPV"
 	},
 	"iap_BBVA_PE_EMI_VISA_B1_01":{
+		"classifier":"Visa",
 		"type":"issuer",
 		"alias":"iss",
-		"parser":"RawcomVisa",
-		"operatives":[
-			"Visa.Echo",
-			"Visa.Signon",
-			"Visa.Compra",
-			"Visa.Reverso",
-			"Visa.Cancelacion",
-			"Visa.Devolucion",
-			"Visa.Checkin",
-			"Visa.Checkout"
-		]
+		"parser":"RawcomVisa"
 	},
 	"iap_BBVA_PE_EMI_MCI_B1_01":{
+		"classifier":"MasterCard",
 		"type":"issuer",
 		"alias":"iss",
-		"parser":"RawcomMasterCard",
-		"operatives":[
-			"MasterCard.Echo",
-			"MasterCard.Signon",
-			"MasterCard.Compra",
-			"MasterCard.Reverso",
-			"MasterCard.Cancelacion",
-			"MasterCard.Devolucion",
-			"MasterCard.Checkin",
-			"MasterCard.Checkout"
-		]
+		"parser":"RawcomMasterCard"
 	},
 	"iap_BBVA_PE_RISKCENTER_B1_01":{
+		"classifier":"RiskCenter",
 		"type":"service",
 		"alias":"rc",
-		"parser":"National",
-		"operatives":[
-			"RiskCenter.Echo",
-			"RiskCenter.Signon",
-			"RiskCenter.Compra",
-			"RiskCenter.Reverso",
-			"RiskCenter.Cancelacion",
-			"RiskCenter.Devolucion",
-			"RiskCenter.Checkin",
-			"RiskCenter.Checkout"
-		]
+		"parser":"National"
 	}
 }

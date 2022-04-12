@@ -7,9 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fimet.dao.IParserDAO;
@@ -34,9 +37,18 @@ public class ParserManager extends AbstractManager implements IParserManager {
 	private static Logger logger = LoggerFactory.getLogger(ParserManager.class);
 	@Autowired private IEventManager eventManager;
 	@Autowired private IParserDAO<? extends IEParser> dao;
+	@Value("${parsers.autoload}")
+	private boolean autoload;
 	Map<String,IParser> mapNameParsers = new HashMap<>();
 	public ParserManager() {
 		super();
+	}
+	@PostConstruct
+	public void start() {
+		logger.info("parsers.autoload:{}", autoload);
+		if (autoload) {
+			getParsers();
+		}
 	}
 	@Override
 	public void reload() {
@@ -66,6 +78,7 @@ public class ParserManager extends AbstractManager implements IParserManager {
 				return mapNameParsers.get(entity.getName());
 			} else {
 				IParser parser = newParser(entity);
+				logger.info("Parser loaded {}",entity.getName());
 				mapNameParsers.put(entity.getName(), parser);
 				eventManager.fireEvent(ParserEvent.PARSER_LOADED, this, parser);
 				return parser;

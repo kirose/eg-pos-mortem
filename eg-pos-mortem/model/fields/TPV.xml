@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group name="TPV">
 	<field id="2" length="2" maxLength="19" mask=".+" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number (PAN)" />
-	<field id="3" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Processing code">
-		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
-		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
-	</field>
+	<field id="3" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Processing code" />
 	<field id="4" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, transaction" />
 	<field id="5" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, settlement" />
 	<field id="6" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, cardholder billinrg" />

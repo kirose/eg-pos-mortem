@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fieldGroups>
 	<group name="National" path="model/fields/National.xml"/>
-	<group name="NationalPOS" path="model/fields/NationalPOS.xml" parent="National"/>
 	<group name="TPV" path="model/fields/TPV.xml"/>
 	<group name="Visa" path="model/fields/Visa.xml"/>
-	<group name="VisaPOS" path="model/fields/VisaPOS.xml" parent="Visa"/>
 	<group name="MasterCard" path="model/fields/MasterCard.xml"/>
-	<group name="MasterCardPOS" path="model/fields/MasterCardPOS.xml" parent="MasterCard"/>
 	<group name="RawcomMasterCard" path="model/fields/RawcomMasterCard.xml"/>
 	<group name="Desc00" path="model/fields/Desc00.xml"/>
 	<!-- group name="Desc01" path="model/fields/Desc01.xml"/-->

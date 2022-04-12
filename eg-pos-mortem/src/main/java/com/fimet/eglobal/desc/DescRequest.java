@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,12 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fimet.eglobal.model.Connection;
+import com.fimet.eglobal.rawcom.SortedList;
 import com.fimet.eglobal.store.Store;
-import com.fimet.utils.FileUtils;
 
 
 public class DescRequest {
 	private static Logger logger = LoggerFactory.getLogger(DescRequest.class);
+	private static final Comparator<Desc> COMPARATOR = (l, r)-> {
+		return l.getSequence().compareTo(r.getSequence());
+	};
 	private Date start;
 	private Date end;
 	private long index = 0;
@@ -28,7 +31,8 @@ public class DescRequest {
 	private File fileData;
 	private File fileBase;
 	private File fileAdditional;
-	private Map<Long, List<String>> additionals;
+	private Map<Long, List<String>> additionalsCache;
+	private SortedList<Desc> descQueue;
 	private Store store;
 	private DescReader readerBase;
 	private BufferedReader readerAdditional;
@@ -42,7 +46,14 @@ public class DescRequest {
 		this.fileAdditional = fileAdditional;
 		readerBase = new DescReader(fileBase);
 		readerAdditional = new BufferedReader(new FileReader(fileAdditional));
-		additionals = new HashMap<Long,List<String>>();
+		additionalsCache = new HashMap<Long,List<String>>();
+		descQueue = new SortedList<Desc>(COMPARATOR);
+	}
+	public int getCacheSize() {
+		return cacheSize;
+	}
+	public SortedList<Desc> getDescQueue() {
+		return descQueue;
 	}
 	public Date getStart() {
 		return start;
@@ -127,27 +138,23 @@ public class DescRequest {
 		if (readerAdditional==null) {
 			return;
 		}
-		if (additionals.size() < cacheSize/2) {
+		if (additionalsCache.size() < cacheSize/2) {
 			String line;
 			Long seq;
 			while ((line = readerAdditional.readLine()) != null
-					&& additionals.size() < cacheSize) {
+					&& additionalsCache.size() < cacheSize) {
 				seq = Long.valueOf(line.substring(10, 17));
-				if (!additionals.containsKey(seq)) {
-					additionals.put(seq, new ArrayList<String>());
+				if (!additionalsCache.containsKey(seq)) {
+					additionalsCache.put(seq, new ArrayList<String>());
 				}
-				additionals.get(seq).add(line);
+				additionalsCache.get(seq).add(line);
 			}
 		}
 	}
-	public Map<Long, List<String>> getAdditionals() {
-		return additionals;
+	public Map<Long, List<String>> getAdditionalsCache() {
+		return additionalsCache;
 	}
-	public void setAdditionals(Map<Long, List<String>> additionals) {
-		this.additionals = additionals;
-	}
-	public void closeReaders() {
-		FileUtils.close(readerBase);
-		FileUtils.close(readerAdditional);
+	public void setAdditionalsCache(Map<Long, List<String>> additionals) {
+		this.additionalsCache = additionals;
 	}
 }

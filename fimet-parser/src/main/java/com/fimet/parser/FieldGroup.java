@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fimet.Manager;
 import com.fimet.dao.FieldFormatXmlDAO;
 import com.fimet.dao.IFieldFormatDAO;
@@ -16,7 +18,6 @@ import com.fimet.utils.IReader;
 import com.fimet.utils.IWriter;
 
 public class FieldGroup implements IFieldGroup {
-	static final String mode = Manager.getProperty("field.group.mode", "lazy");
 	static Comparator<IFieldParser> comparatorIdOrder = (IFieldParser f1, IFieldParser f2)->{
 		return f1.getIdOrder().compareTo(f2.getIdOrder());
 	}; 
@@ -26,12 +27,14 @@ public class FieldGroup implements IFieldGroup {
 	private FieldGroup parent;
 	private List<FieldGroup> children;
 	private IFieldLoader loader;
+	@Value("${field.group.autoload}")
+	private boolean autoload;
 	@SuppressWarnings("unchecked")
 	private IFieldFormatDAO<? extends IEFieldFormat> dao = Manager.getManager(IFieldFormatDAO.class, FieldFormatXmlDAO.class);
 	public FieldGroup(IEFieldGroup egroup) {
 		fields = new HashMap<String, IFieldParser>();
 		this.name = egroup.getName();
-		loader = "eager".equalsIgnoreCase(mode) ? new Eager() : new Lazy();
+		loader = autoload ? new Eager() : new Lazy();
 		roots = new ArrayList<>();
 	}
 	@Override

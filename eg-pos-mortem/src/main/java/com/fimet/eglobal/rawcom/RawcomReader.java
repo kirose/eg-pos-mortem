@@ -10,13 +10,15 @@ import org.slf4j.LoggerFactory;
 import com.fimet.eglobal.utils.FileReader;
 import com.fimet.utils.ByteBuilder;
 import com.fimet.utils.ByteUtils;
+import com.fimet.utils.FileUtils;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class RawcomReader {
+public class RawcomReader implements Closeable {
 	private static Logger logger = LoggerFactory.getLogger(RawcomReader.class);
 	private static final Pattern HEADER_PATTERN = Pattern.compile("\\[T:\\s+([0-9\\:\\.]+)\\]\\[D:\\s+([0-9]+)\\]\\[C:\\s+([0-9]+)\\]\\[Iap:\\s+([^\\]]+)\\]\\[Lp:\\s+([^\\]]+)\\]\\[Rw:\\s+([^\\]]+)\\]\\[L:\\s+([0-9]+)\\]+");
 	private FileReader reader;
@@ -31,9 +33,7 @@ public class RawcomReader {
 		dateyymmdd = file.getName().substring(i-6,i);
 	}
 	public void close() {
-		try {
-			reader.close();
-		} catch (Exception e) {}
+		FileUtils.close(reader);
 	}
 	public boolean hasNext() {
 		if (next!=null) {

@@ -1,0 +1,112 @@
+{
+	"[*][*][*]":{
+		"Desc MTI":{
+			"equals":["$.acq.req.mti","$.desc0.mti"]
+		},
+		"Desc PAN":{
+			"equals":["$.acq.req.pan","$.desc0.track2.pan"]
+		},
+		"Desc Dispatcher ":{
+			"equals":["$.acq.req.dispatcher","$.desc0.dpchrAcq"]
+		},
+		"Desc Terminal Nmbr":{
+			"equals":["$.acq.req.dispatcher","$.desc0.trmlAcq"]
+		},
+		"Desc Amount":{
+			"equals":["$.acq.req.4","$.desc0.amnt"]
+		},
+		"Desc Proc Code":{
+			"equals":["$.acq.req.3","$.desc0.procCode"]
+		},
+		"Desc STAN":{
+			"equals":["$.acq.req.11","$.desc0.stan"]
+		},
+		"Desc PEM 0-2":{
+			"equals":["$.acq.res.22.1","$.desc0.pem.mthd"]
+		},
+		"Desc PEM 2-3":{
+			"equals":["$.acq.res.22.2","$.desc0.pem.cap"]
+		},
+		"Desc RRN":{
+			"equals":["$.acq.req.37","$.desc0.rrn"]
+		},
+		"Desc Auth Code":{
+			"equals":["$.acq.res.38","$.desc0.authCode"]
+		},
+		"Desc Response Code":{
+			"equals":["$.acq.res.39","$.desc0.resCode"]
+		},
+		"Acq Proc Code":{
+			"equals":["$.acq.req.3","$.acq.res.3"]
+		},
+		"Acq Amount":{
+			"equals":["$.acq.req.4","$.acq.res.4"]
+		},
+		"Acq Trans Date & Time":{
+			"equals":["$.acq.req.7","$.acq.res.7"]
+		},
+		"Acq Settlement Date":{
+			"equals":["$.acq.req.15","$.acq.res.15"]
+		},
+		"Acq Capture Date":{
+			"equals":["$.acq.req.17","$.acq.res.17"]
+		},
+		"Acq PEM 0-2":{
+			"equals":["$.acq.req.22.1","$.acq.res.22.1"]
+		},
+		"Acq PEM 2-3":{
+			"equals":["$.acq.req.22.2","$.acq.res.22.2"]
+		},
+		"Acq POS Cond code":{
+			"equals":["$.acq.req.25","$.acq.res.25"]
+		},
+		"Acq Track2":{
+			"equals":["$.acq.req.35","$.acq.res.35"]
+		},
+		"Acq RRN":{
+			"equals":["$.acq.req.37","$.acq.res.37"]
+		},
+		"Acq Card Acceptor":{
+			"equals":["$.acq.req.41","$.acq.res.41"]
+		},
+		"Acq Currency Code ":{
+			"equals":["$.acq.req.49","$.acq.res.49"]
+		}
+	},
+	"[TPV][*][ECommSeguro|ECommNoSeguro]":{
+		"Desc Response Code":{
+			"notEquals":["$.desc0.resCode","00"]
+		},
+		"Acq Response Code":{
+			"notEquals":["$.acq.res.39","00"]
+		}
+	},
+	"[Interred][MasterCard][CardOnFile]":{
+		"Int-MC Tkn PJ":{
+			"equals":["$.acq.req.63.PJ","$.desc28.tknPJ"]
+		}
+	},
+	"[Interred][Visa][ECommNoSeguro][$.acq.req.63.C0.5~5|6]":{
+		"iss.req.61.10":{
+			"equals":[{"substring":"$.iss.req.61","start":9,"end":10},"6"]
+		},
+		"iss.req.48.63.13":{
+		"equals":[
+			{"substring":"$.iss.req.48.63","start":12,"end":13},"9"
+		]}
+	},
+	"[Interred][Visa][ECommSeguro][$.acq.req.63.C0.5=7]":{
+		"iss.req.61.10":{
+			"equals":[
+				{"substring":"$.iss.req.61","start":9,"end":10},
+				"6"
+			]
+		},
+		"iss.req.48.63.13":{
+			"equals":[
+				{"substring":"$.iss.req.48.63","start":12,"end":13},
+				"9"
+			]
+		}
+	}
+}

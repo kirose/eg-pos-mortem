@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group name="Visa">
 	<field id="2" length="2" maxLength="19" mask=".+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number (PAN)" />
-	<field id="3" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Processing code" >
-		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
-		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
-	</field>
+	<field id="3" length="6" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Processing code" />
 	<field id="4" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, transaction" />
 	<field id="5" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, settlement" />
 	<field id="6" length="12" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Amount, cardholder billing" />
@@ -33,11 +29,11 @@
 	<field id="25" length="2" mask="[A-Z0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Point of service condition code" />
 	<field id="26" length="2" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Point of service capture code" />
 	<field id="27" length="1" mask="[0-9]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Authorizing identification response length" />
-	<field id="28" length="18" mask="(C|D)[0-9]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
+	<field id="28" length="18" mask="[0-9]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction fee" />
 	<field id="29" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement fee" />
 	<field id="30" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction processing fee" />
 	<field id="31" length="16" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement processing fee" />
-	<field id="32" length="2" maxLength="24" mask=".*"  parser="com.fimet.parser.field.LTrimVarFieldParser" name="Acquiring institution identification code" />
+	<field id="32" length="2" maxLength="24" mask=".*" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Acquiring institution identification code" />
 	<field id="33" length="2" maxLength="12" mask="[0-9]+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Forwarding institution identification code" />
 	<field id="34" length="2" maxLength="28" mask="[^a-zA-Z ]+" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Primary account number, extended" />
 	<field id="35" length="2" maxLength="37" mask=".*" parserLength="Hex" parser="com.fimet.parser.field.LTrimVarFieldParser" name="Track 2 data" />
@@ -48,11 +44,7 @@
 	<field id="40" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Service restriction code" />
 	<field id="41" length="16" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor terminal identification" />
 	<field id="42" length="30" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor identification code" />
-	<field id="43" length="80" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" >
-		<field id="43.1" length="25" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name or ATM location" />
-		<field id="43.2" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="City name" />
-		<field id="43.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Country code" />
-	</field>
+	<field id="43" length="80" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" />
 	<field id="44" length="2" maxLength="24" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional response data" />
 	<field id="45" length="2" maxLength="76" mask="(?s).*" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Track 1 data" />
 	<field id="46" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (ISO)" />
@@ -109,7 +101,7 @@
 	<field id="57" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
 	<field id="58" length="2" maxLength="510" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
 	<field id="59" length="2" maxLength="24" mask="(?s).+" converterValue="HexToEbcdicToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national)" />
-	<field id="60" length="2" maxLength="12" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
+	<field id="60" length="2" maxLength="12" mask="(?s).*" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
 	<field id="61" length="2" maxLength="36" mask="(?s).+" converterValue="HexToAscii" parserLength="HexDouble" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. CVV2/service code   transactions)" />
 	<field id="62" length="2" maxLength="510" mask="(?s).+" parserLength="HexDouble" parser="com.fimet.parser.field.visa.Visa62VarFieldParser" name="Reserved (private) (e.g. transactions: invoice number, key exchange transactions: TPK key, etc.)" >
 		<field id="62.1" length="2" mask="(?s).+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Authorization Characteristics Indicator" />
@@ -175,13 +167,7 @@
 	<field id="87" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal amount" />
 	<field id="88" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of debits" />
 	<field id="89" length="32" mask="[0-9]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal amount" />
-	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Original data elements" >
-		<field id="90.1" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original message type" />
-		<field id="90.2" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original trace number (Field 11)" />
-		<field id="90.3" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction Data and Time" />
-		<field id="90.4" length="11" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original acquirer ID" />
-		<field id="90.5" length="11" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original forwarding institution ID" />
-	</field>
+	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.LTrimFixedFieldParser" name="Original data elements" />
 	<field id="91" length="4" mask="[a-zA-Z0-9 ]+" converterValue="HexToEbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File update code" />
 	<field id="92" length="4" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="File security code" />
 	<field id="93" length="10" mask="[a-zA-Z0-9 ]+" converterValue="HexToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="IssuerResponse indicator" />

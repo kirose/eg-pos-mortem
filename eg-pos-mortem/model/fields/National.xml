@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <group name="National">
 	<field id="2" length="2" maxLength="19" mask="[0-9*]+" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
-	<field id="3" length="6" mask=".+" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code">
-		<field id="3.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-		<field id="3.2" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (From)" />
-		<field id="3.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Account Type (To)" />
-	</field>
+	<field id="3" length="6" mask=".+" parser="com.fimet.parser.field.FixedFieldParser" name="Processing code"/>
 	<field id="4" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, transaction" />
 	<field id="5" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, settlement" />
 	<field id="6" length="12" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount, cardholder billing" />
@@ -48,12 +44,7 @@
 	<field id="40" length="3" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="Service restriction code" />
 	<field id="41" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor terminal identification" />
 	<field id="42" length="15" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor identification code" />
-	<field id="43" length="40" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" >
-		<field id="43.1" length="22" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Business Name"/>
-		<field id="43.2" length="13" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="City" />
-		<field id="43.3" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="State" />
-		<field id="43.4" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Country" />
-	</field>
+	<field id="43" length="40" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card acceptor name/location" />
 	<field id="44" length="2" maxLength="25" mask=".*" parser="com.fimet.parser.field.VarFieldParser" name="Additional response data" />
 	<field id="45" length="2" maxLength="76" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.VarFieldParser" name="Track 1 data" />
 	<field id="46" length="3" maxLength="999" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.VarFieldParser" name="Additional data (ISO)" />
@@ -100,7 +91,99 @@
 	<field id="60" length="3" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (national) (e.g. settlement request: batch number, advice transactions: original transaction amount, batch upload: original MTI plus original RRN plus original STAN, etc)" />
 	<field id="61" length="3" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. CVV2/service code   transactions)" />
 	<field id="62" length="3" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private) (e.g. transactions: invoice number, key exchange transactions: TPK key, etc.)" />
-	<field id="63" length="3" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.VarFieldParser" name="Reserved (private)" />
+	<field id="63" length="3" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokensVarFieldParser" name="Reserved (private)" >
+		<field id="63.01" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 01" />
+		<field id="63.04" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token 04" />
+		<field id="63.17" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion Autorizacion VISA" />
+		<field id="63.20" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion Autorizacion MasterCard" />
+		<field id="63.B0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B0" />
+		<field id="63.B1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B1" />
+		<field id="63.B2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B2" />
+		<field id="63.B3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B3" />
+		<field id="63.B4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B4" />
+		<field id="63.B5" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token B4" />
+		<field id="63.C0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Codigo de Validacion 2 e Identificadores de Comercio Electronico" >
+			<field id="63.C0.1" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CV (Codigo de validacion)" />
+			<field id="63.C0.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Status de retransmision" />
+			<field id="63.C0.3" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Contador de retransmisiones" />
+			<field id="63.C0.4" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Codigo Postal de la Terminal" />
+			<field id="63.C0.5" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ECI Indicador de Comercio Electronico" />
+			<field id="63.C0.6" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Tipo de tarjeta" />
+			<field id="63.C0.7" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Indicador de informacion adicional" />
+			<field id="63.C0.8" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Indicador de CV2 (Codigo de validacion 2) presente" />
+			<field id="63.C0.9" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaccion forzada o SAF" />
+			<field id="63.C0.10" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Authentication Collector Indicator" />
+			<field id="63.C0.11" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Bandera de propension de fraude del comercio" />
+			<field id="63.C0.12" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Resultado del CAVV" />
+		</field>
+		<field id="63.C4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Datos del Punto de Servicio" />
+		<field id="63.C5" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion de Multipagos" />
+		<field id="63.C6" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token C6" />
+		<field id="63.CE" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token CE" >
+			<field id="63.CE.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Indicador de Atencion" />
+			<field id="63.CE.2" length="200" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Datos de autenticacion del tarjetahabiente" />
+		</field>
+		<field id="63.CZ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Form Facctor Indicator" />
+		<field id="63.ER" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Resultado de Cifrado" />
+		<field id="63.ES" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Terminal Status" />
+		<field id="63.ET" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Tabla de BINES que no Cifran" />
+		<field id="63.EW" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Requerimiento Nueva Llave" />
+		<field id="63.EX" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Respuesta Nueva Llave" />
+		<field id="63.EY" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Cifrado del Track1" />
+		<field id="63.EZ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenEZVarFieldParser" name="Banderas y Datos Sensitivos Cifrados" >
+			<field id="63.EZ.1" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Key Serial Number" />
+			<field id="63.EZ.2" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Contador Real de Cifrados " />
+			<field id="63.EZ.3" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Contador de Cifrados Fallidos Consecutivos" />
+			<field id="63.EZ.4" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Bandera de TRACK2" />
+			<field id="63.EZ.5" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Modo de Lectura de la Tarjeta" />
+			<field id="63.EZ.6" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Longitud de TRACK2" />
+			<field id="63.EZ.7" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Bandera de CVV2" />
+			<field id="63.EZ.8" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Longitud de cvv2 en claro" />
+			<field id="63.EZ.9" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Bandera de TRACK1" />
+			<field id="63.EZ.10" length="48" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Datos Sensitivos Cifrados" >
+				<field id="63.EZ.10.track2" length="38" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Track2 Cifrado" />
+				<field id="63.EZ.10.cvv2" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CVV2 Cifrado" />
+			</field>
+			<field id="63.EZ.11" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="4 Ultimos Digitos del PAN" />
+			<field id="63.EZ.12" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CRC32 sobre Datos Sensitivos" />
+		</field>
+		<field id="63.Q1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Identificador del Modo de Autorizacion" />
+		<field id="63.Q2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Identificador del Medio de Acceso" />
+		<field id="63.Q3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q3" />
+		<field id="63.Q4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token Q4" />
+		<field id="63.Q6" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion de Cargos Parciales" />
+		<field id="63.QC" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QC" />
+		<field id="63.QF" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="ID de agregador y subafiliado" />
+		<field id="63.QM" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QM" />
+		<field id="63.QN" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QN" />
+		<field id="63.QO" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Montos Acumulados DCC POS" />
+		<field id="63.QP" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Montos y Folio de DCC POS" />
+		<field id="63.QR" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion de DCC POS" />
+		<field id="63.QS" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Informacion del Emisor" />
+		<field id="63.R0" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R0" />
+		<field id="63.R1" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="PAN del Corresponsal en el PIN PAD" />
+		<field id="63.R2" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R2" />
+		<field id="63.R3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token R3" />
+		<field id="63.R4" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Nomero de Contrato en Transacciones de Cargos Recurrentes" />
+		<field id="63.R7" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Indicador Bonus Merchant y Numero de Referencia de Campaoas" />
+		<field id="63.R8" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Lonea de Accion CRM" />
+		<field id="63.S3" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Conversion Dinomica de Moneda" />
+		<field id="63.TM" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token TM" />
+		<field id="63.TV" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token TV" />
+		<field id="63.PO" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token PO" />
+		<field id="63.PY" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token PY" />
+		<field id="63.CA" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token CA" />
+		<field id="63.QU" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token QU" />
+		<field id="63.RC" length="5" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Indicadores de Riesgo RiskCenter" />
+		<field id="63.RD" length="5" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Indicadores de Riesgo Emisor" />
+		<field id="63.DE" length="5" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Dispatcher Adquirente EVO" />
+		<field id="63.CH" length="5" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token CH" />
+		<field id="63.BM" length="5" maxLength="999" mask="(?s).*" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token BM" />
+		<field id="63.EP" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token EP" />
+		<field id="63.RW" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token RW" />
+		<field id="63.PJ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token PJ" />
+		<field id="63.RJ" length="5" maxLength="999" mask="(?s).+" parser="com.fimet.parser.field.mx.NatTokenVarFieldParser" name="Token RJ" />
+	</field>
 	<field id="64" length="16" mask="[a-fA-F0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Message authentication code (MAC)" />
 	<field id="65" length="1" mask="[a-fA-F0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Extended bitmap indicator" />
 	<field id="66" length="1" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Settlement code" />
@@ -127,13 +210,7 @@
 	<field id="87" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Credits, reversal amount" />
 	<field id="88" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Total amount of debits" />
 	<field id="89" length="16" mask="[0-9]+" parser="com.fimet.parser.field.FixedFieldParser" name="Debits, reversal amount" />
-	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="Original data elements">
-		<field id="90.1" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Message Type" />
-		<field id="90.2" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original RRN" />
-		<field id="90.3" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction Data and Time" />
-		<field id="90.4" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Original Transaction C" />
-		<field id="90.5" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Filler C90" />
-	</field>
+	<field id="90" length="42" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="Original data elements" />
 	<field id="91" length="1" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="File update code" />
 	<field id="92" length="2" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="File security code" />
 	<field id="93" length="5" mask="[a-zA-Z0-9 ]+" parser="com.fimet.parser.field.FixedFieldParser" name="IssuerResponse indicator" />

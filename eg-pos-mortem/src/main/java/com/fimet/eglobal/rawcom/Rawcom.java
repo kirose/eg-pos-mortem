@@ -14,10 +14,9 @@ public class Rawcom {
 	private char direction;
 	private int length;
 	private byte[] isoMessage;
-	private int mti; 
+	private int mti;
 	private RawcomType type;
 	private IMessage message;
-	private String[] operatives;
 	public Date getTime() {
 		return time;
 	}
@@ -83,12 +82,6 @@ public class Rawcom {
 	}
 	public void setMti(int mti) {
 		this.mti = mti;
-	}
-	public String[] getOperatives() {
-		return operatives;
-	}
-	public void setOperatives(String[] operatives) {
-		this.operatives = operatives;
 	}
 	public String toString() {
 		return "[T: "+new SimpleDateFormat("HH:mm:ss.SSS").format(time)+"][D: "+dispatcher+"][C: "+pan+"][Iap: "+iap+"][Lp: "+listProcessor+"][Rw: "+direction+"][L: "+length+"]"; 

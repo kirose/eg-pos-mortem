@@ -1,19 +1,19 @@
 package com.fimet.eglobal.rules;
 
-import com.fimet.parser.IMappable;
+import com.jayway.jsonpath.DocumentContext;
 
-public class Exists implements IRule {
-	private String address;
-	public Exists(String address) {
+public class Exists implements IBooleanOperator {
+	private IStringOperator arg;
+	public Exists(IStringOperator arg) {
 		super();
-		this.address = address;
+		this.arg = arg;
 	}
 	@Override
-	public boolean eval(IMappable mappable) {
-		String value = mappable.get(address);
-		return value!=null;
+	public Result eval(DocumentContext json) {
+		return new Result(arg.eval(json) != null);
 	}
+	@Override
 	public String toString() {
-		return String.format("Exists(%s)",address);
+		return "exists(" + arg + ")";
 	}
 }

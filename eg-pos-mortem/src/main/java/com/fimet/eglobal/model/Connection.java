@@ -1,7 +1,5 @@
 package com.fimet.eglobal.model;
 
-import java.util.List;
-
 import com.fimet.parser.IParser;
 
 public class Connection {
@@ -12,7 +10,7 @@ public class Connection {
 	private String alias;
 	private IParser parser;
 	private boolean sanitizeHex;
-	private List<Operative> operatives;
+	private Classifier classifier;
 	public Connection() {
 		super();
 	}
@@ -34,16 +32,16 @@ public class Connection {
 	public void setParser(IParser parser) {
 		this.parser = parser;
 	}
-	public List<Operative> getOperatives() {
-		return operatives;
-	}
-	public void setOperatives(List<Operative> operatives) {
-		this.operatives = operatives;
-	}
 	public boolean isSanitizeHex() {
 		return sanitizeHex;
 	}
 	public void setSanitizeHex(boolean sanitizeHex) {
 		this.sanitizeHex = sanitizeHex;
+	}
+	public Classifier getClassifier() {
+		return classifier;
+	}
+	public void setClassifier(Classifier classifier) {
+		this.classifier = classifier;
 	}
 }

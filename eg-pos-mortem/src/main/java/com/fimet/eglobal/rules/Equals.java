@@ -1,25 +1,27 @@
 package com.fimet.eglobal.rules;
 
-import com.fimet.parser.IMappable;
+import com.jayway.jsonpath.DocumentContext;
 
-public class Equals implements IRule {
-	private String address;
-	private String expected;
-	public Equals(String address, String expected) {
+public class Equals implements IBooleanOperator {
+	private IStringOperator left;
+	private IStringOperator right;
+	public Equals(IStringOperator left, IStringOperator right) {
 		super();
-		this.address = address;
-		this.expected = expected;
+		this.left = left;
+		this.right = right;
 	}
 	@Override
-	public boolean eval(IMappable mappable) {
-		String value = mappable.get(address);
-		if (value == null) {
-			return expected == null;
+	public Result eval(DocumentContext json) {
+		String l = left.eval(json);
+		String r = right.eval(json);
+		if (l == null) {
+			return new Result(r == null, new String[] {l, r});
 		} else {
-			return value.equals(expected);
+			return new Result(l.equals(r), new String[] {l, r});
 		}
 	}
+	@Override
 	public String toString() {
-		return String.format("Equals(%s,%s)",address, expected);
+		return "equals(" + left + "," + right + ")";
 	}
 }

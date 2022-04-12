@@ -7,66 +7,66 @@
 	<field id="seq" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SEQ" />
 	<field id="id" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ID-REGISTRO" />
 	<field id="length" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="LONGITUD-REGISTRO" />
-	<field id="8" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Crypto Info Data" />
-	<field id="9" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Crypto Info Data" />
-	<field id="10" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - TVR" />
-	<field id="11" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="TVR" />
-	<field id="12" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - ARQC" />
-	<field id="13" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Cryptogram  (ARQC � TC)" />
-	<field id="14" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Amount Authorized " />
-	<field id="15" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount Authorized" />
-	<field id="16" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Amount Other" />
-	<field id="17" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount Other" />
-	<field id="18" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Application Interchange Profile (AIP)" />
-	<field id="19" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Interchange Profile (AIP)" />
-	<field id="20" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Application Transaction Counter (ATC)" />
-	<field id="21" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Transaction Counter (ATC)" />
-	<field id="22" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Terminal Country Code" />
-	<field id="23" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal Country Code" />
-	<field id="24" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Transaction Currency Code" />
-	<field id="25" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction  Currency Code" />
-	<field id="26" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Tran Date" />
-	<field id="27" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Date" />
-	<field id="28" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Tran Type" />
-	<field id="29" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
-	<field id="30" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Unpredictable Number" />
-	<field id="31" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Unpredictable Number" />
-	<field id="32" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Issuer Application Data" />
-	<field id="33" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Issuer Appliaction Data Len" />
-	<field id="34" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Visa Len" />
-	<field id="35" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Derivation Key Index " />
-	<field id="36" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Cryptogram Version Number" />
-	<field id="37" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Verification Results" />
-	<field id="38" length="50" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Filler" />
-	<field id="39" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Terminal Serial Number" />
-	<field id="40" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal serial Number" />
-	<field id="41" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - EMV Terminal Capability" />
-	<field id="42" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="EMV Terminal Capability" />
-	<field id="43" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - EMV Terminal Type" />
-	<field id="44" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="EMV Terminal Type" />
-	<field id="45" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Appl Version Number" />
-	<field id="46" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Appl Version Number" />
-	<field id="47" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - CVM Results" />
-	<field id="48" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CVM Results" />
-	<field id="49" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Dedicated File Name" />
-	<field id="50" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dedicated File Name Len" />
-	<field id="51" length="32" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dedicated File Name" />
-	<field id="52" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Appl PAN Seq Number" />
-	<field id="53" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application PAN Seq Number" />
-	<field id="54" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Issuer Authentication Data" />
-	<field id="55" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Issuer Authentication Data LEN" />
-	<field id="56" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ARPC" />
-	<field id="57" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ARPC Resp. Code" />
-	<field id="58" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dependiente del Emisor" />
-	<field id="59" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Token B4" />
-	<field id="60" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PT. SRV. Entry Mode:" />
-	<field id="61" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal Eentry Capability" />
-	<field id="62" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Last EMV Status" />
-	<field id="63" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Data Suspect" />
-	<field id="64" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Device Info" />
-	<field id="65" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Reason Online Code" />
-	<field id="66" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ISO Response Code Indicator" />
-	<field id="67" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag- Token B5" />
-	<field id="68" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Send Card Block" />
-	<field id="69" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Send Put Data" />
+	<field id="crypDataInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Crypto Info Data" />
+	<field id="crypData" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Crypto Info Data" />
+	<field id="tvrInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - TVR" />
+	<field id="tvr" length="10" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="TVR" />
+	<field id="apCrypInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - ARQC" />
+	<field id="apCryp" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Cryptogram  (ARQC � TC)" />
+	<field id="amntAuthInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Amount Authorized " />
+	<field id="amntAuth" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount Authorized" />
+	<field id="amntOtrInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Amount Other" />
+	<field id="amntOtr" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Amount Other" />
+	<field id="apIchProfInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Application Interchange Profile (AIP)" />
+	<field id="apIchProf" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Interchange Profile (AIP)" />
+	<field id="apTranCntInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Application Transaction Counter (ATC)" />
+	<field id="apTranCnt" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application Transaction Counter (ATC)" />
+	<field id="terCtryCodInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Terminal Country Code" />
+	<field id="terCtryCod" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal Country Code" />
+	<field id="tranCurCodInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Transaction Currency Code" />
+	<field id="tranCurCod" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction  Currency Code" />
+	<field id="tranDateInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Tran Date" />
+	<field id="tranDate" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Date" />
+	<field id="tranTypeInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Tran Type" />
+	<field id="tranType" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Transaction Type" />
+	<field id="unpNum" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Unpredictable Number" />
+	<field id="issApDataInd" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Unpredictable Number" />
+	<field id="issApDataLn" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Issuer Application Data" />
+	<field id="issApData" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Issuer Appliaction Data Len" />
+	<field id="visaLn" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Visa Len" />
+	<field id="dKeyInd" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Derivation Key Index " />
+	<field id="crypVer" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Cryptogram Version Number" />
+	<field id="cardVerRes" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Card Verification Results" />
+	<field id="filler" length="50" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Filler" />
+	<field id="terSerialInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Terminal Serial Number" />
+	<field id="terSerial" length="8" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal serial Number" />
+	<field id="emvTerCapInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - EMV Terminal Capability" />
+	<field id="emvTerCap" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="EMV Terminal Capability" />
+	<field id="emvTerTypInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - EMV Terminal Type" />
+	<field id="emvTerTyp" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="EMV Terminal Type" />
+	<field id="appVerInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Appl Version Number" />
+	<field id="appVer" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Appl Version Number" />
+	<field id="cvmResultInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - CVM Results" />
+	<field id="cvmResult" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="CVM Results" />
+	<field id="dFileInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Dedicated File Name" />
+	<field id="dFileLn" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dedicated File Name Len" />
+	<field id="dFile" length="32" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dedicated File Name" />
+	<field id="appPanSeqInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Appl PAN Seq Number" />
+	<field id="appPanSeq" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Application PAN Seq Number" />
+	<field id="issAuthDataInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Issuer Authentication Data" />
+	<field id="issAuthDataLn" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Issuer Authentication Data LEN" />
+	<field id="arpc" length="16" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ARPC" />
+	<field id="arpcRespCode" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ARPC Resp. Code" />
+	<field id="issDep" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Dependiente del Emisor" />
+	<field id="tknB4Ind" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag - Token B4" />
+	<field id="ptSrvEntMod" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PT. SRV. Entry Mode" />
+	<field id="termEntCap" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Terminal Eentry Capability" />
+	<field id="lastEmvStatus" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Last EMV Status" />
+	<field id="dataSuspect" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Data Suspect" />
+	<field id="deviceInfo" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Device Info" />
+	<field id="reasOnliCode" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Reason Online Code" />
+	<field id="isoRespCodeInd" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="ISO Response Code Indicator" />
+	<field id="tknB5Ind" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Flag- Token B5" />
+	<field id="sendCardBlock" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Send Card Block" />
+	<field id="sendPutData" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Send Put Data" />
 </group>

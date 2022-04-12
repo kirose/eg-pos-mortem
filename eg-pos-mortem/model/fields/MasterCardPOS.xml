@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<group name="MasterCardPOS" parser="MasterCard">
-	<field id="2" length="2" maxLength="19" mask=".+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Primary account number (PAN)" />
-	<field id="35" length="2" maxLength="37" mask="[0-9]{8,19}(=|D).+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.VarFieldParser" name="Track 2 data" />
-</group>

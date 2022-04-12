@@ -11,3 +11,4 @@ eg-pos-mortem/stress/*
 fimet-core/target/*
 fimet-utils/target/*
 fimet-parser/target/*
+/.metadata/

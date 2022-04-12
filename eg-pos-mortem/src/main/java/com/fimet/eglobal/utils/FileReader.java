@@ -1,12 +1,15 @@
 package com.fimet.eglobal.utils;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import com.fimet.utils.FileUtils;
 
-public class FileReader {
+
+public class FileReader implements Closeable {
 	private static final int DEFAULT_BUFFER_SIZE = 1024;
 	private static final byte ASCII_NEW_LINE = (byte)10;
 	private FileInputStream reader;
@@ -83,6 +86,10 @@ public class FileReader {
 		}
 		return -1;
 	}
+	public void close() {
+		FileUtils.close(reader);
+		eof = true;
+	}
 	public static void main(String[] args) throws IOException {
 		File file = new File("D:\\eclipse\\wsfimetboot\\eg-pos-mortem\\Rawcom\\BBVA-ISS-VISA-MC-B1-01_220327.1");//new File("D:\\eclipse\\wsfimetboot\\eg-pos-mortem\\Rawcom\\BBVA-ACQ-INT-B1-01_220327.1");
 		FileReader reader = new FileReader(file);
@@ -90,15 +97,6 @@ public class FileReader {
 		while ((line = reader.nextLine())!=null) {
 			System.out.println(new String(line));
 		}
-	}
-	public void close() {
-		if (reader!=null) {
-			try {
-				reader.close();
-				reader = null;
-				eof = true;
-			} catch (Exception e) {}
-		}
-		
+		reader.close();
 	}
 }
