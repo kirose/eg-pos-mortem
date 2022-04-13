@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<group name="Desc28"><!-- -->
+<group name="Desc28"><!-- Card On File -->
 	<field id="date" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="FECHA DE CONCILIACION" />
 	<field id="type" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="TIPO DESC" />
 	<field id="site" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="SITE ORIGEN" />

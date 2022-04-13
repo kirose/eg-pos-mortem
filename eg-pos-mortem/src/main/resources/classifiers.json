@@ -41,7 +41,7 @@
 		},
 		"Recurrente": {
 			"$.acq.req.22.1":"01",
-			"$.acq.req.63.PJ":{"matches":"^2.341..3004$"}
+			"$.acq.req.63.C4":{"matches":"^2.341..3004$"}
 		},
 		"Moto": {
 			"$.acq.req.22.1":"01",

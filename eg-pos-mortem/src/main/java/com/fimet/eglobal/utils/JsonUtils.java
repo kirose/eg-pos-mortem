@@ -8,10 +8,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
+
 import com.fimet.eglobal.json.AdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
+import com.jayway.jsonpath.ParseContext;
 
 public final class JsonUtils {
+	private static final Configuration configuration = Configuration.builder().options(Option.SUPPRESS_EXCEPTIONS).build();
+	private static ParseContext parser = JsonPath.using(configuration);
 	private JsonUtils() {
 	}
 	public static <T>T fromResource(String name, Class<T> clazz) throws IOException{
@@ -49,5 +57,8 @@ public final class JsonUtils {
 	public static Map<String,Object> parseJsonAsMap(String json){
 		Type type = new TypeToken<Map<String, Object>>() {}.getType();
 		return AdapterFactory.GSON_PRETTY.fromJson(json, type);
+	}
+	public static DocumentContext jaywayParse(String json){		
+		return parser.parse(json);
 	}
 }

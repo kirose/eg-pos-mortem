@@ -34,26 +34,20 @@ import com.fimet.eglobal.store.Index;
 import com.fimet.eglobal.store.IndexReader;
 import com.fimet.eglobal.store.Store;
 import com.fimet.eglobal.store.StoreException;
-import com.fimet.utils.JsonUtils;
+import com.fimet.eglobal.utils.JsonUtils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Option;
-import com.jayway.jsonpath.ParseContext;
 
 @Service
 public class MatcherService {
 	
 	private static Logger logger = LoggerFactory.getLogger(MatcherService.class);
-	private static final Configuration configuration = Configuration.builder().options(Option.SUPPRESS_EXCEPTIONS).build();
 	private static final Pattern DESC_TIME_PATTERN = Pattern.compile("(\"descTime\":\"[^\"]+\",)");
 	
 	@Autowired private RawcomService rawcomService;
 	@Autowired private DescService descService;
 	@Autowired private ConfigService config;
-	private ParseContext parser = JsonPath.using(configuration);
 	
 	public MatcherResponse analyze(Date start, Date end) throws IOException, StoreException, MatcherException {
 		RawcomResponse rawRes = rawcomService.analyze(start, end);
@@ -95,13 +89,18 @@ public class MatcherService {
 				match.setDesc(jsonDesc);
 			}
 			String jsonMatch = createJsonMatch(idxRaw.getKey(), jsonRaw, jsonDesc);
+			
 			storeMatch.save(idxRaw.getKey(), jsonMatch);
-			DocumentContext json = parser.parse(jsonMatch);
+			
+			DocumentContext json = JsonUtils.jaywayParse(jsonMatch);
+			
 			List<Classification> classifications = classify(json);
 			JsonObject result = new JsonObject();
 			result.addProperty("key", idxRaw.getKey());
 			addClassifications(result, classifications);
+			
 			validate(result, classifications, json);
+			
 			save(storeRule, idxRaw.getKey(), result);
 		}
 		idxRdrRaw.close();

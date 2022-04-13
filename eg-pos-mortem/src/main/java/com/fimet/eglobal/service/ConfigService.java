@@ -47,20 +47,23 @@ public class ConfigService {
 	private File matchOutputFolder;
 
 	private Rules rules;
-	//private HashMap<String, IParser> parsers;
+
+	private File reportOutputFolder;
 	
 	public ConfigService(
 			@Value("${eglobal.path.match.output}") String matchOutputPath,
 			@Value("${eglobal.path.rawcom.output}") String rawcomOutputPath,
 			@Value("${eglobal.path.rawcom.input}") String rawcomInputPath,
 			@Value("${eglobal.path.desc.output}") String descOutputPath,
-			@Value("${eglobal.path.desc.input}") String descInputPath
+			@Value("${eglobal.path.desc.input}") String descInputPath,
+			@Value("${eglobal.path.report.output}") String reportOutputPath
 			) {
 		matchOutputFolder  = new File(matchOutputPath);
 		rawcomInputFolder  = new File(rawcomInputPath);
 		rawcomOutputFolder = new File(rawcomOutputPath);
 		descInputFolder  = new File(descInputPath);
 		descOutputFolder = new File(descOutputPath);
+		reportOutputFolder = new File(reportOutputPath);
 	}
 	@PostConstruct
 	private void start() throws IOException {
@@ -109,5 +112,8 @@ public class ConfigService {
 	}
 	public int getDescQueueSize() {
 		return descQueueSize;
+	}
+	public File getReportOutput() {
+		return reportOutputFolder;
 	}
 }

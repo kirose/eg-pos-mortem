@@ -20,7 +20,10 @@
 	<field id="19" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Acquiring institution (country code)" />
 	<field id="20" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="PAN extended (country code)" />
 	<field id="21" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Forwarding institution (country code)" />
-	<field id="22" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service entry mode" />
+	<field id="22" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service entry mode">
+		<field id="22.1" length="2" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PAN/date entry mode" />
+		<field id="22.2" length="1" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="PIN entry capability" />
+	</field>
 	<field id="23" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Application PAN sequence number" />
 	<field id="24" length="3" mask="[0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Function code (ISO 8583:1993), or network international identifier (NII)" />
 	<field id="25" length="2" mask="[A-Z0-9]+" converterValue="EbcdicToAscii" converterLength="EbcdicToAscii" parser="com.fimet.parser.field.FixedFieldParser" name="Point of service condition code" />
