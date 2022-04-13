@@ -44,7 +44,7 @@ public class ReportService {
 			idxVal = idxRdrVal.next();
 			String jsonMtch = dtaRdrMtch.read(idxMtch);
 			String jsonVal = dtaRdrVal.read(idxVal);
-			report.add(jsonMtch, jsonVal);
+			report.add(jsonMtch, jsonVal);// add row to reprot
 		}
 		report.close();
 		String name = report.getName();
