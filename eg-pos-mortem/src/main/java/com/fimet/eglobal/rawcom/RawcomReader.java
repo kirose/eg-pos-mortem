@@ -81,7 +81,7 @@ public class RawcomReader implements Closeable {
 		r.setListProcessor(m.group(5));
 		r.setDirection(m.group(6).charAt(0));
 		r.setLength(Integer.parseInt(m.group(7)));
-		int i = line.indexOf("]", line.indexOf(m.group(7)+"]"));
+		int i = line.indexOf("]", line.indexOf("[Rw: "+m.group(6)+"]")+7);
 		if (r.getLength() == lineBytes.length - i - 2) {
 			r.setIsoMessage(ByteUtils.subArray(lineBytes, i+1, lineBytes.length-1));
 		} else {

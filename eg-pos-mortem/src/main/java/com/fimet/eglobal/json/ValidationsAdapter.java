@@ -14,22 +14,22 @@ import com.google.gson.stream.MalformedJsonException;
 import com.fimet.eglobal.rules.Equals;
 import com.fimet.eglobal.rules.Group;
 import com.fimet.eglobal.rules.IBooleanOperator;
-import com.fimet.eglobal.rules.Rules;
+import com.fimet.eglobal.rules.Validations;
 import com.fimet.eglobal.rules.ValueOperator;
 import com.fimet.utils.StringUtils;
 
-public class RulesAdapter extends TypeAdapter<Rules>{
+public class ValidationsAdapter extends TypeAdapter<Validations>{
 	private static final Pattern FILTER_PATTERN = Pattern.compile("\\[([^\\]]+)\\]\\[([^\\]]+)\\]\\[([^\\]]+)\\](\\[[^\\]]+\\])*");
-	private TypeAdapter<Rules> delegateAdapter;
+	private TypeAdapter<Validations> delegateAdapter;
 	private TypeAdapter<Group> groupAdapter;
-	public RulesAdapter(TypeAdapter<Rules> delegateAdapter) {
+	public ValidationsAdapter(TypeAdapter<Validations> delegateAdapter) {
 		this.delegateAdapter = delegateAdapter;
 		this.groupAdapter = AdapterFactory.GSON.getAdapter(Group.class);
 	}
 	@Override
-	public Rules read(JsonReader in) throws IOException {
+	public Validations read(JsonReader in) throws IOException {
 		in.beginObject();
-		Rules rules = new Rules();
+		Validations rules = new Validations();
 		List<Group> groups = new ArrayList<Group>();
 		String pattern;
  		while (in.hasNext() && in.peek() == JsonToken.NAME) {
@@ -72,7 +72,7 @@ public class RulesAdapter extends TypeAdapter<Rules>{
 		}
 	} 
 	@Override
-	public void write(JsonWriter out, Rules value) throws IOException {
+	public void write(JsonWriter out, Validations value) throws IOException {
 		delegateAdapter.write(out, value);
 	}
 }

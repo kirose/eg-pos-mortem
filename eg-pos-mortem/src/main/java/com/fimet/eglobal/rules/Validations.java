@@ -2,7 +2,7 @@ package com.fimet.eglobal.rules;
 
 import java.util.List;
 
-public class Rules {
+public class Validations {
 	private List<Group> groups;
 	public List<Group> getGroups() {
 		return groups;

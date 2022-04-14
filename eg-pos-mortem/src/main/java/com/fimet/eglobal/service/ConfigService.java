@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fimet.eglobal.model.Connection;
-import com.fimet.eglobal.rules.Rules;
+import com.fimet.eglobal.rules.Validations;
 import com.fimet.eglobal.model.Classifier;
 import com.fimet.eglobal.model.Classifiers;
 import com.fimet.eglobal.utils.JsonUtils;
@@ -46,7 +46,7 @@ public class ConfigService {
 
 	private File matchOutputFolder;
 
-	private Rules rules;
+	private Validations validations;
 
 	private File reportOutputFolder;
 	
@@ -71,8 +71,8 @@ public class ConfigService {
 		logger.info("classifiers:{}",classifiers);
 		connections = JsonUtils.fromResource("connections.json", new TypeToken<Map<String, Connection>>() {}.getType());
 		logger.info("connections:{}",connections);
-		rules  = JsonUtils.fromResource("rules.json", Rules.class);
-		logger.info("rules:{}",rules);
+		validations  = JsonUtils.fromResource("validations.json", Validations.class);
+		logger.info("rules:{}",validations);
 	}
 	public Map<String, Classifier> getClassifiers() {
 		return classifiers;
@@ -107,13 +107,13 @@ public class ConfigService {
 	public File getMatchOutputFolder() {
 		return matchOutputFolder;
 	}
-	public Rules getRules() {
-		return rules;
+	public Validations getValidations() {
+		return validations;
 	}
 	public int getDescQueueSize() {
 		return descQueueSize;
 	}
-	public File getReportOutput() {
+	public File getReportOutputFolder() {
 		return reportOutputFolder;
 	}
 }

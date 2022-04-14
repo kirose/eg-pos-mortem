@@ -30,12 +30,11 @@ public class ReportController {
 	@GetMapping("/create")
 	public ResponseEntity<?> create(
 			@RequestParam String name,
-			@RequestParam String idMatcher,
-			@RequestParam String idValidations) {
+			@RequestParam String id) {
 		try {
-			logger.info("report for range name:{}, matcher:{}, validations:{}", name, idMatcher, idValidations);
+			logger.info("report for range name:{}, id:{}", name, id);
 			long t1 = System.currentTimeMillis();
-			ReportResponse response = reportService.create(name, idMatcher, idValidations);
+			ReportResponse response = reportService.create(name, id);
 			long t2 = System.currentTimeMillis();
 			response.setStartExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t1)));
 			response.setEndExecution(DateUtils.formatyyyyMMddhhmmssSSS(new Date(t2)));

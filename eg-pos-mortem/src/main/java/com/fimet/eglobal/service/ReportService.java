@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fimet.eglobal.reports.IReport;
-import com.fimet.eglobal.reports.ReportMpuBBVA;
+import com.fimet.eglobal.reports.ReportMpul;
 import com.fimet.eglobal.reports.ReportResponse;
 import com.fimet.eglobal.store.DataReader;
 import com.fimet.eglobal.store.Index;
 import com.fimet.eglobal.store.IndexReader;
+import com.fimet.utils.FileUtils;
 
 @Service
 public class ReportService {
@@ -25,38 +26,52 @@ public class ReportService {
 	
 	public ReportService() {}
 	@PostConstruct
-	private void start() throws IOException {
-	}
+	private void start() throws IOException {}
 	
-	public ReportResponse create(String reportName, String idMatcher, String idValidations) throws IOException {
-		logger.debug("Analiyze matcher:{}, validations:{}", idMatcher, idValidations);
-		IReport report = newReport(reportName);
-		
-		IndexReader idxRdrMtch  = new IndexReader(new File(config.getRawcomOutputFolder(), "Match-index-"+idMatcher+".txt"));
-		DataReader dtaRdrMtch   = new DataReader(new File(config.getRawcomOutputFolder(), "Match-data-"+idMatcher+".txt"));
-		IndexReader idxRdrVal = new IndexReader(new File(config.getDescOutputFolder(), "RuleVal-index-"+idValidations+".txt"));
-		DataReader dtaRdrVal  = new DataReader(new File(config.getDescOutputFolder(), "RuleVal-data-"+idValidations+".txt"));
-		Index idxMtch;
-		Index idxVal;
-		
-		while (idxRdrMtch.hasNext() && idxRdrVal.hasNext()) {
-			idxMtch = idxRdrMtch.next();
-			idxVal = idxRdrVal.next();
-			String jsonMtch = dtaRdrMtch.read(idxMtch);
-			String jsonVal = dtaRdrVal.read(idxVal);
-			report.add(jsonMtch, jsonVal);// add row to reprot
+	public ReportResponse create(String reportName, String id) throws Exception {
+		logger.debug("Analiyze id:{}", id);
+		IndexReader idxRdrMtch = null;
+		DataReader dtaRdrMtch = null;
+		IndexReader idxRdrVal = null;
+		DataReader dtaRdrVal = null;
+		IReport report = null;
+		try {
+			report = newReport(reportName);
+			
+			idxRdrMtch  = new IndexReader(new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt"));
+			dtaRdrMtch   = new DataReader(new File(config.getRawcomOutputFolder(), "Match-data-"+id+".txt"));
+			idxRdrVal = new IndexReader(new File(config.getDescOutputFolder(), "Validations-index-"+id+".txt"));
+			dtaRdrVal  = new DataReader(new File(config.getDescOutputFolder(), "Validations-data-"+id+".txt"));
+			
+			Index idxMtch;
+			Index idxVal;
+			
+			while (idxRdrMtch.hasNext() && idxRdrVal.hasNext()) {
+				idxMtch = idxRdrMtch.next();
+				idxVal = idxRdrVal.next();
+				String jsonMtch = dtaRdrMtch.read(idxMtch);
+				String jsonVal = dtaRdrVal.read(idxVal);
+				try {
+					report.add(jsonMtch, jsonVal);
+				} catch (Exception e) {
+					logger.error("Error adding transation:{} to report:{}",idxMtch.getKey(),report.getName());
+				}
+			}
+			return new ReportResponse(report.getName());
+		} catch (Exception e){
+			logger.error("Report exception",e);
+			throw e;
+		} finally {
+			FileUtils.close(report);
+			FileUtils.close(idxRdrMtch);
+			FileUtils.close(dtaRdrMtch);
+			FileUtils.close(idxRdrVal);
+			FileUtils.close(dtaRdrVal);
 		}
-		report.close();
-		String name = report.getName();
-		idxRdrMtch.close();
-		dtaRdrMtch.close();
-		idxRdrVal.close();
-		dtaRdrVal.close();
-		return new ReportResponse(name);
 	}
-	private IReport newReport(String reportName) {
-		if ("MPU".equals(reportName)) {
-			return new ReportMpuBBVA(config);
+	private IReport newReport(String reportName) throws IOException {
+		if ("MPUL".equals(reportName)) {
+			return new ReportMpul(config);
 		}
 		return null;
 	}

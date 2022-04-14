@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import com.fimet.eglobal.JPaths;
 import com.fimet.eglobal.classification.IRule;
 import com.fimet.eglobal.desc.DescResponse;
-import com.fimet.eglobal.matcher.Match;
 import com.fimet.eglobal.matcher.MatcherException;
 import com.fimet.eglobal.matcher.MatcherResponse;
 import com.fimet.eglobal.model.Classification;
@@ -68,8 +67,8 @@ public class MatcherService {
 		File data = new File(config.getRawcomOutputFolder(), "Match-data-"+id+".txt");
 		File index = new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt");
 		Store storeMatch = new Store(index, data);
-		data = new File(config.getRawcomOutputFolder(), "RuleVal-data-"+id+".txt");
-		index = new File(config.getRawcomOutputFolder(), "RuleVal-index-"+id+".txt");
+		data = new File(config.getRawcomOutputFolder(), "Validations-data-"+id+".txt");
+		index = new File(config.getRawcomOutputFolder(), "Validations-index-"+id+".txt");
 		Store storeRule = new Store(index, data);
 		while (idxRdrRaw.hasNext()) {
 			idxRaw = idxRdrRaw.next();
@@ -82,26 +81,28 @@ public class MatcherService {
 				}
 			}
 			String jsonRaw = dtaRdrRaw.read(idxRaw);
-			Match match = new Match(jsonRaw);
 			String jsonDesc = null;
 			if (matches) {
 				jsonDesc = dtaRdrDesc.read(idxDesc);
-				match.setDesc(jsonDesc);
 			}
-			String jsonMatch = createJsonMatch(idxRaw.getKey(), jsonRaw, jsonDesc);
-			
-			storeMatch.save(idxRaw.getKey(), jsonMatch);
-			
-			DocumentContext json = JsonUtils.jaywayParse(jsonMatch);
-			
-			List<Classification> classifications = classify(json);
-			JsonObject result = new JsonObject();
-			result.addProperty("key", idxRaw.getKey());
-			addClassifications(result, classifications);
-			
-			validate(result, classifications, json);
-			
-			save(storeRule, idxRaw.getKey(), result);
+			try {
+				String jsonMatch = createJsonMatch(idxRaw.getKey(), jsonRaw, jsonDesc);
+				
+				storeMatch.save(idxRaw.getKey(), jsonMatch);
+				DocumentContext json = JsonUtils.jaywayParse(jsonMatch);
+				List<Classification> classifications = classify(json);
+				JsonObject result = new JsonObject();
+				result.addProperty("key", idxRaw.getKey());
+				String classifier = json.read(JPaths.ACQ_CLASSIFIER);
+				result.addProperty("classifier", classifier);
+				addClassifications(result, classifications);
+				
+				validate(result, classifications, json);
+				
+				save(storeRule, idxRaw.getKey(), result);
+			} catch (Exception e) {
+				logger.error("Matcher processing exception",e);
+			}
 		}
 		idxRdrRaw.close();
 		dtaRdrRaw.close();
@@ -167,7 +168,7 @@ public class MatcherService {
 	public JsonObject validate(JsonObject root, List<Classification> classifications, DocumentContext json) {
 		JsonArray results = new JsonArray();
 		root.add("validations", results);
-		for (Group group : config.getRules().getGroups()) {
+		for (Group group : config.getValidations().getGroups()) {
 			if (group.matches(classifications, json)) {
 				for (Rule rule : group.getRules()) {
 					JsonObject result = evaluateRule(rule, json);

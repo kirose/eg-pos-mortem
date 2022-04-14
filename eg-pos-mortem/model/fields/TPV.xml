@@ -136,7 +136,7 @@
 		<field id="63.ET" length="2" maxLength="255" mask="(?s).+" parser="com.fimet.parser.field.tpv.TpvTokenVarFieldParser" name="Token ET" />
 		<field id="63.EW" length="2" maxLength="255" mask="(?s).+" parser="com.fimet.parser.field.tpv.TpvTokenVarFieldParser" name="Token EW" />
 		<field id="63.EX" length="2" maxLength="255" mask="(?s).+" parser="com.fimet.parser.field.tpv.TpvTokenVarFieldParser" name="Token EX" />
-		<field id="63.EY" length="2" maxLength="255" mask="(?s).+" parser="com.fimet.parser.field.tpv.TpvTokenVarFieldParser" name="Token EY" />
+		<field id="63.EY" length="2" maxLength="255" mask="(?s).+" converterValue="AsciiToHex" parser="com.fimet.parser.field.tpv.TpvTokenVarFieldParser" name="Token EY" />
 		<field id="63.EZ" length="2" maxLength="255" mask="(?s).+" parser="com.fimet.parser.field.tpv.TpvTokenEZVarFieldParser" name="Token EZ">
 			<field id="63.EZ.1" length="20" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Key Serial Number" />
 			<field id="63.EZ.2" length="7" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="Contador Real de Cifrados " />

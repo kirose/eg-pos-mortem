@@ -17,7 +17,7 @@ public final class DateUtils {
 	public static final SimpleDateFormat hh_mm_ss_FMT = new SimpleDateFormat("hh:mm:ss");
 	public static final SimpleDateFormat hhmmss000_FMT = new SimpleDateFormat("hh:mm:ss.000");
 	public static final SimpleDateFormat yyyyMMdd_hhmmssSSS_FMT = new SimpleDateFormat("yyyyMMdd hh:mm:ss.SSS");
-	public static final SimpleDateFormat hhmmssSSS_FMT = new SimpleDateFormat("hh:mm:ss.SSS");
+	public static final SimpleDateFormat hhmmssSSS_FMT = new SimpleDateFormat("HH:mm:ss.SSS");
 	public static final SimpleDateFormat YYMMDD_hhmmss = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
 	public static final SimpleDateFormat TIMESTAMP_FMT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.0");
 	public static final SimpleDateFormat TIMESTAMP_DAY_FMT = new SimpleDateFormat("yyyy-MM-dd 00:00:00.0");

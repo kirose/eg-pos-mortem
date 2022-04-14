@@ -46,7 +46,13 @@ public class DescService {
  		
 		String mmddyy = new SimpleDateFormat("MMddyy").format(start);
 		File fileBase = new File(configService.getDescInputFolder(), "desc"+mmddyy+".pos.LR.1.desa");
+		if (!fileBase.exists()) {
+			fileBase = new File(configService.getDescInputFolder(), "desc"+mmddyy+".pos.LR.1.txt");
+		}
 		File fileAdditional = new File(configService.getDescInputFolder(), "desc"+mmddyy+".pos.LR.1.AD.desa");
+		if (!fileAdditional.exists()) {
+			fileAdditional = new File(configService.getDescInputFolder(), "desc"+mmddyy+".pos.LR.1.AD.txt");
+		}
  		DescRequest req = new DescRequest(start, end, fileBase, fileAdditional, configService.getDescCacheSize());
  		
  		String id = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());

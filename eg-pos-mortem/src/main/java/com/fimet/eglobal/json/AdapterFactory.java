@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 import com.fimet.eglobal.model.Connection;
 import com.fimet.eglobal.rules.Group;
 import com.fimet.eglobal.rules.Rule;
-import com.fimet.eglobal.rules.Rules;
+import com.fimet.eglobal.rules.Validations;
 import com.fimet.eglobal.model.Classification;
 import com.fimet.eglobal.model.Classifier;
 import com.fimet.eglobal.model.Classifiers;
@@ -34,7 +34,7 @@ public class AdapterFactory extends JMessageAdapterFactory {
 	private static final Type operativeType = new TypeToken<Classification>() {}.getType();
 	private static final Type operativeGroupType = new TypeToken<Classifier>() {}.getType();
 	private static final Type parserType = new TypeToken<IParser>() {}.getType();
-	private static final Type rulesType = new TypeToken<Rules>() {}.getType();
+	private static final Type rulesType = new TypeToken<Validations>() {}.getType();
 	private static final Type groupType = new TypeToken<Group>() {}.getType();
 	private static final Type ruleType = new TypeToken<Rule>() {}.getType();
 	private static final Type classifiersType = new TypeToken<Classifiers>() {}.getType();
@@ -48,7 +48,7 @@ public class AdapterFactory extends JMessageAdapterFactory {
 		} else if (type.getType().equals(connectionType)) {
 			return (TypeAdapter<T>)new ConnectionAdapter((TypeAdapter<Connection>)gson.getDelegateAdapter(this, type));
 		} else if (type.getType().equals(rulesType)) {
-			return (TypeAdapter<T>)new RulesAdapter((TypeAdapter<Rules>)gson.getDelegateAdapter(this, type));
+			return (TypeAdapter<T>)new ValidationsAdapter((TypeAdapter<Validations>)gson.getDelegateAdapter(this, type));
 		} else if (type.getType().equals(groupType)) {
 			return (TypeAdapter<T>)new GroupAdapter((TypeAdapter<Group>)gson.getDelegateAdapter(this, type));
 		} else if (type.getType().equals(ruleType)) {

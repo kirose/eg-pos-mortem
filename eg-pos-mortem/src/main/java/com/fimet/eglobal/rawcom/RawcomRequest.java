@@ -167,12 +167,16 @@ public class RawcomRequest {
 							if (connection.isSanitizeHex()) {
 								iso = sanitizeHex(iso);
 							}
-							IMessage msg = parser.parseMessage(iso);
-							String mti = (String)msg.getProperty(IMessage.MTI);
-							r.setMti(Integer.parseInt(mti));
-							r.setType(RawcomType.get(mti));
-							r.setMessage(msg);
-							sortedList.add(r);
+							try {
+								IMessage msg = parser.parseMessage(iso);
+								String mti = (String)msg.getProperty(IMessage.MTI);
+								r.setMti(Integer.parseInt(mti));
+								r.setType(RawcomType.get(mti));
+								r.setMessage(msg);
+								sortedList.add(r);
+							} catch (Exception ex) {
+								logger.error("Parse exception ",ex);
+							}
 						} else {
 							break;
 						}

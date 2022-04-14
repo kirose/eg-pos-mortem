@@ -1,12 +1,13 @@
 package com.fimet.eglobal.store;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
 import com.fimet.utils.ByteUtils;
 
-public class IndexReader {
+public class IndexReader implements Closeable {
 	private FileInputStream reader;
 	byte[] buffer = new byte[512];
 	private int index;
@@ -80,5 +81,6 @@ public class IndexReader {
 		while ((n = reader.next())!=null) {
 			System.out.println(n);
 		}
+		reader.close();
 	}
 }

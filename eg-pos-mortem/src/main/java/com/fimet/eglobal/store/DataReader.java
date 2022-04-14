@@ -1,5 +1,6 @@
 package com.fimet.eglobal.store;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -8,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class DataReader {
+public class DataReader implements Closeable {
 	private static Logger logger = LoggerFactory.getLogger(DataReader.class);
 	private RandomAccessFile reader;
 	public DataReader(File file) throws IOException {
