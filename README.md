@@ -4,7 +4,7 @@ This is a tool for post analysis ISO-Transaction
 
 ## MatcherService
 
-Create Marcher file withr Rawcom and Desc matches
+Create Marcher file with Rawcom and Desc matches
 Create Validations file with validations results applied on transacions match
 
 ## ReportService
