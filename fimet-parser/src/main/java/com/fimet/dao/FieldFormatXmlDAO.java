@@ -6,11 +6,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fimet.FimetException;
-import com.fimet.IPropertiesManager;
 import com.fimet.dao.IFieldFormatDAO;
 import com.fimet.parser.IEFieldFormat;
 import com.fimet.parser.field.FixedFieldParser;
@@ -20,20 +19,16 @@ import com.fimet.utils.parser.NumericParser;
 import com.fimet.xml.EFieldFormatXml;
 import com.fimet.xml.EFieldGroupXml;
 import com.fimet.xml.EFieldGroupsXml;
+
 @Component
 public class FieldFormatXmlDAO implements IFieldFormatDAO<EFieldFormatXml> {
 	private static final String PACKAGE_PARSER_FIELD = FixedFieldParser.class.getName().substring(0,FixedFieldParser.class.getName().length()-FixedFieldParser.class.getSimpleName().length());
-	@Autowired private IPropertiesManager properties;
 	private File file;
-	public FieldFormatXmlDAO() {
+	public FieldFormatXmlDAO(@Value("${field.groups.path:model/fieldGroups.xml}") String path) {
+		file = new File(path).getAbsoluteFile();
 	}
 	@PostConstruct
 	public void start() {
-		String path = properties.getString("field.groups.path","model/fieldGroups.xml");
-		if (path == null) {
-			throw new PersistenceException("Must declare parsers.path property in fimet.xml");
-		}
-		file = new File(path).getAbsoluteFile();
 	}
 	@Override
 	public List<EFieldFormatXml> findByGroup(String name) {

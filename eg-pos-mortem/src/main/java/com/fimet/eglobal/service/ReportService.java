@@ -36,12 +36,12 @@ public class ReportService {
 		DataReader dtaRdrVal = null;
 		IReport report = null;
 		try {
-			report = newReport(reportName);
+			report = newReport(reportName, id);
 			
 			idxRdrMtch  = new IndexReader(new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt"));
-			dtaRdrMtch   = new DataReader(new File(config.getRawcomOutputFolder(), "Match-data-"+id+".txt"));
+			dtaRdrMtch   = new DataReader(new File(config.getRawcomOutputFolder(), "Match-"+id+".txt"));
 			idxRdrVal = new IndexReader(new File(config.getDescOutputFolder(), "Validations-index-"+id+".txt"));
-			dtaRdrVal  = new DataReader(new File(config.getDescOutputFolder(), "Validations-data-"+id+".txt"));
+			dtaRdrVal  = new DataReader(new File(config.getDescOutputFolder(), "Validations-"+id+".txt"));
 			
 			Index idxMtch;
 			Index idxVal;
@@ -69,9 +69,9 @@ public class ReportService {
 			FileUtils.close(dtaRdrVal);
 		}
 	}
-	private IReport newReport(String reportName) throws IOException {
+	private IReport newReport(String reportName, String id) throws IOException {
 		if ("MPUL".equals(reportName)) {
-			return new ReportMpul(config);
+			return new ReportMpul(config, id);
 		}
 		return null;
 	}

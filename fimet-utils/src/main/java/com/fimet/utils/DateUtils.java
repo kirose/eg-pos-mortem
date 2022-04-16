@@ -19,6 +19,7 @@ public final class DateUtils {
 	public static final SimpleDateFormat yyyyMMdd_hhmmssSSS_FMT = new SimpleDateFormat("yyyyMMdd hh:mm:ss.SSS");
 	public static final SimpleDateFormat hhmmssSSS_FMT = new SimpleDateFormat("HH:mm:ss.SSS");
 	public static final SimpleDateFormat YYMMDD_hhmmss = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+	public static final SimpleDateFormat yyyyMMdd_hhmmss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public static final SimpleDateFormat TIMESTAMP_FMT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.0");
 	public static final SimpleDateFormat TIMESTAMP_DAY_FMT = new SimpleDateFormat("yyyy-MM-dd 00:00:00.0");
 	public static final SimpleDateFormat DATE_TIME_FMT = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
@@ -26,6 +27,7 @@ public final class DateUtils {
 	public static final SimpleDateFormat MMddyy_FMT = new SimpleDateFormat("MMddyy");
 	public static final SimpleDateFormat yyMMdd_FMT = new SimpleDateFormat("yyMMdd");
 	public static final SimpleDateFormat HTTP_FMT = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+	public static final SimpleDateFormat yyyyMMddHHmmss_FMT = new SimpleDateFormat("yyyyMMddHHmmss");
 	static {
 		HTTP_FMT.setTimeZone(TimeZone.getTimeZone("GMT"));
 	}
@@ -254,7 +256,16 @@ public final class DateUtils {
 	public static String formatyyMMddhhmmss(Date date) {
 		return YYMMDD_hhmmss.format(date);
 	}
+	public static String formatyyyyMMdd_hhmmss(Date date) {
+		return yyyyMMdd_hhmmss.format(date);
+	}
 	public static String formathhmmssSSS(Date date) {
 		return hhmmssSSS_FMT.format(date);
+	}
+	public static String formatyyyyMMddHHmmss(Date date) {
+		return yyyyMMddHHmmss_FMT.format(date);
+	}
+	public static Date parseyyyyMMddHHmmss(String date) throws ParseException {
+		return yyyyMMddHHmmss_FMT.parse(date);
 	}
 }

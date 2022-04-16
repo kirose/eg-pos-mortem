@@ -33,7 +33,7 @@ public class DataReader implements Closeable {
 	}
 	public static void main(String[] args) throws IOException {
 		IndexReader ir = new IndexReader(new File("Analyzed/Rawcom-index-20220409-194048.txt"));
-		DataReader dr = new DataReader(new File("Analyzed/Rawcom-data-20220409-194048.txt"));
+		DataReader dr = new DataReader(new File("Analyzed/Rawcom-20220409-194048.txt"));
 		Index n;
 		while ((n = ir.next())!=null) {
 			String data = dr.read(n);

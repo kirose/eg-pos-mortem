@@ -7,42 +7,16 @@
 	<parser name="RawcomTPV" class="com.fimet.parser.mx.TpvParser" converter="None" fieldGroup="TPV" />
 	<parser name="RawcomVisa" class="com.fimet.parser.mx.VisaParser" converter="None" fieldGroup="Visa" />
 	<parser name="RawcomMasterCard" class="com.fimet.parser.mx.MasterCardParser" converter="HexToAscii" fieldGroup="RawcomMasterCard" />
-	<!-- parser name="Bancomer" class="com.fimet.parser.mx.NationalParser" converter="EbcdicToAscii" fieldGroup="National" /-->
 	<parser name="Desc00" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc00" />
-	<!-- parser name="Desc01" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc01" /-->
-	<!-- parser name="Desc02" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc02" /-->
 	<parser name="Desc03" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc03" />
-	<!-- parser name="Desc04" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc04" /-->
-	<!-- parser name="Desc05" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc05" /-->
 	<parser name="Desc06" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc06" />
-	<!-- parser name="Desc07" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc07" /-->
 	<parser name="Desc08V" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc08V" />
 	<parser name="Desc08M" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc08M" />
-	<!-- parser name="Desc09" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc09" /-->
-	<!-- parser name="Desc10" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc10" /-->
-	<!-- parser name="Desc11" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc11" /-->
-	<!-- parser name="Desc12" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc12" /-->
-	<!-- parser name="Desc13" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc13" /-->
 	<parser name="Desc14" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc14" />
-	<!-- parser name="Desc15" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc15" /-->
-	<!-- parser name="Desc16" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc16" /-->
-	<!-- parser name="Desc17" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc17" /-->
-	<!-- parser name="Desc18" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc18" /-->
-	<!-- parser name="Desc19" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc19" /-->
-	<!-- parser name="Desc20" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc20" /-->
-	<!-- parser name="Desc21" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc21" /-->
-	<!-- parser name="Desc22" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc22" /-->
-	<!-- parser name="Desc23" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc23" /-->
-	<!-- parser name="Desc24" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc24" /-->
-	<!-- parser name="Desc25" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc25" /-->
 	<parser name="Desc26" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc26" />
-	<!--parser name="Desc27" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc27" /-->
 	<parser name="Desc28" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc28" />
-	<!--parser name="Desc29" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc29" /-->
-	<!--parser name="Desc30" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc30" /-->
 	<parser name="Desc31" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc31" />
 	<parser name="Desc32MPE" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc32MPE" />
 	<parser name="Desc32VPE" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc32VPE" />
-	<!--parser name="Desc33" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc33" /-->
 	<parser name="Desc34" class="com.fimet.parser.mx.LayoutParser" converter="None" fieldGroup="Desc34" />
 </parsers>

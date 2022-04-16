@@ -2,7 +2,6 @@ package com.fimet.eglobal.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,17 +56,17 @@ public class MatcherService {
 	public MatcherResponse analyze(RawcomResponse rawRes, DescResponse descRes) throws IOException, StoreException, MatcherException {
 		logger.debug("Analiyze rawcom:{}, desc:{}", rawRes.getId(), descRes.getId());
 		IndexReader idxRdrRaw  = new IndexReader(new File(config.getRawcomOutputFolder(), "Rawcom-index-"+rawRes.getId()+".txt"));
-		DataReader dtaRdrRaw   = new DataReader(new File(config.getRawcomOutputFolder(), "Rawcom-data-"+rawRes.getId()+".txt"));
+		DataReader dtaRdrRaw   = new DataReader(new File(config.getRawcomOutputFolder(), "Rawcom-"+rawRes.getId()+".txt"));
 		IndexReader idxRdrDesc = new IndexReader(new File(config.getDescOutputFolder(), "Desc-index-"+descRes.getId()+".txt"));
 		DataReader dtaRdrDesc  = new DataReader(new File(config.getDescOutputFolder(), "Desc-data-"+descRes.getId()+".txt"));
 		Index idxRaw;
 		Index idxDesc = null;
 		boolean matches = false;
- 		String id = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
-		File data = new File(config.getRawcomOutputFolder(), "Match-data-"+id+".txt");
+ 		String id = rawRes.getId();
+		File data = new File(config.getRawcomOutputFolder(), "Match-"+id+".txt");
 		File index = new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt");
 		Store storeMatch = new Store(index, data);
-		data = new File(config.getRawcomOutputFolder(), "Validations-data-"+id+".txt");
+		data = new File(config.getRawcomOutputFolder(), "Validations-"+id+".txt");
 		index = new File(config.getRawcomOutputFolder(), "Validations-index-"+id+".txt");
 		Store storeRule = new Store(index, data);
 		while (idxRdrRaw.hasNext()) {

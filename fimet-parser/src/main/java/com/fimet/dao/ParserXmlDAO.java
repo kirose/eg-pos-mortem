@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fimet.FimetException;
-import com.fimet.Manager;
 import com.fimet.dao.IParserDAO;
 import com.fimet.utils.XmlUtils;
 import com.fimet.utils.converter.Converter;
@@ -18,7 +18,8 @@ import com.fimet.xml.EParsersXml;
 @Component
 public class ParserXmlDAO implements IParserDAO<EParserXml> {
 	private File file;
-	public ParserXmlDAO() {
+	public ParserXmlDAO(@Value("${parsers.path:model/parsers.xml}") String path) {
+		file = new File(path).getAbsoluteFile();
 	}
 	@Override
 	public EParserXml findByName(String name) {
@@ -62,11 +63,6 @@ public class ParserXmlDAO implements IParserDAO<EParserXml> {
 	@PostConstruct
 	@Override
 	public void start() {
-		String path = Manager.getProperty("parsers.path","model/parsers.xml");
-		if (path == null) {
-			throw new PersistenceException("Must declare parsers.path property in fimet.xml");
-		}
-		file = new File(path).getAbsoluteFile();
 	}
 	@Override
 	public void reload() {

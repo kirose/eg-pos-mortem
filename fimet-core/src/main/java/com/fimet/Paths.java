@@ -15,22 +15,22 @@ public class Paths {
 	public static File USECASES = new File("usecases");
 	public static File STRESS = new File("stress");
 	
-	static {
-		create(FIMET);
-		create(STORE);
-		create(TASKS);
-		create(MODEL);
-		create(BIN);
-		create(SRC);
-		create(LIB);
-		create(LOGS);
-		create(TMP);
-		create(USECASES);
-		create(STRESS);
-	}
-	private static void create(File path) {
-		if (!path.exists()) {
-			path.mkdirs();
-		}
-	}
+//	static {
+//		create(FIMET);
+//		create(STORE);
+//		create(TASKS);
+//		create(MODEL);
+//		create(BIN);
+//		create(SRC);
+//		create(LIB);
+//		create(LOGS);
+//		create(TMP);
+//		create(USECASES);
+//		create(STRESS);
+//	}
+//	private static void create(File path) {
+//		if (!path.exists()) {
+//			path.mkdirs();
+//		}
+//	}
 }

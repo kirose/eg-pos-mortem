@@ -5,11 +5,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.fimet.Manager;
 import com.fimet.dao.IFieldGroupDAO;
-import com.fimet.dao.PersistenceException;
 import com.fimet.utils.XmlUtils;
 import com.fimet.xml.EFieldGroupXml;
 import com.fimet.xml.EFieldGroupsXml;
@@ -17,7 +16,8 @@ import com.fimet.xml.EFieldGroupsXml;
 @Component
 public class FieldGroupXmlDAO implements IFieldGroupDAO<EFieldGroupXml> {
 	private File file;
-	public FieldGroupXmlDAO() {
+	public FieldGroupXmlDAO(@Value("${field.groups.path:model/fieldGroups.xml}") String path) {
+		file = new File(path).getAbsoluteFile();
 	}
 
 	@Override
@@ -46,11 +46,6 @@ public class FieldGroupXmlDAO implements IFieldGroupDAO<EFieldGroupXml> {
 	@PostConstruct
 	@Override
 	public void start() {
-		String path = Manager.getProperty("field.groups.path","model/fieldGroups.xml");
-		if (path == null) {
-			throw new PersistenceException("Must declare parsers.path property in fimet.xml");
-		}
-		file = new File(path).getAbsoluteFile();
 	}
 
 	@Override

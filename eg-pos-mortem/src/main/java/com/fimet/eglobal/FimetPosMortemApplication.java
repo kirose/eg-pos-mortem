@@ -2,8 +2,8 @@ package com.fimet.eglobal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +18,25 @@ import com.fimet.Manager;
 @Configuration
 @ComponentScan(basePackages= {"com.fimet"})
 @SpringBootApplication
-public class FimetPosMortemApplication {
+//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+public class FimetPosMortemApplication extends SpringBootServletInitializer {
 	
 	@SuppressWarnings("unused")
 	@Autowired private Manager manager;
 	private static Logger logger = LoggerFactory.getLogger(FimetPosMortemApplication.class);
 	private volatile static ConfigurableApplicationContext context;
+	
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(FimetPosMortemApplication.class, args);
 		setContext(context);
 		logger.info("ApplicationContext starting main "+context);
 	}
+	
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(FimetPosMortemApplication.class);
+    }
+	
     public static void restart() {
     	restart(getContext());
     }

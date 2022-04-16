@@ -54,8 +54,8 @@ public class DescService {
 			fileAdditional = new File(configService.getDescInputFolder(), "desc"+mmddyy+".pos.LR.1.AD.txt");
 		}
  		DescRequest req = new DescRequest(start, end, fileBase, fileAdditional, configService.getDescCacheSize());
- 		
- 		String id = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+ 		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
+ 		String id = fmt.format(start)+"-"+fmt.format(end);
 		File data = new File(configService.getRawcomOutputFolder(), "Desc-data-"+id+".txt");
 		File index = new File(configService.getRawcomOutputFolder(), "Desc-index-"+id+".txt");
 		req.setFileData(data);

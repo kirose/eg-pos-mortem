@@ -37,7 +37,7 @@ import com.google.gson.JsonObject;
 public class RawcomService {
 	private static Logger logger = LoggerFactory.getLogger(RawcomService.class);
 	
-	@Autowired private ConfigService configService;
+	@Autowired private ConfigService config;
 	
 	public RawcomService() {}
 	@PostConstruct
@@ -45,9 +45,13 @@ public class RawcomService {
 	}
 	private List<File> findRawcomFiles(Date start, Date end) {
 		List<File> files = new ArrayList<File>();
-		String yyMMdd = DateUtils.formatyyMMdd(start);
-		for (String name : configService.getRawcomFiles()) {
-			files.add(new File(configService.getRawcomInputFolder(), name+"_"+yyMMdd+".1"));
+		String yyMMdd = DateUtils.formatyyMMdd(start)+".";
+		File folder = config.getRawcomInputFolder();
+		File[] allFiles = folder.listFiles();
+		for (File file : allFiles) {
+			if (file.getName().contains(yyMMdd)) {
+				files.add(file);
+			}
 		}
 		return files;
 	}
@@ -57,12 +61,12 @@ public class RawcomService {
  		if (files == null || files.isEmpty()) {
  			return new RawcomResponse();
  		}
- 		RawcomRequest req = new RawcomRequest(
- 				start, end, files, configService);
+ 		RawcomRequest req = new RawcomRequest(start, end, files, config);
  		long t1 = System.currentTimeMillis();
- 		String id = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
-		File data = new File(configService.getRawcomOutputFolder(), "Rawcom-data-"+id+".txt");
-		File index = new File(configService.getRawcomOutputFolder(), "Rawcom-index-"+id+".txt");
+ 		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
+ 		String id = fmt.format(start)+"-"+fmt.format(end);
+		File data = new File(config.getRawcomOutputFolder(), "Rawcom-"+id+".txt");
+		File index = new File(config.getRawcomOutputFolder(), "Rawcom-index-"+id+".txt");
 		req.setFileData(data);
 		req.setFileIndex(index);
 		Store store = new Store(req.getFileIndex(), req.getFileData());
@@ -101,7 +105,7 @@ public class RawcomService {
 				cache.removeAll(parts);
 				save(req.getStore(), parts);
 			}
-			if (cache.size() < configService.getRawcomCacheSize()/2) {
+			if (cache.size() < config.getRawcomCacheSize()/2) {
 				req.populateCache();
 			}
 		}
@@ -114,7 +118,7 @@ public class RawcomService {
 		if (res!=null) {
 			max = res.getTime();
 		} else {
-			max = new Date(req.getTime().getTime()+configService.getRawcomRequestTimeout());
+			max = new Date(req.getTime().getTime()+config.getRawcomRequestTimeout());
 		}
 		Iterator<Rawcom> it = cache.iterator();
 		Rawcom test;
@@ -134,7 +138,7 @@ public class RawcomService {
 	}
 	private Rawcom findResponse(SortedList<Rawcom> cache, Rawcom req) {
 		Iterator<Rawcom> it = cache.iterator();
-		Date max = new Date(req.getTime().getTime()+configService.getRawcomRequestTimeout());
+		Date max = new Date(req.getTime().getTime()+config.getRawcomRequestTimeout());
 		Rawcom res;
 		while (it.hasNext()) {
 			res = it.next();
@@ -175,7 +179,7 @@ public class RawcomService {
 		
 		Map<String, JsonObject> map = new HashMap<String, JsonObject>();
 		for (Rawcom r : parts) {
-			Connection connection = configService.getConnections().get(r.getIap());
+			Connection connection = config.getConnections().get(r.getIap());
 			JsonObject alias;
 			if (map.containsKey(connection.getAlias())) {
 				alias = map.get(connection.getAlias());

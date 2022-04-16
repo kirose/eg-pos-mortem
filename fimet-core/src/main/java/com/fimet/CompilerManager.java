@@ -1,7 +1,6 @@
 package com.fimet;
 
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -13,29 +12,32 @@ import javax.tools.ToolProvider;
 
 import org.slf4j.LoggerFactory;import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fimet.utils.CompilationException;
 import com.fimet.utils.FileUtils;
+import com.fimet.utils.StringUtils;
 
 @Component
 public class CompilerManager extends AbstractManager implements ICompilerManager {
 	private static Logger logger = LoggerFactory.getLogger(CompilerManager.class);
-	@Autowired private PropertiesManager properties;
 	@Autowired private IClassLoaderManager classLoaderManager;
-	private String javaHome;
 	private String extdirs;
 	private String classpath;
-	public CompilerManager() {
-	}
-	@PostConstruct
-	@Override
-	public void start() {
+	public CompilerManager(
+		@Value("${fimet.java.home:#{null}}") String javaHome,
+		@Value("${fimet.extdirs:#{null}}") String extdirs
+			) {
 		classpath = System.getProperty("java.class.path");
 		if (classpath.startsWith("fimet-server")&&classpath.endsWith(".jar")) {
-			extdirs = properties.getString("fimet.extdirs", Paths.LIB.getAbsolutePath());
+			if (StringUtils.isBlank(extdirs)) {
+				extdirs = Paths.LIB.getAbsolutePath();
+			}
 		}
-		javaHome = properties.getString("fimet.java.home", System.getProperty("java.home"));
+		if (StringUtils.isBlank(javaHome)) {
+			javaHome = System.getProperty("java.home");
+		}
 		logger.info(
 			"Load cononfig"
 			+"\n\tclasspath:"+classpath
@@ -45,6 +47,11 @@ public class CompilerManager extends AbstractManager implements ICompilerManager
 			+"\n\tTo:"+javaHome
 		);
 		System.setProperty("java.home", javaHome);
+	}
+	@PostConstruct
+	@Override
+	public void start() {
+
 	}
 	@Override
 	public Class<?> compileAndReload(String className, String source) {

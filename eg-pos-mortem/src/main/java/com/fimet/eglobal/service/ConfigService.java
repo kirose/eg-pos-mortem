@@ -2,7 +2,6 @@ package com.fimet.eglobal.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -26,17 +25,13 @@ public class ConfigService {
 	
 	private Map<String,Classifier> classifiers;
 	private Map<String, Connection> connections;
-	@Value("${eglobal.desc.queue.size}")
+	@Value("${eglobal.desc.queue.size:20}")
 	private int descQueueSize;
-	
-	@Value("${eglobal.desc.cache.size}")
+	@Value("${eglobal.desc.cache.size:100}")
 	private int descCacheSize;
-	
-	@Value("${eglobal.rawcom.files}")
-	private List<String> rawcomFiles;
-	@Value("${eglobal.rawcom.cache.size}")
+	@Value("${eglobal.rawcom.cache.size:100}")
 	private int rawcomCacheSize;
-	@Value("${eglobal.rawcom.request.timeout}")
+	@Value("${eglobal.rawcom.request.timeout:9000}")
 	private int rawcomRequestTimeout;
 	private File rawcomOutputFolder;
 	private File rawcomInputFolder;
@@ -51,12 +46,12 @@ public class ConfigService {
 	private File reportOutputFolder;
 	
 	public ConfigService(
-			@Value("${eglobal.path.match.output}") String matchOutputPath,
-			@Value("${eglobal.path.rawcom.output}") String rawcomOutputPath,
-			@Value("${eglobal.path.rawcom.input}") String rawcomInputPath,
-			@Value("${eglobal.path.desc.output}") String descOutputPath,
-			@Value("${eglobal.path.desc.input}") String descInputPath,
-			@Value("${eglobal.path.report.output}") String reportOutputPath
+			@Value("${eglobal.path.rawcom.output:analyzed}") String rawcomOutputPath,
+			@Value("${eglobal.path.rawcom.input:rawcom}") String rawcomInputPath,
+			@Value("${eglobal.path.desc.output:analyzed}") String descOutputPath,
+			@Value("${eglobal.path.desc.input:desc}") String descInputPath,
+			@Value("${eglobal.path.match.output:analyzed}") String matchOutputPath,
+			@Value("${eglobal.path.reports.output:reports}") String reportOutputPath
 			) {
 		matchOutputFolder  = new File(matchOutputPath);
 		rawcomInputFolder  = new File(rawcomInputPath);
@@ -68,20 +63,17 @@ public class ConfigService {
 	@PostConstruct
 	private void start() throws IOException {
 		classifiers = JsonUtils.fromResource("classifiers.json", Classifiers.class).getClassifiers();
-		logger.info("classifiers:{}",classifiers);
+		logger.info("classifiers loaded:{}",(classifiers!=null?classifiers.size():0));
 		connections = JsonUtils.fromResource("connections.json", new TypeToken<Map<String, Connection>>() {}.getType());
-		logger.info("connections:{}",connections);
+		logger.info("connections loaded:{}",(connections!=null?connections.size():0));
 		validations  = JsonUtils.fromResource("validations.json", Validations.class);
-		logger.info("rules:{}",validations);
+		logger.info("validations loaded:{}",(validations!=null&&validations.getGroups()!=null?validations.getGroups().size():0));
 	}
 	public Map<String, Classifier> getClassifiers() {
 		return classifiers;
 	}
 	public Map<String, Connection> getConnections() {
 		return connections;
-	}
-	public List<String> getRawcomFiles() {
-		return rawcomFiles;
 	}
 	public int getRawcomCacheSize() {
 		return rawcomCacheSize;

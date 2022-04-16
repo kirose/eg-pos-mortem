@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,14 +39,13 @@ public class ReportMpul implements IReport {
 	private Map<Integer, XSSFRow> rows = new HashMap<Integer, XSSFRow>();
 	private Map<String, Integer> mapCells;
 	private ConfigService cfg;
-	public ReportMpul(ConfigService cfg) throws IOException {
+	public ReportMpul(ConfigService cfg, String id) throws IOException {
 		this.cfg = cfg;
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd-hhmmss");
 		mapCells = new HashMap<String, Integer>();
 		mapCells.put(JPaths.ACQ_REQ_IAP, 7);
 		mapCells.put(JPaths.ISS_REQ_IAP, 8);
-		this.name = "MPUL-"+fmt.format(new Date());
-		this.file = new File("reports/"+name+".xlsx");
+		this.name = "MPUL-"+id;
+		this.file = new File(cfg.getReportOutputFolder(), name+".xlsx");
 		FileUtils.copy(new File("templates/MPUL-Template.xlsx"), file);
 		init();
 	}
