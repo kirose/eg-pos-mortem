@@ -1,5 +1,6 @@
 package com.fimet.eglobal.json;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -26,9 +27,9 @@ public class ConnectionAdapter extends TypeAdapter<Connection>{
 	public ConnectionAdapter(TypeAdapter<Connection> delegateAdapter) {
 		this.delegateAdapter = delegateAdapter;
 		try {
-			classifiers = JsonUtils.fromResource("classifiers.json", Classifiers.class).getClassifiers();
+			classifiers = JsonUtils.fromFile(new File("resources/classifiers.json"), Classifiers.class).getClassifiers();
 		} catch (IOException e) {
-			logger.error("Error parsing classifiers.json", e);
+			throw new RuntimeException(e);
 		}
 	}
 	@Override

@@ -30,7 +30,7 @@ import com.jayway.jsonpath.DocumentContext;
 
 public class ReportMpul implements IReport {
 
-	private static Logger logger = LoggerFactory.getLogger(ConfigService.class);
+	private static Logger logger = LoggerFactory.getLogger(ReportMpul.class);
 
 	private String name;
 	private File file;

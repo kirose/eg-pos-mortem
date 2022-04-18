@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "eglobal.path.desc.input",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.desc.input'"
+  },
+  {
+    "name": "eglobal.path.desc.output",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.desc.output'"
+  },
+  {
+    "name": "eglobal.path.rawcom.input",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.rawcom.input'"
+  },
+  {
+    "name": "eglobal.path.rawcom.output",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.rawcom.output'"
+  },
+  {
+    "name": "eglobal.path.match.output",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.match.output'"
+  },
+  {
+    "name": "eglobal.path.reports.output",
+    "type": "java.lang.String",
+    "description": "A description for 'eglobal.path.reports.output'"
+  }
+]}

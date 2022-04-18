@@ -58,7 +58,7 @@ public class MatcherService {
 		IndexReader idxRdrRaw  = new IndexReader(new File(config.getRawcomOutputFolder(), "Rawcom-index-"+rawRes.getId()+".txt"));
 		DataReader dtaRdrRaw   = new DataReader(new File(config.getRawcomOutputFolder(), "Rawcom-"+rawRes.getId()+".txt"));
 		IndexReader idxRdrDesc = new IndexReader(new File(config.getDescOutputFolder(), "Desc-index-"+descRes.getId()+".txt"));
-		DataReader dtaRdrDesc  = new DataReader(new File(config.getDescOutputFolder(), "Desc-data-"+descRes.getId()+".txt"));
+		DataReader dtaRdrDesc  = new DataReader(new File(config.getDescOutputFolder(), "Desc-"+descRes.getId()+".txt"));
 		Index idxRaw;
 		Index idxDesc = null;
 		boolean matches = false;

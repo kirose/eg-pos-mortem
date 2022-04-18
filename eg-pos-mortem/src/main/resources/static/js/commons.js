@@ -11,7 +11,7 @@ function formatDateyyyy_mm_dd(d) {
 	return [year, month, day].join('-');
 }
 function modalInfo(title, text) {
-	//$('#modal').remove();
+	$('#modal').remove();
 	//$('body').removeClass();
 	//$('body').removeAttr("style");
 
@@ -36,7 +36,7 @@ function modalInfo(title, text) {
 }
 
 function modalConfirmation(title, text) {
-	//$('#modal').remove();
+	$('#modal').remove();
 	//$('body').removeClass();
 	//$('body').removeAttr("style");
 	

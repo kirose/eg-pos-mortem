@@ -34,7 +34,7 @@ public class RawcomRequest {
 	private Store store;
 	private Map<String, RawcomReader> readers;
 	private int cacheSize;
-	Map<String, Connection> mapConnections;
+	private Map<String, Connection> mapConnections;
 	private int requestTimeout;
 	public RawcomRequest(Date start, Date end, List<File> files, ConfigService cfg) { 
 		this.start = start;

@@ -1,5 +1,6 @@
 package com.fimet.eglobal.utils;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -21,6 +22,16 @@ public final class JsonUtils {
 	private static final Configuration configuration = Configuration.builder().options(Option.SUPPRESS_EXCEPTIONS).build();
 	private static ParseContext parser = JsonPath.using(configuration);
 	private JsonUtils() {
+	}
+	public static <T>T fromFile(File file, Type type) throws IOException{
+		String json = new String(Files.readAllBytes(file.toPath()));
+		T instance = AdapterFactory.GSON.fromJson(json, type);
+		return instance;
+	}
+	public static <T>T fromFile(File file, Class<T> clazz) throws IOException{
+		String json = new String(Files.readAllBytes(file.toPath()));
+		T instance = clazz.cast(AdapterFactory.GSON.fromJson(json, clazz));
+		return instance;
 	}
 	public static <T>T fromResource(String name, Class<T> clazz) throws IOException{
 		URL resource = JsonUtils.class.getResource("../../../../"+name);

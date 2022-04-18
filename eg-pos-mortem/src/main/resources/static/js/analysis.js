@@ -56,8 +56,36 @@ $(document).ready(function() {
 			modalInfo('Error',xhr.responseText).show();
 	    });
 	});
+	$('#btnDeleteSelection').click(function(){
+		modalConfirmation('Confirmacion','¿Desea eliminar los registros seleccionados?')
+		.ok(function(){
+			var names = '';
+			$('#tblMatches').find('.table-info').each(function(index){
+				var row = $(this);
+				var cols = row.find('td');
+				var start = $(cols['1']).text().replaceAll(' ','').replaceAll(':','').replaceAll('-','');
+				var end = $(cols['2']).text().replaceAll(' ','').replaceAll(':','').replaceAll('-','');
+				names = names + start + '-' + end + ',';
+			});
+			if (names.length > 0){
+				$('#btnDeleteSelection').prop('disabled', true);
+				names = names.substring(0,names.length-1);
+				$.get( "/matcher/delete", { name: names })
+				.done(function(data) {
+					$('#btnDeleteSelection').prop('disabled', false);
+					populateTableExecutions();
+					modalInfo('Registros eliminados',data).show();
+				})
+				.fail(function(xhr, status, error) {
+					$('#btnDeleteSelection').prop('disabled', false);
+					populateTableExecutions();
+					modalInfo('Error',xhr.responseText).show();
+				});
+			}
+		}).show();
+	});
 	$('#btnDeleteAll').click(function(){
-		modalConfirmation('Confirmacion','¿Desea eliminar todos los registros?')
+		modalConfirmation('Confirmacion','¿Desea eliminar todos los resultados de ejecuciones?')
 		.ok(function(){
 			$.get( "/matcher/deleteAll")
 			.done(function(data) {

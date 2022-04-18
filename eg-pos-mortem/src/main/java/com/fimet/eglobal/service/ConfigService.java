@@ -44,8 +44,10 @@ public class ConfigService {
 	private Validations validations;
 
 	private File reportOutputFolder;
+	private File resources;
 	
 	public ConfigService(
+			@Value("${eglobal.path.resources:resources}") String resourcesPath,
 			@Value("${eglobal.path.rawcom.output:analyzed}") String rawcomOutputPath,
 			@Value("${eglobal.path.rawcom.input:rawcom}") String rawcomInputPath,
 			@Value("${eglobal.path.desc.output:analyzed}") String descOutputPath,
@@ -53,6 +55,7 @@ public class ConfigService {
 			@Value("${eglobal.path.match.output:analyzed}") String matchOutputPath,
 			@Value("${eglobal.path.reports.output:reports}") String reportOutputPath
 			) {
+		resources = new File(resourcesPath);
 		matchOutputFolder  = new File(matchOutputPath);
 		rawcomInputFolder  = new File(rawcomInputPath);
 		rawcomOutputFolder = new File(rawcomOutputPath);
@@ -62,11 +65,11 @@ public class ConfigService {
 	}
 	@PostConstruct
 	private void start() throws IOException {
-		classifiers = JsonUtils.fromResource("classifiers.json", Classifiers.class).getClassifiers();
+		classifiers = JsonUtils.fromFile(new File(resources,"classifiers.json"), Classifiers.class).getClassifiers();
 		logger.info("classifiers loaded:{}",(classifiers!=null?classifiers.size():0));
-		connections = JsonUtils.fromResource("connections.json", new TypeToken<Map<String, Connection>>() {}.getType());
+		connections = JsonUtils.fromFile(new File(resources,"connections.json"), new TypeToken<Map<String, Connection>>() {}.getType());
 		logger.info("connections loaded:{}",(connections!=null?connections.size():0));
-		validations  = JsonUtils.fromResource("validations.json", Validations.class);
+		validations  = JsonUtils.fromFile(new File(resources,"validations.json"), Validations.class);
 		logger.info("validations loaded:{}",(validations!=null&&validations.getGroups()!=null?validations.getGroups().size():0));
 	}
 	public Map<String, Classifier> getClassifiers() {

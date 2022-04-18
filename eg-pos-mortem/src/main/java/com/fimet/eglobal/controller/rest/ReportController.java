@@ -57,8 +57,11 @@ public class ReportController {
 	public ResponseEntity<?> delete(@RequestParam String name){
 		try {
 			logger.debug("delete:{}",name);
-			FileUtils.deleteFiles(new File(config.getReportOutputFolder(),name));
-			return new ResponseEntity<String>(String.format("%s eliminado",name), HttpStatus.OK);
+			String[] names = name.split(",");
+			for (int i = 0; i < names.length; i++) {
+				FileUtils.delete(new File(config.getReportOutputFolder(),names[i]));
+			}
+			return new ResponseEntity<String>(String.format("%s eliminado(s)",name), HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Internal Error",e);
 			return new ResponseEntity<String>("Internal error "+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

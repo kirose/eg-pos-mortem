@@ -56,7 +56,7 @@ public class DescService {
  		DescRequest req = new DescRequest(start, end, fileBase, fileAdditional, configService.getDescCacheSize());
  		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
  		String id = fmt.format(start)+"-"+fmt.format(end);
-		File data = new File(configService.getRawcomOutputFolder(), "Desc-data-"+id+".txt");
+		File data = new File(configService.getRawcomOutputFolder(), "Desc-"+id+".txt");
 		File index = new File(configService.getRawcomOutputFolder(), "Desc-index-"+id+".txt");
 		req.setFileData(data);
 		req.setFileIndex(index);
@@ -81,6 +81,9 @@ public class DescService {
 	}
 	public void matchDescAndAdditionals(DescRequest req) throws StoreException, NumberFormatException, IOException {
 		DescReader reader = req.getReaderBase();
+		if (reader==null) {
+			return;
+		}
 		Desc desc;
 		Map<Long, List<String>> cache = req.getAdditionalsCache();
 		IMessage msg;

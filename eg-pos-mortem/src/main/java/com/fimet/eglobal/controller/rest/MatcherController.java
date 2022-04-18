@@ -68,7 +68,27 @@ public class MatcherController {
 			return new ResponseEntity<String>("Internal error "+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+	@GetMapping("/delete")
+	public ResponseEntity<?> delete(@RequestParam String name){
+		try {
+			logger.debug("delete:{}",name);
+			String[] names = name.split(",");
+			for (int i = 0; i < names.length; i++) {
+				FileUtils.delete(new File(config.getDescOutputFolder(),"Desc-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getDescOutputFolder(),"Desc-index-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getRawcomOutputFolder(),"Rawcom-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getRawcomOutputFolder(),"Rawcom-index-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getMatchOutputFolder(),"Validations-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getMatchOutputFolder(),"Validations-index-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getMatchOutputFolder(),"Match-"+names[i]+".txt"));
+				FileUtils.delete(new File(config.getMatchOutputFolder(),"Match-index-"+names[i]+".txt"));
+			}
+			return new ResponseEntity<String>(String.format("%s eliminado(s)",name), HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Internal Error",e);
+			return new ResponseEntity<String>("Internal error "+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	@GetMapping("/deleteAll")
 	public ResponseEntity<?> deleteAll(){
 		try {

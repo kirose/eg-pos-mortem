@@ -68,30 +68,34 @@ $(document).ready(function() {
 		$('#tblReports').find('.table-info').each(function(index){
 			var row = $(this);
 			var cols = row.find('td');
-			var name = $(cols[0]).text();
+			var name = $(cols[1]).text();
 			window.location.href = "report/download/"+name
 		});
 	});
 	$('#btnDeleteReport').click(function(){
 		modalConfirmation('Confirmacion','¿Desea eliminar los reportes seleccionados?')
 		.ok(function(){
+			var names = '';
 			$('#tblReports').find('.table-info').each(function(index){
 				var row = $(this);
 				var cols = row.find('td');
+				names = names + $(cols[1]).text() + ',';
+			});
+			if (names.length > 0){
 				$('#btnDeleteReport').prop('disabled', true);
-				var name = $(cols[1]).text();
-				$.get( "/report/delete", { name: name })
+				names = names.substring(0,names.length-1);
+				$.get( "/report/delete", { name: names })
 				.done(function(data) {
 					$('#btnDeleteReport').prop('disabled', false);
 					populateTableReports();
-					modalInfo('Rerpotes eliminados',name).show();
+					modalInfo('Reporte eliminado',name).show();
 				})
 				.fail(function(xhr, status, error) {
 					$('#btnDeleteReport').prop('disabled', false);
 					populateTableReports();
 					modalInfo('Error',xhr.responseText).show();
-			    });
-			});
+				});
+			}
 		}).show();
 	});
 	$('#btnDeleteReportAll').click(function(){
