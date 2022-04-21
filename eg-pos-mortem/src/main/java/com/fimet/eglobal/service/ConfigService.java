@@ -2,6 +2,7 @@ package com.fimet.eglobal.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fimet.eglobal.model.Connection;
+import com.fimet.eglobal.reports.ReportType;
 import com.fimet.eglobal.rules.Validations;
 import com.fimet.eglobal.model.Classifier;
 import com.fimet.eglobal.model.Classifiers;
@@ -45,9 +47,11 @@ public class ConfigService {
 
 	private File reportOutputFolder;
 	private File resources;
-	
+	private File templates;
+	private Map<ReportType, Validations> mapValidations = new HashMap<ReportType, Validations>();
 	public ConfigService(
 			@Value("${eglobal.path.resources:resources}") String resourcesPath,
+			@Value("${eglobal.path.templates:templates}") String templatesPath,
 			@Value("${eglobal.path.rawcom.output:analyzed}") String rawcomOutputPath,
 			@Value("${eglobal.path.rawcom.input:rawcom}") String rawcomInputPath,
 			@Value("${eglobal.path.desc.output:analyzed}") String descOutputPath,
@@ -56,6 +60,7 @@ public class ConfigService {
 			@Value("${eglobal.path.reports.output:reports}") String reportOutputPath
 			) {
 		resources = new File(resourcesPath);
+		templates = new File(templatesPath);
 		matchOutputFolder  = new File(matchOutputPath);
 		rawcomInputFolder  = new File(rawcomInputPath);
 		rawcomOutputFolder = new File(rawcomOutputPath);
@@ -71,6 +76,14 @@ public class ConfigService {
 		logger.info("connections loaded:{}",(connections!=null?connections.size():0));
 		validations  = JsonUtils.fromFile(new File(resources,"validations.json"), Validations.class);
 		logger.info("validations loaded:{}",(validations!=null&&validations.getGroups()!=null?validations.getGroups().size():0));
+		for (ReportType type : ReportType.values()) {
+			File file = new File(resources,"validations."+type.toString().toLowerCase()+".json");
+			if (file.exists()) {
+				Validations validations  = JsonUtils.fromFile(new File(resources,"validations."+type.toString().toLowerCase()+".json"), Validations.class);
+				mapValidations.put(type, validations);
+				logger.info("validations loaded:{}",(validations!=null&&validations.getGroups()!=null?validations.getGroups().size():0));
+			}
+		}
 	}
 	public Map<String, Classifier> getClassifiers() {
 		return classifiers;
@@ -111,4 +124,13 @@ public class ConfigService {
 	public File getReportOutputFolder() {
 		return reportOutputFolder;
 	}
+	public File getResourcesFolder() {
+		return resources;
+	}
+	public File getTemplatesFolder() {
+		return templates;
+	}
+	public Validations getValidations(ReportType type) {
+		return mapValidations.get(type);
+	} 
 }

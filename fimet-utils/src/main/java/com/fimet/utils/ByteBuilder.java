@@ -202,15 +202,9 @@ public class ByteBuilder implements IWriter {
      * new ByteBiulder(new byte[]{0,1,2,3,4,5,6,7,8}).subarray(1, 5) returns {1,2,3,4}
      * </pre></blockquote>
      *
-     * @param      beginIndex   the beginning index, inclusive.
-     * @param      endIndex     the ending index, exclusive.
+     * @param      start   the beginning index, inclusive.
+     * @param      end     the ending index, exclusive.
      * @return     the specified subarray.
-     * @exception  IndexOutOfBoundsException  if the
-     *             {@code start} is negative, or
-     *             {@code end} is larger than the length of
-     *             this {@code ByteBuilder} object, or
-     *             {@code start} is larger than
-     *             {@code end}.
      */
 	public byte[] subarray(int start, int end) {
         if (start < 0) {

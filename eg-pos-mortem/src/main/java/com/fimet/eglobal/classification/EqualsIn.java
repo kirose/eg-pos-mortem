@@ -1,6 +1,7 @@
 package com.fimet.eglobal.classification;
 
 import java.util.List;
+import static com.fimet.eglobal.utils.StringUtils.prettyJPath;
 
 import com.jayway.jsonpath.DocumentContext;
 
@@ -22,6 +23,6 @@ public class EqualsIn implements IRule {
 		}
 	}
 	public String toString() {
-		return String.format("equals(%s,%s)",address, expected);
+		return String.format("igual(%s,%s)",prettyJPath(address), expected);
 	}
 }

@@ -34,7 +34,7 @@ public class FieldGroupManager extends AbstractManager implements IFieldGroupMan
 	private static Logger logger = LoggerFactory.getLogger(FieldGroupManager.class);
 	@Autowired private IEventManager eventManager;
 	@Autowired private IFieldGroupDAO<? extends IEFieldGroup> dao;
-	@Value("${field.group.autoload:false}")
+	@Value("${fimet.field.group.autoload:false}")
 	private boolean autoload;
 	private Map<String, FieldGroup> mapNameGroup;
 	public FieldGroupManager() {
@@ -42,7 +42,7 @@ public class FieldGroupManager extends AbstractManager implements IFieldGroupMan
 	}
 	@PostConstruct
 	public void start() {
-		logger.info("field.group.autoload:{}", autoload);
+		logger.info("autoload:{}", autoload);
 		reload();
 	}
 	public void reload() {

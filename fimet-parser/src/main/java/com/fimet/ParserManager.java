@@ -37,7 +37,7 @@ public class ParserManager extends AbstractManager implements IParserManager {
 	private static Logger logger = LoggerFactory.getLogger(ParserManager.class);
 	@Autowired private IEventManager eventManager;
 	@Autowired private IParserDAO<? extends IEParser> dao;
-	@Value("${parsers.autoload:false}")
+	@Value("${fimet.parsers.autoload:false}")
 	private boolean autoload;
 	Map<String,IParser> mapNameParsers = new HashMap<>();
 	public ParserManager() {
@@ -45,7 +45,7 @@ public class ParserManager extends AbstractManager implements IParserManager {
 	}
 	@PostConstruct
 	public void start() {
-		logger.info("parsers.autoload:{}", autoload);
+		logger.info("autoload:{}", autoload);
 		if (autoload) {
 			getParsers();
 		}

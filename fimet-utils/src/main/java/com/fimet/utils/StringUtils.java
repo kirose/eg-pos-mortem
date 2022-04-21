@@ -89,17 +89,9 @@ public final class StringUtils {
      * StringUtils.repeat('e', -2) = ""
      * </pre>
      *
-     * <p>Note: this method does not support padding with
-     * <a href="http://www.unicode.org/glossary/#supplementary_character">Unicode Supplementary Characters</a>
-     * as they require a pair of {@code char}s to be represented.
-     * If you are needing to support full I18N of your applications
-     * consider using {@link #repeat(String, int)} instead.
-     * </p>
-     *
      * @param ch  character to repeat
      * @param repeat  number of times to repeat char, negative treated as zero
      * @return String with repeated character
-     * @see #repeat(String, int)
      */
     public static String repeat(final char ch, final int repeat) {
         if (repeat <= 0) {

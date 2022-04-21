@@ -1,6 +1,7 @@
 package com.fimet.eglobal.classification;
 
 import com.jayway.jsonpath.DocumentContext;
+import static com.fimet.eglobal.utils.StringUtils.prettyJPath;
 
 public class NotExists implements IRule {
 	private String jpath;
@@ -14,6 +15,6 @@ public class NotExists implements IRule {
 		return value==null;
 	}
 	public String toString() {
-		return String.format("not exists(%s)",jpath);
+		return String.format("no existe(%s)",prettyJPath(jpath));
 	}
 }

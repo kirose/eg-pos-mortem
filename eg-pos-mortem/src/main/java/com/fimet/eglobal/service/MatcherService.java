@@ -2,9 +2,7 @@ package com.fimet.eglobal.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -24,17 +22,12 @@ import com.fimet.eglobal.model.Classification;
 import com.fimet.eglobal.model.Classifier;
 import com.fimet.eglobal.model.Connection;
 import com.fimet.eglobal.rawcom.RawcomResponse;
-import com.fimet.eglobal.rules.Group;
-import com.fimet.eglobal.rules.Result;
-import com.fimet.eglobal.rules.Rule;
 import com.fimet.eglobal.store.DataReader;
 import com.fimet.eglobal.store.Index;
 import com.fimet.eglobal.store.IndexReader;
 import com.fimet.eglobal.store.Store;
 import com.fimet.eglobal.store.StoreException;
 import com.fimet.eglobal.utils.JsonUtils;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.jayway.jsonpath.DocumentContext;
 
 @Service
@@ -66,9 +59,6 @@ public class MatcherService {
 		File data = new File(config.getRawcomOutputFolder(), "Match-"+id+".txt");
 		File index = new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt");
 		Store storeMatch = new Store(index, data);
-		data = new File(config.getRawcomOutputFolder(), "Validations-"+id+".txt");
-		index = new File(config.getRawcomOutputFolder(), "Validations-index-"+id+".txt");
-		Store storeRule = new Store(index, data);
 		while (idxRdrRaw.hasNext()) {
 			idxRaw = idxRdrRaw.next();
 			matches = false;
@@ -86,19 +76,10 @@ public class MatcherService {
 			}
 			try {
 				String jsonMatch = createJsonMatch(idxRaw.getKey(), jsonRaw, jsonDesc);
-				
-				storeMatch.save(idxRaw.getKey(), jsonMatch);
 				DocumentContext json = JsonUtils.jaywayParse(jsonMatch);
-				List<Classification> classifications = classify(json);
-				JsonObject result = new JsonObject();
-				result.addProperty("key", idxRaw.getKey());
-				String classifier = json.read(JPaths.ACQ_CLASSIFIER);
-				result.addProperty("classifier", classifier);
-				addClassifications(result, classifications);
-				
-				validate(result, classifications, json);
-				
-				save(storeRule, idxRaw.getKey(), result);
+				String classifications = classify(json);
+				jsonMatch = addKeyAndCls(jsonMatch, idxRaw.getKey(), classifications);
+				storeMatch.save(idxRaw.getKey(), jsonMatch);
 			} catch (Exception e) {
 				logger.error("Matcher processing exception",e);
 			}
@@ -107,45 +88,17 @@ public class MatcherService {
 		dtaRdrRaw.close();
 		idxRdrDesc.close();
 		dtaRdrDesc.close();
-		storeRule.close();
 		storeMatch.close();
 		return new MatcherResponse(id);
 		
 	}
-	private void addClassifications(JsonObject json, List<Classification> classifications) {
-		JsonArray items = new JsonArray();
-		for (Classification c : classifications) {
-			items.add(c.getName());
-		}
-		json.add("classifications", items);		
+	private String addKeyAndCls(String jsonMatch, Long key, String classifications) {
+		String keyPty = "\"key\":"+key+",";
+		String keyCls = "\"classifications\":"+classifications+",";
+		return "{"+keyPty + keyCls + jsonMatch.substring(1);
 	}
-
-	private String createJsonMatch(long key, String jsonRaw, String jsonDesc) throws MatcherException {
-		jsonRaw = jsonRaw.trim();
-		if (jsonDesc == null) {
-			return jsonRaw;
-		} else {
-			String keyProperty = "\"key\":"+key+",";
-			jsonDesc = jsonDesc.trim().replace(keyProperty, "");
-			jsonRaw = jsonRaw.trim().replace(keyProperty, "");
-			Matcher m = DESC_TIME_PATTERN.matcher(jsonDesc);
-			String descTime;
-			if (m.find()) {
-				descTime = m.group(1);
-				jsonDesc = jsonDesc.replace(descTime, "");
-			} else {
-				throw new MatcherException("Uknow property descTime");
-			}
-			return "{"
-					 +keyProperty
-					+ descTime
-					+ jsonRaw.substring(1, jsonRaw.length()-1)
-					+ ","+jsonDesc.substring(1, jsonDesc.length()-1)
-				+ "}";			
-		}
-	}
-	private List<Classification> classify(DocumentContext json) {
-		List<Classification> matches = new ArrayList<>();
+	private String classify(DocumentContext json) {
+		StringBuilder matches = new StringBuilder("[");
 		String iap = json.read(JPaths.ACQ_REQ_IAP);
 		Connection connection = config.getConnections().get(iap);
 		Classifier classifier = connection.getClassifier();
@@ -159,48 +112,36 @@ public class MatcherService {
 				}
 			}
 			if (matchesOperative) {
-				matches.add(e.getValue());
+				matches.append("\"").append(e.getValue().getName()).append("\",");
 			}
 		}
-		return matches;
-	}
-	public JsonObject validate(JsonObject root, List<Classification> classifications, DocumentContext json) {
-		JsonArray results = new JsonArray();
-		root.add("validations", results);
-		for (Group group : config.getValidations().getGroups()) {
-			if (group.matches(classifications, json)) {
-				for (Rule rule : group.getRules()) {
-					JsonObject result = evaluateRule(rule, json);
-					if (result!=null) {
-						results.add(result);
-					}
-				}
-			}
+		if (matches.length() > 1) {
+			matches.delete(matches.length()-1, matches.length());
 		}
-		return root;
+		matches.append("]");
+		return matches.toString();
 	}
-	private JsonObject evaluateRule(Rule rule, DocumentContext json) {
-		try {
-			Result eval = rule.eval(json);
-			JsonObject result = new JsonObject();
-			result.addProperty("name", rule.getName());
-			result.addProperty("rule", rule.getOperator().toString());
-			if (eval.getArguments()!=null) {
-				JsonArray args = new JsonArray();
-				for (String arg : eval.getArguments()) {
-					args.add(arg);
-				}
-				result.add("args", args);
+	private String createJsonMatch(long key, String jsonRaw, String jsonDesc) throws MatcherException {
+		jsonRaw = jsonRaw.trim();
+		String keyPty = "\"key\":"+key+",";
+		jsonRaw = jsonRaw.replace(keyPty, "");
+		if (jsonDesc == null) {
+			return jsonRaw;
+		} else {
+			jsonDesc = jsonDesc.trim().replace(keyPty, "");
+			Matcher m = DESC_TIME_PATTERN.matcher(jsonDesc);
+			String descTime;
+			if (m.find()) {
+				descTime = m.group(1);
+				jsonDesc = jsonDesc.replace(descTime, "");
+			} else {
+				throw new MatcherException("Uknow property descTime");
 			}
-			result.addProperty("correct", eval.getValue());
-			return result;
-		} catch (Exception e) {
-			logger.error("Exception in rule:{}, json:",rule,json);
+			return "{"
+					+ descTime
+					+ jsonRaw.substring(1, jsonRaw.length()-1)
+					+ ","+jsonDesc.substring(1, jsonDesc.length()-1)
+				+ "}";			
 		}
-		return null;
-	}
-	private void save(Store store, long key, JsonObject json) throws StoreException {
-		String text = JsonUtils.toJson(json);
-		store.save(key, text);
 	}
 }

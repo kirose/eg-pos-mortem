@@ -1,5 +1,7 @@
 package com.fimet.eglobal.rules;
 
+import static com.fimet.eglobal.utils.StringUtils.prettyJPath;
+
 import com.jayway.jsonpath.DocumentContext;
 
 public class Equals implements IBooleanOperator {
@@ -22,6 +24,6 @@ public class Equals implements IBooleanOperator {
 	}
 	@Override
 	public String toString() {
-		return "equals(" + left + "," + right + ")";
+		return "[igual][" + prettyJPath(left.toString()) + "][" + prettyJPath(right.toString()) + "]";
 	}
 }

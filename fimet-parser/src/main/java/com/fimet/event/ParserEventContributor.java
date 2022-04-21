@@ -1,18 +1,30 @@
 package com.fimet.event;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.fimet.EventManager;
 import com.fimet.FimetException;
 import com.fimet.parser.IEFieldGroup;
 import com.fimet.parser.IEParser;
 import com.fimet.parser.IFieldGroup;
 import com.fimet.parser.IParser;
 
+@Component
 public class ParserEventContributor implements IEventContributor {
 
+	@Autowired private EventManager eventManager;
+	
 	@Override
 	public Object[] getEventTypes() {
 		return ParserEvent.values();
 	}
-
+	@PostConstruct
+	public void init() {
+		eventManager.register(this);
+	}
 	@Override
 	public void fireEvent(IEvent event, IEventListener listener) {
 		ParserEvent type = (ParserEvent)event.getType();

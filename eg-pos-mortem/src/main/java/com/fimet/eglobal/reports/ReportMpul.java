@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -16,162 +18,209 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.fimet.eglobal.JPaths;
 import com.fimet.eglobal.classification.IRule;
 import com.fimet.eglobal.model.Classification;
 import com.fimet.eglobal.model.Classifier;
-import com.fimet.eglobal.model.Validation;
-import com.fimet.eglobal.model.Validations;
 import com.fimet.eglobal.service.ConfigService;
-import com.fimet.eglobal.utils.JsonUtils;
+import com.fimet.eglobal.service.ValidatorService;
+import com.fimet.eglobal.validator.Validation;
 import com.fimet.utils.FileUtils;
+import com.fimet.utils.StringUtils;
 import com.jayway.jsonpath.DocumentContext;
 
+@Scope("prototype")
+@Component
 public class ReportMpul implements IReport {
 
 	private static Logger logger = LoggerFactory.getLogger(ReportMpul.class);
 
+	@Autowired private ConfigService cfg;
+	@Autowired private ValidatorService validatorService;
+
 	private String name;
 	private File file;
 	private XSSFWorkbook workbook;
-	private XSSFSheet sheet;
-	private Map<Integer, XSSFRow> rows = new HashMap<Integer, XSSFRow>();
-	private Map<String, Integer> mapCells;
-	private ConfigService cfg;
-	public ReportMpul(ConfigService cfg, String id) throws IOException {
-		this.cfg = cfg;
-		mapCells = new HashMap<String, Integer>();
-		mapCells.put(JPaths.ACQ_REQ_IAP, 7);
-		mapCells.put(JPaths.ISS_REQ_IAP, 8);
+	private XSSFSheet sheetMpul;
+	private Map<String, Integer> mapRows = new HashMap<String, Integer>();
+	public ReportMpul(String id) throws IOException {
 		this.name = "MPUL-"+id;
-		this.file = new File(cfg.getReportOutputFolder(), name+".xlsx");
-		FileUtils.copy(new File("templates/MPUL-Template.xlsx"), file);
-		init();
 	}
-	private void init() throws IOException {
+	@PostConstruct
+	public void init() throws IOException {
+		this.file = new File(cfg.getReportOutputFolder(), name+".xlsx");
+		FileUtils.copy(new File(cfg.getTemplatesFolder(), "MPUL-Template.xlsx"), file);
 		this.workbook = new XSSFWorkbook(new FileInputStream(file));
-		this.sheet = workbook.getSheetAt(1);
+		this.sheetMpul = workbook.getSheetAt(1);
+		initMapRows();		
+	}
+	private void initMapRows() throws IOException {
 		int startRow = 17;
 		XSSFCell cell;
 		XSSFRow row;
 		for (int i = startRow;;i++) {
-			row = sheet.getRow(i);
+			row = sheetMpul.getRow(i);
 			if (row == null) {
 				break;
 			} else {
 				cell = row.getCell(2);
-				Integer id = getIntValue(cell);
+				String id = getStrValue(cell);
 				if (id == null) {
 					break;
 				}
-				rows.put(id, row);
+				id = StringUtils.leftPad(id, 12, '0');
+				mapRows.put(id, Integer.valueOf(i));
 			}
 		}
 	}
-	private Integer getIntValue(XSSFCell cell) {
+	private String getStrValue(XSSFCell cell) {
 		if (cell == null) {
 			return null;
 		}
 		CellType type = cell.getCellType();
 		if (type == CellType.STRING) {
-			return Integer.valueOf(cell.getStringCellValue());
+			return cell.getStringCellValue().trim();
 		} else if (type == CellType.NUMERIC) {
-			return (int)cell.getNumericCellValue();
+			return ""+((long)cell.getNumericCellValue());
 		} else {
 			return null;
 		}
 	}
 	@Override
-	public void add(String stringJsonMatch, String stringJsonValidations) {
-		DocumentContext json = JsonUtils.jaywayParse(stringJsonMatch);
+	public void add(DocumentContext json) {
 
 		String rrn = json.read("$.acq.req.37");
 		XSSFRow row = findRow(rrn);
-		XSSFCell cell;
 		if (row == null) {
-			logger.warn("Invalid transaction with rrn:{}",rrn);
+			logger.warn("Skiped transaction with rrn:{}",rrn);
 			return;
 		} 
-		
-		Validations vals = JsonUtils.fromJson(stringJsonValidations, Validations.class);
-		
-		setCol9(row, vals);// Tipo de transaccion
-		setCol10(row, json, vals);// Condiciones Acq
-		setCol20(row, json);// PAN
-		setCol21(row, json);// Fuyo al emisor?
-		setCol22(row, json);// Aprovada?
-		setCol26(row, json);// Se genero desc?
-		setCol29(row, vals);// Estatus
-
-		String value;
-		for (Map.Entry<String, Integer> e : mapCells.entrySet()) {
-			value = json.read(e.getKey());
-			if (value != null) {
-				cell = getOrCreateCell(row, e.getValue());
-				cell.setCellValue(value);
-			}
-		}
+		logger.info("MPUL transaccion with rrn:{}",rrn);
+		setColNombreAdq(row, 7, json);
+		//setColNombreEmi(row, 8, json);
+		setColTipoTransacion(row, 9, json);// Tipo de transaccion
+		setColCondicionesReqAcq(row, 10, json);// Condiciones Acq
+		setColTimestamp(row, 11, json);// Timestamp
+		setColPAN(row, 12, json);// PAN
+		evalAndSet(row, 13, json);// Condiciones Req Emi
+		evalAndSet(row, 15, json);// Condiciones Res Emi
+		evalAndSet(row, 17, json);// Condiciones Res Acq
+		evalAndSet(row, 19, json);// Condiciones RC Req
+		evalAndSet(row, 21, json);// Considciones RC Res
+		evalAndSet(row, 23, json);// Condiciones Desc
+		evalAndSet(row, 25, json);// Condiciones especiales
+		setColFluyoEmi(row, 28, json);// Fuyo al emisor?
+		setColFluyoRC(row, 30, json);// Fuyo al RiskCenter?
+		setColAprovadaEmi(row, 32, json);// Aprovada?
+		setColAprovadaAdq(row, 34, json);// Aprovada?
+		setColGuardadaBD(row, 36, json);// Se genero desc?
+		setColGuardadaDesc(row, 38, json);// Se genero desc?
 	}
-	private void setCol26(XSSFRow row, DocumentContext json) {
-		Object desc = json.read(JPaths.DESC0);
-		XSSFCell cell = getOrCreateCell(row, 22);
-		cell.setCellValue(desc!=null?"SI":"NO");
-	}
-	private void setCol22(XSSFRow row, DocumentContext json) {
-		String code = json.read(JPaths.ACQ_RES_39);
-		XSSFCell cell = getOrCreateCell(row, 22);
-		cell.setCellValue("00".equals(code)?"SI":"NO");
-	}
-	private void setCol21(XSSFRow row, DocumentContext json) {
-		Object req = json.read(JPaths.ISS_REQ);
-		XSSFCell cell = getOrCreateCell(row, 21);
-		cell.setCellValue(req != null?"SI":"NO");
-	}
-	private void setCol20(XSSFRow row, DocumentContext json) {
-		String value = json.read(JPaths.ACQ_REQ_PAN);
-		XSSFCell cell = getOrCreateCell(row, 20);
+//	private void setColNombreEmi(XSSFRow row, int col, DocumentContext json) {
+//		String value = json.read(JPaths.ISS_REQ_IAP);
+//		XSSFCell cell = getOrCreateCell(row, col);
+//		cell.setCellValue(value);
+//	}
+	private void setColNombreAdq(XSSFRow row, int col, DocumentContext json) {
+		String value = json.read(JPaths.ACQ_REQ_IAP);
+		XSSFCell cell = getOrCreateCell(row, col);
 		cell.setCellValue(value);
 	}
-	private void setCol10(XSSFRow row, DocumentContext json, Validations vals) {
-		Classifier classifier = cfg.getClassifiers().get(vals.getClassifier());
-		List<String> classifications = vals.getClassifications();
+	private void evalAndSet(XSSFRow row, int col, DocumentContext json) {
+		XSSFCell cellRule = getOrCreateCell(row, col);
+		String value = cellRule.getStringCellValue();
+		XSSFCell cellVals = getOrCreateCell(row, col+1);
+		if (StringUtils.isEmpty(value)) {
+			cellVals.setCellValue("N/A");
+		} else {
+			List<Validation> vals = validatorService.validateBlockRules(json, value);
+			value = vals.stream().map(v->formatValidation(v)).collect(Collectors.joining("\n"));
+			cellVals.setCellValue(value);
+		}
+	}
+	private String formatValidation(Validation v) {
+		if (v.isCorrect()) {
+			return "CORRECTO";
+		} else {
+			return "INCORRECTO:" + String.format(v.getRule(), (Object[])v.getArgs());
+		}	
+	}
+	private void setColGuardadaBD(XSSFRow row, int col, DocumentContext json) {
+		Object desc = json.read(JPaths.DESC0);
+		XSSFCell cell = getOrCreateCell(row, col);
+		if (desc!=null) {
+			cell.setCellValue("SI");
+		} else {// hay que consultar a db
+			cell.setCellValue("NO");
+		}
+	}
+	private void setColAprovadaEmi(XSSFRow row, int col, DocumentContext json) {
+		String value = json.read(JPaths.ISS_RES_39);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue("00".equals(value)?"SI":"NO");
+	}
+	private void setColTimestamp(XSSFRow row, int col, DocumentContext json) {
+		String value = json.read(JPaths.ACQ_REQ_TIME);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(value);
+	}
+	private void setColGuardadaDesc(XSSFRow row, int col, DocumentContext json) {
+		Object desc = json.read(JPaths.DESC0);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(desc!=null?"SI":"NO");
+	}
+	private void setColAprovadaAdq(XSSFRow row, int col, DocumentContext json) {
+		String code = json.read(JPaths.ACQ_RES_39);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue("00".equals(code)?"SI":"NO");
+	}
+	private void setColFluyoRC(XSSFRow row, int col, DocumentContext json) {
+		Object value = json.read(JPaths.RC_REQ);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(value!=null?"SI":"NO");
+	}
+	private void setColFluyoEmi(XSSFRow row, int col, DocumentContext json) {
+		Object req = json.read(JPaths.ISS_REQ);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(req != null?"SI":"NO");
+	}
+	private void setColPAN(XSSFRow row, int col, DocumentContext json) {
+		String value = json.read(JPaths.ACQ_REQ_PAN);
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(value);
+	}
+	private void setColCondicionesReqAcq(XSSFRow row, int col, DocumentContext json) {
+		String classifierName = json.read(JPaths.ACQ_CLASSIFIER);
+		Classifier classifier = cfg.getClassifiers().get(classifierName);
+		List<String> classifications = json.read(JPaths.CLASSIFICATIONS);
 		Map<String, Classification> map = classifier.getClassifications();
 		StringBuilder s = new StringBuilder();
 		for (String classification : classifications) {
 			Classification c = map.get(classification);
 			s.append(c.getName()).append(":");
 			for (IRule rule : c.getRules()) {
-				s.append(rule.toString()).append(",");
+				s.append(rule.toString()).append(" y ");
 			}
 			if (s.length() > 0) {
-				s.delete(s.length()-1, s.length());
+				s.delete(s.length()-3, s.length());
 			}
 			s.append("\n");
 		}
 		if (s.length() > 0) {
 			s.delete(s.length()-1, s.length());
 		}
-		XSSFCell cell = getOrCreateCell(row, 10);
+		XSSFCell cell = getOrCreateCell(row, col);
 		cell.setCellValue(s.toString());		
 	}
-	private void setCol9(XSSFRow row, Validations vals) {
-		String value = vals.getClassifications().stream().collect(Collectors.joining(","));
-		XSSFCell cell = getOrCreateCell(row, 9);
-		cell.setCellValue(value);		
-	}
-	private void setCol29(XSSFRow row, Validations vals) {
-		XSSFCell cell = getOrCreateCell(row, 29);
-		String status = getStatus(vals);
-		cell.setCellValue(status);		
-	}
-	private String getStatus(Validations vals) {
-		for (Validation v : vals.getValidations()) {
-			if (!v.isCorrect()) {
-				return "FALLIDO";
-			}
-		}
-		return "EXITOSO";
+	private void setColTipoTransacion(XSSFRow row, int col, DocumentContext json) {
+		List<String> cls = json.read(JPaths.CLASSIFICATIONS);
+		String value = cls.stream().collect(Collectors.joining(","));
+		XSSFCell cell = getOrCreateCell(row, col);
+		cell.setCellValue(value);
 	}
 	public XSSFCell getOrCreateCell(XSSFRow row, int index) {
 		XSSFCell cell = row.getCell(index);
@@ -181,17 +230,14 @@ public class ReportMpul implements IReport {
 		return cell;
 	}
 	private XSSFRow findRow(String rrn) {
-		if (rrn != null && rrn.matches("\\d+")) {
-			Integer id = Integer.parseInt(rrn);
-			return rows.get(id);
-		} else {
-			return null;
+		if (rrn != null && mapRows.containsKey(rrn)) {
+			return sheetMpul.getRow(mapRows.get(rrn));
 		}
+		return null;
 	}
 	@Override
 	public void close() {
 		try {
-			mapCells.clear();
 			FileOutputStream outputStream = new FileOutputStream(file);
 			workbook.write(outputStream);
 			workbook.close();

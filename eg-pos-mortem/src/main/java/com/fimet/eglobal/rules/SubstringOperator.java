@@ -1,5 +1,6 @@
 package com.fimet.eglobal.rules;
 
+
 import com.jayway.jsonpath.DocumentContext;
 
 public class SubstringOperator implements IStringOperator {
@@ -29,6 +30,6 @@ public class SubstringOperator implements IStringOperator {
 	}
 	@Override
 	public String toString() {
-		return "substring(" + jpath +"," +start+","+end+")";
+		return "substring(%s," +start+","+end+")";
 	}
 }

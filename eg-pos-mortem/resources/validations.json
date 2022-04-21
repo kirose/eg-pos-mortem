@@ -81,12 +81,48 @@
 			"notEquals":["$.acq.res.39","00"]
 		}
 	},
-	"[Interred][MasterCard][CardOnFile]":{
-		"Int-MC Tkn PJ":{
-			"equals":["$.acq.req.63.PJ","$.desc28.tknPJ"]
+	"[*][Visa][Promocion]":{
+		"mpul.iss.req Promo 48":{
+			"exists":"$.iss.req.48"
 		}
 	},
-	"[Interred][Visa][ECommNoSeguro][$.acq.req.63.C0.5~5|6]":{
+	"[*][MasterCard][Promocion]":{
+		"mpul.iss.req Promo 48.95":{
+			"equals":["$.iss.req.48.95","PERCTA"]
+		},
+		"mpul.iss.req Promo 112":{
+			"exists":"$.iss.req.112"
+		}
+	},
+	"[*][Visa][CardOnFile]":{
+		"mpul.desc Tkn PJ":{
+			"equals":["$.acq.req.63.PJ","$.desc28.tknPJ"]
+		},
+		"mpul.iss.req COF 62.2":{
+			"equals":["$.iss.req.62.2","$.acq.req.63.17"]
+		},
+		"mpul.iss.res COF 48.63":{
+			"exists":"$.iss.res.62.2"
+		},
+		"mpul.acq.res COF 63.20":{
+			"equals":["$.iss.res.62.2","$.acq.res.63.17"]
+		}
+	},
+	"[*][MasterCard][CardOnFile]":{
+		"mpul.desc Tkn PJ":{
+			"equals":["$.acq.req.63.PJ","$.desc28.tknPJ"]
+		},
+		"mpul.iss.req COF 48.63":{
+			"equals":["$.iss.req.48.63","$.acq.req.63.20"]
+		},
+		"mpul.iss.res COF 48.63":{
+			"exists":"$.iss.res.48.63"
+		},
+		"mpul.acq.res COF 63.20":{
+			"equals":["$.iss.res.48.63","$.acq.res.63.20"]
+		}
+	},
+	"[*][Visa][ECommNoSeguro]":{
 		"iss.req.61.10":{
 			"equals":[{"substring":"$.iss.req.61","start":9,"end":10},"6"]
 		},
@@ -95,7 +131,7 @@
 			{"substring":"$.iss.req.48.63","start":12,"end":13},"9"
 		]}
 	},
-	"[Interred][Visa][ECommSeguro][$.acq.req.63.C0.5=7]":{
+	"[*][Visa][ECommSeguro]":{
 		"iss.req.61.10":{
 			"equals":[
 				{"substring":"$.iss.req.61","start":9,"end":10},

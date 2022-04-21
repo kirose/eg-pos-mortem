@@ -22,6 +22,6 @@ public class NotEquals implements IBooleanOperator {
 	}
 	@Override
 	public String toString() {
-		return "not equals(" + left + "," + right + ")";
+		return "[diferente][" + left + "][" + right + "]";
 	}
 }

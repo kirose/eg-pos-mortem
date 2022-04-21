@@ -14,6 +14,6 @@ public class NotExists implements IBooleanOperator {
 	}
 	@Override
 	public String toString() {
-		return "not exists(" + arg + ")";
+		return "[no existe][" + arg + "]";
 	}
 }

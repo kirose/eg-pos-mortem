@@ -14,6 +14,6 @@ public class Exists implements IBooleanOperator {
 	}
 	@Override
 	public String toString() {
-		return "exists(" + arg + ")";
+		return "[existe][" + arg+ "]";
 	}
 }

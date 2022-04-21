@@ -1,5 +1,6 @@
 package com.fimet.eglobal.rules;
 
+
 import com.jayway.jsonpath.DocumentContext;
 
 public class ValueOperator implements IStringOperator {
@@ -18,6 +19,6 @@ public class ValueOperator implements IStringOperator {
 	}
 	@Override
 	public String toString() {
-		return jpath;
+		return "%s";
 	}
 }

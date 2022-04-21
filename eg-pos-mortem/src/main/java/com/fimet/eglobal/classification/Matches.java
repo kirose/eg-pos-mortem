@@ -1,6 +1,7 @@
 package com.fimet.eglobal.classification;
 
 import com.jayway.jsonpath.DocumentContext;
+import static com.fimet.eglobal.utils.StringUtils.prettyJPath;
 
 public class Matches implements IRule {
 	private String jpath;
@@ -20,6 +21,6 @@ public class Matches implements IRule {
 		}
 	}
 	public String toString() {
-		return String.format("matches(%s,%s)",jpath, expected);
+		return String.format("matches(%s,%s)",prettyJPath(jpath),expected);
 	}
 }

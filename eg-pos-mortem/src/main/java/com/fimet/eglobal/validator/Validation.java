@@ -1,4 +1,4 @@
-package com.fimet.eglobal.model;
+package com.fimet.eglobal.validator;
 
 public class Validation {
 	private String name;

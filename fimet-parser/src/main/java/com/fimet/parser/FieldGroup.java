@@ -27,7 +27,7 @@ public class FieldGroup implements IFieldGroup {
 	private FieldGroup parent;
 	private List<FieldGroup> children;
 	private IFieldLoader loader;
-	@Value("${field.group.autoload:false}")
+	@Value("${fimet.field.group.autoload:false}")
 	private boolean autoload;
 	@SuppressWarnings("unchecked")
 	private IFieldFormatDAO<? extends IEFieldFormat> dao = Manager.getManager(IFieldFormatDAO.class, FieldFormatXmlDAO.class);
