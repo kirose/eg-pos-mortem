@@ -9,12 +9,12 @@ package com.fimet.parser;
 public interface IEFieldGroup {
 	/**
 	 * The Field Group Parent
-	 * @return
+	 * @return the parent name
 	 */
 	public String getParent();
 	/**
 	 * The Field Group Name
-	 * @return
+	 * @return the name
 	 */
 	public String getName();
 }

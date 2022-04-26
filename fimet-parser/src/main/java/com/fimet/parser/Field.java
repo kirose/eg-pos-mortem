@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class Field {

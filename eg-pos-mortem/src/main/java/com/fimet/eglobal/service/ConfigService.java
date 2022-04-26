@@ -35,6 +35,8 @@ public class ConfigService {
 	private int rawcomCacheSize;
 	@Value("${eglobal.rawcom.request.timeout:9000}")
 	private int rawcomRequestTimeout;
+	@Value("${eglobal.rawcom-transactionlog.offset:300}")
+	private int rawcomTrnLogOffset;
 	private File rawcomOutputFolder;
 	private File rawcomInputFolder;
 
@@ -132,5 +134,8 @@ public class ConfigService {
 	}
 	public Validations getValidations(ReportType type) {
 		return mapValidations.get(type);
-	} 
+	}
+	public int getRawcomTrnLogOffset() {
+		return rawcomTrnLogOffset;
+	}
 }

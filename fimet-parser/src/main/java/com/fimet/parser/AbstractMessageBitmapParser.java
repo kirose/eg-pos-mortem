@@ -14,7 +14,6 @@ import com.fimet.utils.converter.Converter;
  * Unicamente se parsean campos presentes en el Bitmap
  *    
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public abstract class AbstractMessageBitmapParser extends AbstractMessageBitmapFormater {

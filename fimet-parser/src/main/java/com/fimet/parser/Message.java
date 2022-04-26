@@ -15,7 +15,6 @@ import java.util.Map;
  * The message of the transaction
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 @JsonAdapter(IMessageAdapter.class)

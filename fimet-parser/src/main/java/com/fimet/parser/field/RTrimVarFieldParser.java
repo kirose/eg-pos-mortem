@@ -17,7 +17,6 @@ import com.fimet.utils.IWriter;
  * Useful for visa and tpv's
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class RTrimVarFieldParser extends VarFieldParser {

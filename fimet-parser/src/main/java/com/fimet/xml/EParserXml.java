@@ -10,7 +10,6 @@ import com.fimet.parser.IEParser;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 @XmlRootElement(name="parser")

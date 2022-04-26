@@ -13,7 +13,6 @@ import com.fimet.utils.IWriter;
  * A parser for fixed length field 
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class FixedFieldParser extends AbstractFieldParser {

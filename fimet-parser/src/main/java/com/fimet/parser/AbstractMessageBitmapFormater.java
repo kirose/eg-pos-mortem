@@ -10,7 +10,6 @@ import com.fimet.utils.converter.Converter;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public abstract class AbstractMessageBitmapFormater extends BaseMessageParser {
@@ -68,7 +67,7 @@ public abstract class AbstractMessageBitmapFormater extends BaseMessageParser {
 	}
 	/**
 	 * Returns the bitmap number to which index belongs
-	 * @param index
+	 * @param index for first or second bitmap
 	 * @return bitmap number
 	 */
 	protected int bitmap(int index) {

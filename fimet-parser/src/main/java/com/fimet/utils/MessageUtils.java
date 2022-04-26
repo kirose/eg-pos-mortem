@@ -23,7 +23,6 @@ import com.fimet.parser.IStringAdapter;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class MessageUtils {
@@ -104,9 +103,9 @@ public class MessageUtils {
 	}
 	/**
 	 * Parse a sim_queue (Hexadecimal) to a Msg
-	 * @param msgHex
-	 * @param parserName
-	 * @return
+	 * @param message posible hex, ascii, etc.
+	 * @param parser the parser
+	 * @return message parsed
 	 */
 	public static IMessage fromString(String message, IParser parser) {
 		IStringAdapter adapter = adapterManager.adapterFor(message);

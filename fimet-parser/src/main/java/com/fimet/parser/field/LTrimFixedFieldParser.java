@@ -13,7 +13,6 @@ import com.fimet.utils.IWriter;
  * Parser for MessageFields from the message 
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class LTrimFixedFieldParser extends FixedFieldParser {

@@ -9,7 +9,6 @@ import com.fimet.utils.IWriter;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public abstract class AbstractMessageFormater extends BaseMessageParser {

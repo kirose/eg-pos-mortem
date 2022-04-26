@@ -3,32 +3,31 @@ package com.fimet.parser;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public interface IEParser {
 	/**
 	 * The Parser name
-	 * @return
+	 * @return the name
 	 */
 	public String getName();
 	/**
 	 * The  Field Group Name associated
-	 * @return
+	 * @return the field group
 	 */
 	public String getFieldGroup();
 	/**
 	 * Message converter (no MLI conversion) 
 	 * Example:
 	 * Converter=HEX_TO_ASCII
-	 * 46494D4554->FIMET
-	 * @return
+	 * 46494D4554 to FIMET
+	 * @return the converter
 	 */
 	public String getConverter();
 	/**
 	 * The parser class must implements IParser 
 	 * Example:com.fimet.parser.MyParser
-	 * @return
+	 * @return the parser class
 	 */
 	public String getParserClass();
 }

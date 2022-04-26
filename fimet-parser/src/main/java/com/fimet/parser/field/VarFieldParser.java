@@ -21,7 +21,6 @@ import com.fimet.utils.parser.NumericParser;
  * A parser for field variable length 
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class VarFieldParser extends AbstractFieldParser {

@@ -5,7 +5,6 @@ import com.fimet.utils.IWriter;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public interface IFieldParser {
@@ -17,7 +16,7 @@ public interface IFieldParser {
 	boolean isFixed();
 	/**
 	 * The Field Name
-	 * @return
+	 * @return the name
 	 */
 	String getName();
 	/**
@@ -25,7 +24,7 @@ public interface IFieldParser {
 	 * Example:3.1
 	 * Format:
 	 * [0-9]+(\.[A-Za-z0-9]+)*
-	 * @return
+	 * @return the id field
 	 */
 	String getIdField();
 	/**
@@ -33,14 +32,14 @@ public interface IFieldParser {
 	 * Example Field 3.1, order=3.1
 	 * Format:
 	 * [0-9]+(\.[0-9]+)*
-	 * @return
+	 * @return the id order 
 	 */
 	String getIdOrder();
 	/**
 	 * A Regexp for validate the field value
 	 * Example:
 	 * [A-Za-z]* only Letters
-	 * @return
+	 * @return the pattern for validation
 	 */
 	String getMask();
 	/**
@@ -49,41 +48,41 @@ public interface IFieldParser {
 	 * If the field is Variable then
 	 * return the length of variable length
 	 * for variable length a converter length is required
-	 * @return
+	 * @return the length
 	 */
 	int getLength();
 	/**
 	 * 
-	 * @param value
-	 * @return return true if the value matches with his Regexp mask, false in other case
+	 * @param value to be validated
+	 * @return return true if the value matches with his regexp mask, false in other case
 	 */
 	boolean isValidValue(String value);
 	/**
 	 * 
-	 * @param value
+	 * @param value to be validated
 	 * @return true if the value has a valid length, false in other case
 	 */
 	boolean isValidLength(String value);
 	/**
 	 * The address of the Field in MessageFields Tree
 	 * Example: Field 3.1 with address=[3,1]
-	 * @return
+	 * @return the address for tree manipulation
 	 */
 	short[] getAddress();
 	/**
 	 * Parse the byte array message in IReader to IMessage 
-	 * @param reader
-	 * @param message
-	 * @return
-	 * @throws ParserException
+	 * @param reader class for manipulate bytes
+	 * @param message to save parsed field
+	 * @return the parsed bytes
+	 * @throws ParserException in case of a parse error
 	 */
 	byte[] parse(IReader reader, IMessage message) throws ParserException;
 	/**
 	 * Format the IMessage to writer 
-	 * @param writer
-	 * @param message
-	 * @return
-	 * @throws ParserException
+	 * @param writer to format the field
+	 * @param message to be formated
+	 * @return the formatted bytes
+	 * @throws FormatException in case of a format error
 	 */
 	byte[] format(IWriter writer, IMessage message) throws FormatException;
 	/**

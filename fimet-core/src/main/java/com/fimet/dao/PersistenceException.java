@@ -2,7 +2,6 @@ package com.fimet.dao;
 /**
  * 
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public class PersistenceException extends RuntimeException {

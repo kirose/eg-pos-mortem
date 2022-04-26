@@ -11,7 +11,6 @@ import com.fimet.utils.IReader;
  * Unicamente se parsean campos presentes en el Bitmap
  *    
  * @author Marco A. Salazar
- * @email marcoasb99@ciencias.unam.mx
  *
  */
 public abstract class AbstractMessageParser extends AbstractMessageFormater {
