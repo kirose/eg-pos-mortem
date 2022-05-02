@@ -3,9 +3,9 @@ package com.fimet.eglobal.rules;
 import com.jayway.jsonpath.DocumentContext;
 
 public class NotEquals implements IBooleanOperator {
-	private IStringOperator left;
-	private IStringOperator right;
-	public NotEquals(IStringOperator left, IStringOperator right) {
+	private IValueOperator left;
+	private IValueOperator right;
+	public NotEquals(IValueOperator left, IValueOperator right) {
 		super();
 		this.left = left;
 		this.right = right;

@@ -10,7 +10,7 @@ import com.google.gson.stream.JsonWriter;
 import com.google.gson.stream.MalformedJsonException;
 import com.fimet.eglobal.rules.Equals;
 import com.fimet.eglobal.rules.Exists;
-import com.fimet.eglobal.rules.IStringOperator;
+import com.fimet.eglobal.rules.IValueOperator;
 import com.fimet.eglobal.rules.NotEquals;
 import com.fimet.eglobal.rules.NotExists;
 import com.fimet.eglobal.rules.Rule;
@@ -29,27 +29,27 @@ public class RuleAdapter extends TypeAdapter<Rule>{
 		Rule rule = new Rule();
 		if ("equals".equals(name)) {
 			in.beginArray();
-			IStringOperator left = parseArg(in);
-			IStringOperator right = parseArg(in);
+			IValueOperator left = parseArg(in);
+			IValueOperator right = parseArg(in);
 			in.endArray();
 			rule.setOperator(new Equals(left, right));
 		} else if ("notEquals".equals(name)) {
 			in.beginArray();
-			IStringOperator left = parseArg(in);
-			IStringOperator right = parseArg(in);
+			IValueOperator left = parseArg(in);
+			IValueOperator right = parseArg(in);
 			in.endArray();
 			rule.setOperator(new NotEquals(left, right));			
 		} else if ("exists".equals(name)) {
 			if (in.peek() == JsonToken.BEGIN_ARRAY)
 				in.beginArray();
-			IStringOperator arg = parseArg(in);
+			IValueOperator arg = parseArg(in);
 			if (in.peek() == JsonToken.END_ARRAY)
 				in.endArray();
 			rule.setOperator(new Exists(arg));
 		} else if ("notExists".equals(name)) {
 			if (in.peek() == JsonToken.BEGIN_ARRAY)
 				in.beginArray();
-			IStringOperator arg = parseArg(in);
+			IValueOperator arg = parseArg(in);
 			if (in.peek() == JsonToken.END_ARRAY)
 				in.endArray();
 			rule.setOperator(new NotExists(arg));
@@ -59,13 +59,13 @@ public class RuleAdapter extends TypeAdapter<Rule>{
 		in.endObject();
 		return rule;
 	}
-	private IStringOperator parseArg(JsonReader in) throws IOException {
+	private IValueOperator parseArg(JsonReader in) throws IOException {
 		if (in.peek() == JsonToken.STRING) {
 			return new ValueOperator(in.nextString());
 		} else if (in.peek() == JsonToken.BEGIN_OBJECT) {
 			in.beginObject();
 			String name = in.nextName();
-			IStringOperator op;
+			IValueOperator op;
 			if ("substring".equals(name)) {
 				String jpath = in.nextString();
 				if (!"start".equals(in.nextName())) {

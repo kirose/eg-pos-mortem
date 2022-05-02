@@ -24,7 +24,7 @@ import com.fimet.eglobal.rules.Equals;
 import com.fimet.eglobal.rules.Exists;
 import com.fimet.eglobal.rules.Group;
 import com.fimet.eglobal.rules.IBooleanOperator;
-import com.fimet.eglobal.rules.IStringOperator;
+import com.fimet.eglobal.rules.IValueOperator;
 import com.fimet.eglobal.rules.NotEquals;
 import com.fimet.eglobal.rules.NotExists;
 import com.fimet.eglobal.rules.Result;
@@ -121,7 +121,7 @@ public class ValidatorService {
 			result.setCorrect(eval.getValue());
 			return result;
 		} catch (Exception e) {
-			logger.error("Exception in rule:{}, json:",rule,json);
+			logger.error("Exception in evaluateRule:{}, json:{}",rule,json, e);
 		}
 		return null;
 	}
@@ -139,11 +139,11 @@ public class ValidatorService {
 		List<IBooleanOperator> rules = parseBlockRules(blockRules);
 		List<Validation> results = new ArrayList<Validation>();
 		for (IBooleanOperator rule : rules) {
-			results.add(evaluateRule(rule, json));
+			results.add(evaluateOperator(rule, json));
 		}
 		return results;
 	}
-	private Validation evaluateRule(IBooleanOperator rule, DocumentContext json) {
+	private Validation evaluateOperator(IBooleanOperator rule, DocumentContext json) {
 		try {
 			Result eval = rule.eval(json);
 			Validation result = new Validation();
@@ -154,7 +154,7 @@ public class ValidatorService {
 			result.setCorrect(eval.getValue());
 			return result;
 		} catch (Exception e) {
-			logger.error("Exception in rule:{}, json:",rule,json);
+			logger.error("Exception in evaluateOperator:{}, json:",rule, json, e);
 		}
 		return null;
 	}
@@ -192,24 +192,24 @@ public class ValidatorService {
 	}
 	public IBooleanOperator parse(String name, Matcher m) {
 		if ("igual".equalsIgnoreCase(name)) {
-			IStringOperator arg1 = parseArgument(m);
-			IStringOperator arg2 = parseArgument(m);
+			IValueOperator arg1 = parseArgument(m);
+			IValueOperator arg2 = parseArgument(m);
 			return new Equals(arg1, arg2);
 		} else if ("diferente".equalsIgnoreCase(name)) {
-			IStringOperator arg1 = parseArgument(m);
-			IStringOperator arg2 = parseArgument(m);
+			IValueOperator arg1 = parseArgument(m);
+			IValueOperator arg2 = parseArgument(m);
 			return new NotEquals(arg1, arg2);
 		} else if ("existe".equalsIgnoreCase(name)) {
-			IStringOperator arg1 = parseArgument(m);
+			IValueOperator arg1 = parseArgument(m);
 			return new Exists(arg1);
 		} else if ("noexiste".equalsIgnoreCase(name)) {
-			IStringOperator arg1 = parseArgument(m);
+			IValueOperator arg1 = parseArgument(m);
 			return new NotExists(arg1);
 		} else {
 			throw new RuntimeException("Invalid argument or no present: "+m.group());
 		}
 	}
-	private IStringOperator parseArgument(Matcher m) {
+	private IValueOperator parseArgument(Matcher m) {
 		if (m.find()) {
 			String arg = m.group(1);
 			if (arg.matches(ADDRESS_PATTERN)) {
@@ -229,7 +229,7 @@ public class ValidatorService {
 			throw new RuntimeException("Invalid argument or no present: "+m.group());
 		}
 	}
-	private IStringOperator parseOperator(String jpath, String name, String args) {
+	private IValueOperator parseOperator(String jpath, String name, String args) {
 		if ("substring".equalsIgnoreCase(name)) {
 			String[] parts = args.split(",");
 			int start = Integer.parseInt(parts[0]);

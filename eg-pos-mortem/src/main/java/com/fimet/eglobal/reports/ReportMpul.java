@@ -172,7 +172,7 @@ public class ReportMpul implements IReport {
 			String end = date + " " + (String)json.read(JPaths.ACQ_REQ_TIME);// Timestamp < Rawcom.time
 			Date date = yyyyMMddHHmmssSS_FMT.parse(end);
 			String start = yyyyMMddHHmmssSS_FMT.format(new Date(date.getTime()-cfg.getRawcomTrnLogOffset()));// Timestamp > Rawcom.time - Delta
-			logger.info("findByRrnAndRangeTime({},{},{})",rrn, start, end);
+			logger.info("transactionLogDAO.findByRrnAndRangeTime({},{},{})",rrn, start, end);
 			return transactionLogDAO.findByRrnAndRangeTime(rrn, start, end);
 		} catch (Exception e) {
 			logger.error("Error fetching transactionlog record",e);

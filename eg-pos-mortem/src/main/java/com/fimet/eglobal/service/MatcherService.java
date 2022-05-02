@@ -59,10 +59,14 @@ public class MatcherService {
 		File data = new File(config.getRawcomOutputFolder(), "Match-"+id+".txt");
 		File index = new File(config.getRawcomOutputFolder(), "Match-index-"+id+".txt");
 		Store storeMatch = new Store(index, data);
+		long descPosition;
+		int maxSearch = config.getRawcomDescMatchMaxSearch();
 		while (idxRdrRaw.hasNext()) {
 			idxRaw = idxRdrRaw.next();
 			matches = false;
-			while (idxRdrDesc.hasNext()) {
+			descPosition = idxRdrDesc.getCurrentPosition();
+			maxSearch = config.getRawcomDescMatchMaxSearch();
+			while (idxRdrDesc.hasNext() && maxSearch-- > 0) {
 				idxDesc = idxRdrDesc.next();
 				if (idxDesc.getKey() == idxRaw.getKey()) {
 					matches = true;
@@ -73,6 +77,8 @@ public class MatcherService {
 			String jsonDesc = null;
 			if (matches) {
 				jsonDesc = dtaRdrDesc.read(idxDesc);
+			} else {
+				idxRdrDesc.seek(descPosition);
 			}
 			try {
 				String jsonMatch = createJsonMatch(idxRaw.getKey(), jsonRaw, jsonDesc);
@@ -90,7 +96,6 @@ public class MatcherService {
 		dtaRdrDesc.close();
 		storeMatch.close();
 		return new MatcherResponse(id);
-		
 	}
 	private String addKeyAndCls(String jsonMatch, Long key, String classifications) {
 		String keyPty = "\"key\":"+key+",";

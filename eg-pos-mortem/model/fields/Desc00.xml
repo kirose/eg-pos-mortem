@@ -20,7 +20,7 @@
 	<field id="mti" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TYPE" />
 	<field id="rrn" length="12" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-RRN" />
 	<field id="tranDate" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-DATE" />
-	<field id="tranType" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TIME" />
+	<field id="tranTime" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-TRAN-TIME" />
 	<field id="procCode" length="6" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-PROCESSING-CODE" />
 	<field id="merchType" length="4" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-MERCHANT-TYPE" />
 	<field id="pem" length="3" mask="(?s).+" parser="com.fimet.parser.field.FixedFieldParser" name="POS-SEG-POS-ENTRY-MODE" >

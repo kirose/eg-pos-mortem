@@ -5,9 +5,9 @@ import static com.fimet.eglobal.utils.StringUtils.prettyJPath;
 import com.jayway.jsonpath.DocumentContext;
 
 public class Equals implements IBooleanOperator {
-	private IStringOperator left;
-	private IStringOperator right;
-	public Equals(IStringOperator left, IStringOperator right) {
+	private IValueOperator left;
+	private IValueOperator right;
+	public Equals(IValueOperator left, IValueOperator right) {
 		super();
 		this.left = left;
 		this.right = right;

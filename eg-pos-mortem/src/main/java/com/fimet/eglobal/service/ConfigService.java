@@ -35,6 +35,8 @@ public class ConfigService {
 	private int rawcomCacheSize;
 	@Value("${eglobal.rawcom.request.timeout:9000}")
 	private int rawcomRequestTimeout;
+	@Value("${eglobal.rawcom-desc.maxsearch:30}")
+	private int rawcomDescMatchMaxSearch;
 	@Value("${eglobal.rawcom-transactionlog.offset:300}")
 	private int rawcomTrnLogOffset;
 	private File rawcomOutputFolder;
@@ -52,15 +54,15 @@ public class ConfigService {
 	private File templates;
 	private Map<ReportType, Validations> mapValidations = new HashMap<ReportType, Validations>();
 	public ConfigService(
-			@Value("${eglobal.path.resources:resources}") String resourcesPath,
-			@Value("${eglobal.path.templates:templates}") String templatesPath,
-			@Value("${eglobal.path.rawcom.output:analyzed}") String rawcomOutputPath,
-			@Value("${eglobal.path.rawcom.input:rawcom}") String rawcomInputPath,
-			@Value("${eglobal.path.desc.output:analyzed}") String descOutputPath,
-			@Value("${eglobal.path.desc.input:desc}") String descInputPath,
-			@Value("${eglobal.path.match.output:analyzed}") String matchOutputPath,
-			@Value("${eglobal.path.reports.output:reports}") String reportOutputPath
-			) {
+		@Value("${eglobal.path.resources:resources}") String resourcesPath,
+		@Value("${eglobal.path.templates:templates}") String templatesPath,
+		@Value("${eglobal.path.rawcom.output:analyzed}") String rawcomOutputPath,
+		@Value("${eglobal.path.rawcom.input:rawcom}") String rawcomInputPath,
+		@Value("${eglobal.path.desc.output:analyzed}") String descOutputPath,
+		@Value("${eglobal.path.desc.input:desc}") String descInputPath,
+		@Value("${eglobal.path.match.output:analyzed}") String matchOutputPath,
+		@Value("${eglobal.path.reports.output:reports}") String reportOutputPath
+	) {
 		resources = new File(resourcesPath);
 		templates = new File(templatesPath);
 		matchOutputFolder  = new File(matchOutputPath);
@@ -137,5 +139,8 @@ public class ConfigService {
 	}
 	public int getRawcomTrnLogOffset() {
 		return rawcomTrnLogOffset;
+	}
+	public int getRawcomDescMatchMaxSearch() {
+		return rawcomDescMatchMaxSearch;
 	}
 }

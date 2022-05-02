@@ -75,7 +75,7 @@
 			"$.acq.req.3":"000000"
 		},
 		"Reverso":{
-			"$.acq.req.mti":"0420",
+			"$.acq.req.mti":"0400",
 			"$.acq.req.3":"000000"
 		},
 		"Cancelacion":{

@@ -2,21 +2,23 @@ package com.fimet.eglobal.store;
 
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 
 import com.fimet.utils.ByteUtils;
 
 public class IndexReader implements Closeable {
-	private FileInputStream reader;
+	private RandomAccessFile reader;
 	byte[] buffer = new byte[512];
+	private long currentPosition = - Index.INDEX_SIZE;
 	private int index;
 	private int size;
 	private boolean eof;
 	private Index next;
 	public IndexReader(File file) throws IOException {
-		reader = new FileInputStream(file);
+		reader = new RandomAccessFile(file, "r");
 		checkBuffer();
+		parseNext();
 	}
 	public boolean hasNext() throws IOException {
 		if (next == null) {
@@ -37,11 +39,12 @@ public class IndexReader implements Closeable {
 		checkBuffer();
 		if (size-index>Index.INDEX_SIZE) {
 			Index next = new Index();
-			next.key = ByteUtils.toLong(buffer,index);
+			currentPosition += Index.INDEX_SIZE;
+			next.key = ByteUtils.toLong(buffer, index);
 			index += 8;
-			next.offset = ByteUtils.toLong(buffer,index);
+			next.offset = ByteUtils.toLong(buffer, index);
 			index += 8;
-			next.length = ByteUtils.toInt(buffer,index);
+			next.length = ByteUtils.toInt(buffer, index);
 			index += 4;
 			return next;
 		}
@@ -74,6 +77,20 @@ public class IndexReader implements Closeable {
 			reader.close();
 		} catch (IOException e) {
 		}
+	}
+	public long getCurrentPosition() {
+		return currentPosition;
+	}
+	public void seek(long position) throws IOException {
+		currentPosition = position;
+		resetBuffer();
+		reader.seek(position);
+	}
+	private void resetBuffer() {
+		next = null;
+		size = 0;
+		index = 0;
+		eof = false;
 	}
 	public static void main(String[] args) throws IOException {
 		IndexReader reader = new IndexReader(new File("Analyzed/Rawcom-index-20220409-194048.txt"));

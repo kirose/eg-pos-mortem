@@ -3,7 +3,7 @@ package com.fimet.eglobal.rules;
 
 import com.jayway.jsonpath.DocumentContext;
 
-public class SubstringOperator implements IStringOperator {
+public class SubstringOperator implements IValueOperator {
 	private String jpath;
 	private int start;
 	private int end;
@@ -16,6 +16,7 @@ public class SubstringOperator implements IStringOperator {
 	public SubstringOperator(String jpath, int start) {
 		this(jpath, start, -1);
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public String eval(DocumentContext json) {
 		String value = json.read(jpath);
